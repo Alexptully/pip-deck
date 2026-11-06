@@ -6,7 +6,7 @@ import { slides } from "@/content/content";
 import { duration, ease } from "@/lib/motion";
 import { toggleFullscreen, useDeckKeys } from "@/lib/use-deck-keys";
 import { useDeckNavigation } from "@/lib/use-deck-navigation";
-import { Mist } from "@/components/mist/Mist";
+import { Mist, mistFor } from "@/components/mist/Mist";
 import { slideComponents } from "@/components/slides/registry";
 import { Grain } from "./Grain";
 import { NotesPanel } from "./NotesPanel";
@@ -38,7 +38,7 @@ export function Deck() {
   return (
     <>
       <Stage>
-        <Mist setting={meta.mist} />
+        <Mist setting={mistFor(meta, position.step)} />
         <AnimatePresence mode="wait">
           <motion.div
             key={meta.id}

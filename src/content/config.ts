@@ -4,11 +4,13 @@
  */
 export const config = {
   productName: "Pip",
-  teamName: "[TEAM NAME]",
-  teamMembers: ["[TEAM MEMBER]", "[TEAM MEMBER]", "[TEAM MEMBER]", "[TEAM MEMBER]"],
+  teamName: "Group 7",
+  teamMembers: ["Alex Tully", "Daisy Wang", "Ame Wang", "Jerry Wu", "Cara Austring"],
   event: "Innovator's Forum, Fall 2026",
   prompt: "Prompt 3a: What does the future of vibe coding look like?",
   demoUrl: "[DEMO URL]",
+  /** When true, the deck speaks Pip's answer out loud on the "Any ideas, Pip?" slide. */
+  pipSpeaks: true,
   demoUrlLabel: "[DEMO URL]",
   motif: "A sheet of falling mist, the same fog screen Pip lives in, drifts across every slide.",
   ownerQuotes: [

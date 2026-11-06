@@ -43,6 +43,7 @@ export function SaySlide({ step }: { step: number }) {
         <div className="flex items-center gap-6">
           <span className="type-caption text-text-muted">{saySlide.speaker}</span>
           <VoiceWave />
+          <span className="type-fine text-text-faint">{saySlide.inputModes}</span>
         </div>
         <blockquote className="type-lead mt-8 max-w-[860px] text-text">{`"${saySlide.said}"`}</blockquote>
       </Reveal>

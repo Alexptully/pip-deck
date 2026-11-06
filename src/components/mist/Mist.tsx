@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { MistSetting } from "@/content/content";
+import type { MistSetting, SlideMeta } from "@/content/content";
 import { STAGE_HEIGHT, STAGE_WIDTH } from "@/lib/motion";
 import { useStill } from "@/components/primitives/Still";
 import { approach, createDroplets, createSprite, drawMist, hexToRgb, seededRandom, stepDroplets } from "./mist-field";
+
+/** The mist for a slide at a build step, falling back to the slide's own setting. */
+export function mistFor(meta: SlideMeta, step: number): MistSetting {
+  return meta.mistByStep?.[step] ?? meta.mist;
+}
 
 function readAccent(): string {
   const value = getComputedStyle(document.documentElement).getPropertyValue("--color-accent");
