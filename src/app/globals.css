@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/*
+  The whole deck draws on a fixed 1920 by 1080 stage, so every size below is a
+  real pixel at 1080p. Components reference these tokens and never raw colors.
+*/
+@theme {
+  --color-*: initial;
+  --color-surface: #0e0e0d;
+  --color-surface-raised: #191817;
+  --color-surface-sunken: #080808;
+  --color-text: #efeae1;
+  --color-text-muted: #a8a196;
+  --color-text-faint: #6f6a62;
+  --color-line: #2b2926;
+  --color-accent: #59ece2;
+  --color-accent-dim: #2c7f7a;
+  --color-paper: #f4efe6;
+  --color-paper-shade: #e6dfd2;
+  --color-ink: #1b1916;
+  --color-ink-muted: #6b645a;
+  --color-transparent: transparent;
+
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --text-fine: 19px;
+  --text-fine--line-height: 1.35;
+  --text-caption: 24px;
+  --text-caption--line-height: 1.35;
+  --text-body: 30px;
+  --text-body--line-height: 1.4;
+  --text-lead: 42px;
+  --text-lead--line-height: 1.25;
+  --text-title: 92px;
+  --text-title--line-height: 1.02;
+  --text-figure: 64px;
+  --text-figure--line-height: 1;
+  --text-display: 180px;
+  --text-display--line-height: 0.95;
+  --text-hero: 300px;
+  --text-hero--line-height: 0.85;
+  --text-mega: 420px;
+  --text-mega--line-height: 0.85;
+
+  --radius-card: 28px;
+  --radius-control: 999px;
+  --radius-phone: 64px;
+
+  --shadow-card: 0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 30px 60px -30px rgb(0 0 0 / 0.8);
+  --shadow-glow: 0 0 40px 0 rgb(89 236 226 / 0.35);
+  --shadow-phone: 0 50px 120px -40px rgb(0 0 0 / 0.9), 0 0 0 10px #232220;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    background: var(--color-surface-sunken);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+}
+
+/* Text styles: every element picks one of these rather than setting its own font. */
+@utility type-mega {
+  font-family: var(--font-display);
+  font-size: var(--text-mega);
+  line-height: var(--text-mega--line-height);
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 96,
+    "wdth" 82;
+}
+
+@utility type-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  line-height: var(--text-hero--line-height);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings:
+    "opsz" 96,
+    "wdth" 80;
+}
+
+@utility type-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: var(--text-display--line-height);
+  font-weight: 650;
+  font-variation-settings:
+    "opsz" 96,
+    "wdth" 85;
+}
+
+@utility type-title {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: 600;
+  font-variation-settings:
+    "opsz" 72,
+    "wdth" 90;
+  text-wrap: balance;
+}
+
+@utility type-lead {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  line-height: var(--text-lead--line-height);
+  font-weight: 500;
+  font-variation-settings:
+    "opsz" 36,
+    "wdth" 100;
+  text-wrap: pretty;
+}
+
+@utility type-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  font-weight: 400;
+  text-wrap: pretty;
+}
+
+@utility type-caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  font-weight: 450;
+}
+
+@utility type-fine {
+  font-family: var(--font-sans);
+  font-size: var(--text-fine);
+  line-height: var(--text-fine--line-height);
+  font-weight: 400;
+}
+
+@utility type-figure {
+  font-family: var(--font-display);
+  font-size: var(--text-figure);
+  line-height: var(--text-figure--line-height);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-variation-settings:
+    "opsz" 96,
+    "wdth" 80;
+}
+
+/* Print: one landscape page per slide or build step. */
+@page {
+  size: 1920px 1080px;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    overflow: visible;
+    height: auto;
+    background: var(--color-surface);
+  }
+}
