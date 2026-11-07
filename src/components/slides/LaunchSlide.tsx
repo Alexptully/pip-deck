@@ -10,7 +10,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { useStill } from "@/components/primitives/Still";
 import { QrCode } from "@/components/diagrams/QrCode";
 import { Pip } from "@/components/pip/Pip";
-import { bakeryOrder } from "./launch-data";
+import { frontDeskList } from "./launch-data";
 
 function LiveDot() {
   const still = useStill();
@@ -24,18 +24,18 @@ function LiveDot() {
   );
 }
 
-function Orders({ show }: { show: boolean }) {
+function CheckIns({ show }: { show: boolean }) {
   return (
     <Reveal show={show}>
       <p className="type-lead text-text">{launchSlide.ordersTitle}</p>
       <ul className="mt-6 flex flex-col">
-        {launchSlide.orders.map((order, index) => (
-          <Reveal key={order.name} show={show} delay={0.2 + index * 0.35} className="border-b border-line py-4">
+        {launchSlide.checkIns.map((checkIn, index) => (
+          <Reveal key={checkIn.name} show={show} delay={0.2 + index * 0.35} className="border-b border-line py-4">
             <div className="flex items-baseline justify-between gap-6">
-              <span className="type-body text-text">{`${order.name}: ${order.count} ${order.item.toLowerCase()}`}</span>
-              <span className="type-caption shrink-0 text-text-muted">{order.pickup}</span>
+              <span className="type-body text-text">{`${checkIn.name}: ${checkIn.visit.toLowerCase()}`}</span>
+              <span className="type-caption shrink-0 text-text-muted">{checkIn.time}</span>
             </div>
-            {"note" in order && order.note ? <p className="type-caption mt-1 text-accent">{order.note}</p> : null}
+            {"note" in checkIn && checkIn.note ? <p className="type-caption mt-1 text-accent">{checkIn.note}</p> : null}
           </Reveal>
         ))}
       </ul>
@@ -43,9 +43,9 @@ function Orders({ show }: { show: boolean }) {
   );
 }
 
-function BakeryOrder({ show }: { show: boolean }) {
+function DeskList({ show }: { show: boolean }) {
   const still = useStill();
-  const lines = bakeryOrder();
+  const lines = frontDeskList();
   const most = Math.max(...lines.map((line) => line.count));
   return (
     <Reveal show={show} delay={0.4}>
@@ -53,9 +53,9 @@ function BakeryOrder({ show }: { show: boolean }) {
         <p className="type-lead">{launchSlide.listTitle}</p>
         <ul className="mt-6 flex flex-col gap-6">
           {lines.map((line) => (
-            <li key={line.item}>
+            <li key={line.visit}>
               <div className="flex items-baseline justify-between">
-                <span className="type-body">{line.item}</span>
+                <span className="type-body">{line.visit}</span>
                 <span className="type-figure">{line.count}</span>
               </div>
               <div className="mt-2 h-3 bg-paper-shade">
@@ -106,10 +106,10 @@ export function LaunchSlide({ step }: { step: number }) {
         <Pip height={420} mood="smile" />
       </Reveal>
       <div className="absolute left-[660px] top-0 w-[480px]">
-        <Orders show={step >= 1} />
+        <CheckIns show={step >= 1} />
       </div>
       <div className="absolute right-0 top-0 w-[480px]">
-        <BakeryOrder show={step >= 1} />
+        <DeskList show={step >= 1} />
       </div>
     </div>
   );

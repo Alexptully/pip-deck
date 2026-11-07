@@ -36,56 +36,58 @@ Every one of these must be visible in the deck, and each slide's footer names th
 
 Original, Useful, Believable, Accessible to non-engineers, Understandable through the product itself, Built for a specific person in a specific context.
 
+## The point of Pip
+
+Pip is a friendly, human-facing way to build software. Today's AI builders feel made for engineers: a blank box, technical words and code you can't check. Non-technical people find them intimidating and give up. Pip is a character on a fog screen that says hello, talks in your words, says back what it heard, asks one question at a time and never shows code. The friendliness is the product: it makes people feel open to building.
+
 ## Who it's for
 
-Pip is for workplaces that run on operations and have nobody technical: corner stores, clinics, salons, food banks. The people there are too busy to learn vibe coding and too busy to stop and describe an app. Pip is a traveling builder. It visits a workplace for about a week, listens to customer complaints, staff requests and everyday conversation, works out how the place runs, then builds what is missing and moves on.
+**Gloria, 56. Clinic director of a two-doctor family clinic in East Los Angeles.** (Sector: community healthcare.) She is not a doctor and not technical.
 
-**Opening stat:** clinics and shops took up AI fast last year. In the AMA's survey of 1,183 physicians, 66% used AI in their practice in 2024, up from 38% in 2023. A Thryv survey of 540 small businesses (a vendor survey, labeled as such) found AI use rose from 39% in 2024 to 55% in 2025. Nearly all of that is software someone else designed. The pivot: what if Pip could help them build their own?
+- **Her day:** the phones start before the doors open. Patients call all day to ask how long the wait is and whether a refill went through. A voicemail gets missed. She is still returning calls after closing.
+- **What she can't do today:** build anything. She tried an AI app builder once, and closed it when it showed her code. There is no budget for a developer.
+- **Sector constraints:** thin margins, no IT person, a scheduling system she didn't choose, mostly walk-in patients, many older and more at home in Spanish. Health information needs care.
+- **Why she wants it:** patients join the walk-in list from their phones and hear back when it's their turn, so they stop waiting on hold.
+- **Why she needs it:** without it, the phones stay the system, and the software she has was designed for someone else.
 
-**The example is Pip's route, not one owner.** Pip goes from workplace to workplace, about a week at each: a corner market, a family clinic, a salon, a food bank. At every stop it listens to complaints from customers, needs from staff and everyday conversation, so it understands how the place runs.
+**Opening stat:** in the AMA's survey of 1,183 physicians, 66% used AI in their practice in 2024, up from 38% in 2023. A Thryv survey of 540 small businesses (a vendor survey, labeled as such) found AI use rose from 39% in 2024 to 55% in 2025. Nearly all of that is software someone else designed. The pivot: what if Pip could help Gloria build her own?
 
-- **The corner market (demo stop):** pan dulce sells out by 10 and customers keep asking. Staff write reservations on receipts and some go missing. Pip builds a reservation page with a daily limit and a list for the bakery.
-- **The family clinic (next stop):** patients ask how long the wait is, and staff call back about refills. Pip builds a text-me waitlist and a refill status board. In clinics, Pip excludes health details from what it learns.
-- **Sector constraints:** thin margins, no IT person, phones as the main computer, bilingual customers and patients.
-- **Why they want it:** they keep working while Pip figures out what to build, and they only answer plain questions about their own workplace.
-- **Why they need it:** without it, requests said out loud are lost, and the software they get was designed for someone else.
-
-The market and clinic are illustrative. Before pitching, swap in quotes from two or three real owners or staff (`src/content/config.ts`).
+Gloria is a persona. Before pitching, swap in quotes from two or three real clinic staff or owners (`src/content/config.ts`).
 
 ## What is broken about building software today
 
-Today's AI builders assume you have time to stop working and the words to describe what you want: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to a busy workplace (how many to set aside, how people pay, whether customers read Spanish) are buried under technical ones. Meanwhile the real requirements are said out loud in the workplace every day and lost.
+Today's AI builders feel made for engineers: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to Gloria (how many walk-ins her doctors can see, where patients wait, whether patients read Spanish) are buried under technical ones. People like her close the tab.
 
 ## Who Pip allows to build
 
-Whole workplaces that will never learn to code and never hire a developer. If people at your workplace talk about a problem, Pip can hear it and build for it.
+People who have never built anything and never will learn to: clinic directors, shop owners, salon owners, food-bank coordinators. If you can describe your problem to a friend, you can build with Pip.
 
 ## What Pip makes easier
 
-- **Listen:** Pip spends a week at the counter on its fog screen. It hears customers, staff and passing conversation, then shows the owner "What I noticed" as patterns and counts (demo data on the slide).
-- **Ask:** Pip asks the owner one plain question at a time, each starting from something it heard. "People asked after it sold out 14 times. How many can you set aside each day?" is a business question that quietly builds inventory logic. Every change flies from Pip's hand into the app.
-- **Try:** Pip pretends to be a customer and finds the gap ("I'm allergic to nuts and there was nowhere to tell you").
-- **Launch:** one word gives a working page and a QR code. Reservations arrive live and add up into tomorrow's order for the bakery.
-- **Move on:** Pip travels to the next workplace (the clinic) and checks back in a month.
+- **Feels like a person:** Pip starts with "Hi! What's been hard this week?", speaks English or Spanish, shows what it heard instead of code, asks one question at a time and says "Let me try that another way" instead of an error.
+- **Say it:** Gloria talks; Pip reflects back what it heard (Who, Clinic, Problem, Goal).
+- **Shape it:** four friendly questions, one at a time. "How many walk-ins can your doctors see in a day? I'll close the list before they get swamped" quietly builds capacity logic. Every change flies from Pip's hand into the app.
+- **Try it:** Pip plays a patient and finds the gap ("My daughter translates for me, and there was nowhere to say so").
+- **Launch it:** one word gives a working walk-in page and a QR code. Check-ins arrive live and the front desk gets one list by visit type, with interpreter requests flagged.
 
-## Trust
+## One more use case: Pip can come to you
 
-A listening agent needs visible rules: Pip glows whenever it listens, everyone is told first and anyone can say "Pip, pause", it keeps patterns not recordings, nothing is built without the owner's yes, health details stay out in clinics, and the listening leaves with Pip. These are prototype design rules, not legal certifications; a real clinic deployment would need a privacy and HIPAA review.
+For workplaces too busy even to sit down and talk, Pip can spend about a week on site, listening to complaints from patients and customers, needs from staff and everyday conversation, then ask the same friendly questions and move on to the next workplace. Visible rules: Pip glows when listening, everyone is told first and anyone can say "Pip, pause", it keeps patterns not recordings, nothing is built without a yes, health details stay out in clinics, and the listening leaves with Pip. These are prototype design rules, not legal certifications; a real clinic deployment would need a privacy and HIPAA review.
 
 ## Why now
 
-Models can turn a week of overlapping conversation into a few clear patterns and make small reliable changes in real time. Browser speech makes listening and talking free and instant. Fog screens give a listening agent a visible body.
+Models can hold a conversation, turn a messy description into structure and make small reliable changes in real time. Browser speech makes voice free and instant. Fog screens give a character a body in the room.
 
 ## What we learned (starting points, replace with the team's own)
 
-- Owners describe problems, never features. Listening first skips the hardest part.
-- Showing what Pip noticed before building did more for trust than any explanation.
-- The pretend customer catching a missing notes box was the most useful AI moment.
-- People relaxed once they could see when Pip was listening.
+- People describe their problem in more detail to a character than to a text box.
+- Free-form "build anything" overwhelmed even us. One question at a time felt calm.
+- Showing what Pip heard before building did more for trust than any explanation.
+- The pretend patient catching a missing notes box was the most useful AI moment.
 
-## Who benefits beyond the first workplace
+## Who benefits beyond Gloria
 
-Staff (one list instead of scraps of paper), customers and patients (shorter waits, answers in their own language), the neighborhood (local shops get tools without paying a developer), and every next stop on Pip's route: a family clinic, a salon, a food-bank shift coordinator.
+Her front desk (less time on hold and callbacks), her patients (join the list from home, in Spanish or English, with bigger text), the neighborhood (a clinic that is easier to reach), and anyone else who can describe a problem: a corner store, a salon, a food-bank shift coordinator.
 
 ## Hardware
 

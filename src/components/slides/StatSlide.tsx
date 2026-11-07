@@ -10,7 +10,7 @@ import { Pip } from "@/components/pip/Pip";
 
 type Stat = (typeof statSlide.stats)[number];
 
-const TRACK = 820;
+const TRACK = 680;
 
 function Bar({ value, ours, delay }: { value: number; ours: boolean; delay: number }) {
   const still = useStill();
@@ -52,7 +52,7 @@ export function StatSlide({ step }: { step: number }) {
   return (
     <div className="relative h-full">
       <Heading>{statSlide.heading}</Heading>
-      <div className="absolute left-0 top-[250px] flex w-[1160px] flex-col gap-12">
+      <div className="absolute left-0 top-[250px] flex w-[1040px] flex-col gap-12">
         {statSlide.stats.map((stat, index) => (
           <StatPair key={stat.id} stat={stat} index={index} />
         ))}
@@ -63,9 +63,9 @@ export function StatSlide({ step }: { step: number }) {
       <Reveal
         show={pivot}
         rise={50}
-        className="absolute right-0 top-[170px] flex w-[460px] flex-col items-center gap-8"
+        className="absolute right-0 top-[150px] flex w-[600px] flex-col items-center gap-6"
       >
-        <Pip height={300} mood="smile" />
+        <Pip height={260} mood="smile" />
         <p className="type-title text-center text-text">{statSlide.pivot}</p>
       </Reveal>
     </div>

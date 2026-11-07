@@ -73,7 +73,7 @@ function PipPane({ show }: { show: boolean }) {
         <Pip height={110} mood="listen" />
       </div>
       <ul className="flex flex-col gap-10 pt-6">
-        {brokenSlide.overheard.map((line, index) => (
+        {brokenSlide.conversation.map((line, index) => (
           <Reveal key={line.text} show={show} delay={0.2 + index * 0.12}>
             <li>
               <p className="type-caption text-text-faint">{line.who}</p>

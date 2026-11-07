@@ -1,36 +1,35 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { CreditCard, Storefront, Minus, Plus } from "@phosphor-icons/react";
-import { shopCopy } from "@/content/content";
+import { ChatCircleText, Clock, DoorOpen, Stethoscope } from "@phosphor-icons/react";
+import { clinicPageCopy } from "@/content/content";
 import { duration, ease } from "@/lib/motion";
 import { useStill } from "@/components/primitives/Still";
-import { Concha } from "@/components/diagrams/Concha";
 
-export type ShopLanguage = "en" | "es" | "both";
+export type PageLanguage = "en" | "es" | "both";
 export type NotesState = "none" | "gap" | "present";
 
-export type ShopState = {
-  language: ShopLanguage;
+export type ClinicPageState = {
+  language: PageLanguage;
   large: boolean;
-  payCard: boolean;
+  waitAtHome: boolean;
   limit: number;
-  reserved: number;
+  checkedIn: number;
   notes: NotesState;
 };
 
 const sizes = {
-  regular: { name: "text-[34px]", body: "text-[19px]", button: "text-[22px] py-4" },
-  large: { name: "text-[42px]", body: "text-[24px]", button: "text-[28px] py-5" },
+  regular: { name: "text-[32px]", body: "text-[19px]", button: "text-[22px] py-4" },
+  large: { name: "text-[38px]", body: "text-[24px]", button: "text-[28px] py-5" },
 };
 
-function copyFor(language: ShopLanguage) {
-  return language === "en" ? shopCopy.en : shopCopy.es;
+function copyFor(language: PageLanguage) {
+  return language === "en" ? clinicPageCopy.en : clinicPageCopy.es;
 }
 
-function StockMeter({ limit, reserved, text }: { limit: number; reserved: number; text: string }) {
+function SpotsMeter({ limit, checkedIn, text }: { limit: number; checkedIn: number; text: string }) {
   const still = useStill();
-  const left = Math.max(limit - reserved, 0);
+  const left = Math.max(limit - checkedIn, 0);
   const share = limit === 0 ? 0 : left / limit;
   return (
     <div>
@@ -73,17 +72,18 @@ function NotesField({ state, label }: { state: NotesState; label: string }) {
   );
 }
 
-/** The market's reservation page. Every answer the owner gives Pip shows up here as a visible change. */
-export function ShopPage({ state }: { state: ShopState }) {
+/** Gloria's walk-in page. Every answer she gives Pip shows up here as a visible change. */
+export function ClinicPage({ state }: { state: ClinicPageState }) {
   const copy = copyFor(state.language);
   const size = state.large ? sizes.large : sizes.regular;
-  const left = Math.max(state.limit - state.reserved, 0);
-  const soldOut = left === 0;
+  const left = Math.max(state.limit - state.checkedIn, 0);
+  const full = left === 0;
+  const WaitIcon = state.waitAtHome ? ChatCircleText : DoorOpen;
   return (
     <div className={`flex h-full flex-col gap-5 ${size.body}`}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className={`font-display font-bold leading-none ${size.name}`}>{copy.shopName}</p>
+          <p className={`font-display font-bold leading-none ${size.name}`}>{copy.clinicName}</p>
           <p className="mt-2 text-ink-muted">{copy.tagline}</p>
         </div>
         {state.language === "both" ? (
@@ -92,28 +92,26 @@ export function ShopPage({ state }: { state: ShopState }) {
           </span>
         ) : null}
       </div>
-      <Concha size={state.large ? 250 : 280} className="mx-auto" />
-      <div className="flex items-baseline justify-between">
-        <p className="font-semibold">{copy.item}</p>
-        <p className="text-ink-muted">{copy.price}</p>
+      <Stethoscope size={state.large ? 120 : 150} weight="light" className="mx-auto" aria-hidden />
+      <div className="flex items-baseline justify-between gap-3">
+        <p className="font-semibold">{copy.visit}</p>
+        <p className="flex items-center gap-2 text-ink-muted">
+          <Clock size={22} aria-hidden />
+          {copy.wait}
+        </p>
       </div>
-      <StockMeter limit={state.limit} reserved={state.reserved} text={soldOut ? copy.soldOut : copy.left(left)} />
-      <div className="flex items-center justify-center gap-6" aria-hidden>
-        <Minus size={30} weight="bold" />
-        <span className="font-display text-[40px] font-bold leading-none">12</span>
-        <Plus size={30} weight="bold" />
-      </div>
+      <SpotsMeter limit={state.limit} checkedIn={state.checkedIn} text={full ? copy.full : copy.left(left)} />
       <AnimatePresence initial={false}>
         <NotesField state={state.notes} label={copy.notes} />
       </AnimatePresence>
       <div className="mt-auto flex items-center gap-3 text-ink-muted">
-        {state.payCard ? <CreditCard size={28} /> : <Storefront size={28} />}
-        <span>{state.payCard ? copy.payCard : copy.payPickup}</span>
+        <WaitIcon size={28} className="shrink-0" aria-hidden />
+        <span>{state.waitAtHome ? copy.waitHome : copy.waitDesk}</span>
       </div>
       <div
-        className={`rounded-control bg-ink text-center font-semibold text-paper ${size.button} ${soldOut ? "opacity-30" : ""}`}
+        className={`rounded-control bg-ink text-center font-semibold text-paper ${size.button} ${full ? "opacity-30" : ""}`}
       >
-        {copy.order}
+        {copy.join}
       </div>
     </div>
   );

@@ -3,9 +3,9 @@ import { Card } from "@/components/primitives/Card";
 import { Heading } from "@/components/primitives/Heading";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Phone } from "@/components/phone/Phone";
-import { ShopPage, type NotesState } from "@/components/phone/ShopPage";
+import { ClinicPage, type NotesState } from "@/components/phone/ClinicPage";
 import { Pip } from "@/components/pip/Pip";
-import { defaultAnswers, shopFromAnswers } from "./ask-state";
+import { defaultAnswers, pageFromAnswers } from "./ask-state";
 
 const notesByStep: NotesState[] = ["none", "gap", "present"];
 
@@ -27,7 +27,7 @@ function ChatLine({ who, text, show, delay }: { who: string; text: string; show:
 }
 
 export function TrySlide({ step }: { step: number }) {
-  const shop = { ...shopFromAnswers(defaultAnswers), notes: notesByStep[step] };
+  const page = { ...pageFromAnswers(defaultAnswers), notes: notesByStep[step] };
   const visibleLines = linesByStep[step];
   return (
     <div className="relative h-full">
@@ -47,7 +47,7 @@ export function TrySlide({ step }: { step: number }) {
       </div>
       <div className="absolute right-0 top-[20px]">
         <Phone width={400}>
-          <ShopPage state={shop} />
+          <ClinicPage state={page} />
         </Phone>
         <Reveal show={step === 1} className="absolute -left-[300px] top-[560px] w-[270px] text-right">
           <p className="type-caption text-accent">{trySlide.gapLabel}</p>

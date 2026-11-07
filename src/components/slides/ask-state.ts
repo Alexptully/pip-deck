@@ -1,5 +1,5 @@
-import { demoReservedToday, askSlide, type AskQuestion } from "@/content/content";
-import type { ShopLanguage, ShopState } from "@/components/phone/ShopPage";
+import { demoCheckedInToday, askSlide, type AskQuestion } from "@/content/content";
+import type { ClinicPageState, PageLanguage } from "@/components/phone/ClinicPage";
 
 export type Answers = Record<string, string>;
 
@@ -7,14 +7,14 @@ export const defaultAnswers: Answers = Object.fromEntries(
   askSlide.questions.map((question) => [question.id, question.defaultChoice]),
 );
 
-/** Turns the owner's plain answers into the settings the shop page is built from. */
-export function shopFromAnswers(answers: Answers): ShopState {
+/** Turns Gloria's plain answers into the settings the clinic page is built from. */
+export function pageFromAnswers(answers: Answers): ClinicPageState {
   return {
     limit: Number(answers.limit),
-    payCard: answers.pay === "card",
-    language: answers.language as ShopLanguage,
+    waitAtHome: answers.checkIn === "home",
+    language: answers.language as PageLanguage,
     large: answers.size === "large",
-    reserved: demoReservedToday,
+    checkedIn: demoCheckedInToday,
     notes: "none",
   };
 }

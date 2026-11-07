@@ -6,10 +6,10 @@ import { Button } from "@/components/primitives/Button";
 import { Heading } from "@/components/primitives/Heading";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Phone } from "@/components/phone/Phone";
-import { ShopPage } from "@/components/phone/ShopPage";
+import { ClinicPage } from "@/components/phone/ClinicPage";
 import { Pip } from "@/components/pip/Pip";
 import { Sparks } from "@/components/diagrams/Sparks";
-import { buildsFor, choiceLabel, defaultAnswers, shopFromAnswers, type Answers } from "./ask-state";
+import { buildsFor, choiceLabel, defaultAnswers, pageFromAnswers, type Answers } from "./ask-state";
 
 const PIP_HAND = { x: 347, y: 420 };
 const PHONE_TARGET = { x: 1480, y: 430 };
@@ -96,7 +96,7 @@ export function AskSlide() {
       </div>
       <Reveal delay={0.3} rise={50} className="absolute right-0 top-[20px]">
         <Phone width={400}>
-          <ShopPage state={shopFromAnswers(answers)} />
+          <ClinicPage state={pageFromAnswers(answers)} />
         </Phone>
       </Reveal>
       {changes > 0 ? <Sparks key={changes} from={PIP_HAND} to={PHONE_TARGET} /> : null}

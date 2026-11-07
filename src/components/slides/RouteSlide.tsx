@@ -7,8 +7,8 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { Pip } from "@/components/pip/Pip";
 
 const stopIcons: Record<string, Icon> = {
-  market: Storefront,
   clinic: FirstAidKit,
+  market: Storefront,
   salon: Scissors,
   foodBank: Basket,
 };
