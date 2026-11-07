@@ -1,6 +1,13 @@
 import type { SlideMeta } from "@/content/content";
 
-type NotesPanelProps = { meta: SlideMeta; next?: SlideMeta; index: number; total: number; step: number };
+type NotesPanelProps = {
+  meta: SlideMeta;
+  next?: SlideMeta;
+  index: number;
+  total: number;
+  step: number;
+  hologramConnected: boolean;
+};
 
 const shortcuts = [
   { keys: "Right, Space", does: "Next build step or slide" },
@@ -8,10 +15,11 @@ const shortcuts = [
   { keys: "N", does: "Hide these notes" },
   { keys: "F", does: "Full screen" },
   { keys: "P", does: "Print version for PDF" },
+  { keys: "H", does: "Open Pip's hologram screen for the fog projector" },
 ];
 
 /** Presenter notes, outside the stage so they never land on a slide. */
-export function NotesPanel({ meta, next, index, total, step }: NotesPanelProps) {
+export function NotesPanel({ meta, next, index, total, step, hologramConnected }: NotesPanelProps) {
   return (
     <aside className="fixed inset-x-0 bottom-0 z-20 max-h-[45vh] overflow-auto bg-surface-raised/95 px-10 py-8 text-text shadow-card backdrop-blur">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_280px] gap-12">
@@ -26,6 +34,11 @@ export function NotesPanel({ meta, next, index, total, step }: NotesPanelProps) 
             ))}
           </div>
           {next ? <p className="mt-6 text-base text-text-muted">{`Up next: ${next.name}`}</p> : null}
+          <p className={`mt-2 text-base ${hologramConnected ? "text-accent" : "text-text-faint"}`}>
+            {hologramConnected
+              ? "Pip's hologram screen is connected and following along."
+              : "Pip's hologram screen isn't open. Press H to open it."}
+          </p>
         </div>
         <dl className="grid grid-cols-[auto_1fr] content-start gap-x-4 gap-y-2 text-sm text-text-muted">
           {shortcuts.map((item) => (

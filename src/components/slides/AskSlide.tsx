@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { askSlide } from "@/content/content";
+import { useHologramConnected } from "@/lib/pip-sync";
 import { usePipVoice } from "@/lib/use-pip-voice";
 import { duration } from "@/lib/motion";
 import { Bubble } from "@/components/primitives/Bubble";
@@ -38,7 +39,8 @@ const guessOpacityByStep = [0.8, 0.25, 0];
 export function AskSlide({ step }: { step: number }) {
   const still = useStill();
   const pipHere = step >= 2;
-  usePipVoice(askSlide.answer, pipHere && !still);
+  const hologramSpeaks = useHologramConnected();
+  usePipVoice(askSlide.answer, pipHere && !still && !hologramSpeaks);
   return (
     <div className="relative h-full">
       <motion.div

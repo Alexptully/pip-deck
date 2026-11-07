@@ -764,3 +764,73 @@ export const demoSlide = {
   line: "Watch one answer from Rosa reach her customer's phone and her team's bake list.",
   scanText: "Scan to order during the demo",
 };
+
+/**
+ * What Pip does on the fog screen at each slide and build step. Slides before the reveal keep
+ * the fog screen dark, so Pip's first appearance lands on "Hey Pip, any ideas?".
+ */
+export type PipCue = {
+  show: boolean;
+  mood: "smile" | "talk" | "listen" | "think";
+  reach?: "none" | "left" | "right";
+  /** Light gathering in the mist just before Pip appears. */
+  forming?: boolean;
+  line?: string;
+  /** Speak the line out loud from the hologram window. */
+  speak?: boolean;
+};
+
+const hidden: PipCue = { show: false, mood: "smile" };
+
+export const pipCues: Partial<Record<SlideId, PipCue[]>> = {
+  ask: [hidden, { ...hidden, forming: true }, { show: true, mood: "talk", line: askSlide.answer, speak: true }],
+  reverse: [
+    { show: true, mood: "listen" },
+    { show: true, mood: "smile", line: "I ask, and you decide." },
+  ],
+  journey: [{ show: true, mood: "smile", reach: "right" }],
+  say: [
+    { show: true, mood: "listen" },
+    { show: true, mood: "talk", line: "Did I get that right?" },
+  ],
+  shape: [{ show: true, mood: "talk", reach: "right", line: "How many conchas can you bake tomorrow?" }],
+  try: [
+    { show: true, mood: "talk", line: "I'd like a dozen conchas for Sunday morning." },
+    { show: true, mood: "think", line: "I'm allergic to nuts, and there was nowhere to tell you." },
+    { show: true, mood: "smile", line: "Every order has a notes box now." },
+  ],
+  launch: [
+    { show: true, mood: "smile", line: "Your page is live." },
+    { show: true, mood: "smile", reach: "left" },
+  ],
+  demo: [{ show: true, mood: "smile", reach: "right" }],
+  hologram: [{ show: true, mood: "smile", reach: "left" }],
+  whyNow: [{ show: true, mood: "listen" }],
+  learned: [{ show: true, mood: "listen" }],
+  benefits: [{ show: true, mood: "smile" }],
+  standards: [{ show: true, mood: "listen" }],
+  close: [{ show: true, mood: "talk", line: "Tell me about your problem.", speak: true }],
+  sources: [{ show: true, mood: "smile" }],
+};
+
+/** The cue for a slide and step. Slides with no cue stay dark before the reveal and show a calm Pip after it. */
+export function pipCueFor(slideId: SlideId, step: number): PipCue {
+  const cues = pipCues[slideId];
+  if (cues) return cues[Math.min(step, cues.length - 1)];
+  const revealIndex = slides.findIndex((slide) => slide.id === "ask");
+  const index = slides.findIndex((slide) => slide.id === slideId);
+  return index > revealIndex ? { show: true, mood: "smile" } : hidden;
+}
+
+export const hologramCopy = {
+  title: "Pip on the fog screen",
+  help: "Drag this window onto the fog projector, then start it. It goes full screen and lets Pip speak.",
+  start: "Start the hologram",
+  waiting: "Waiting for the deck. Open the deck in another window of this browser.",
+  keys: [
+    { keys: "F", does: "Full screen" },
+    { keys: "M", does: "Mirror the image, if the projector isn't in rear-projection mode" },
+    { keys: "C", does: "Show or hide Pip's lines as captions" },
+    { keys: "Left, Right", does: "Move the deck from this window" },
+  ],
+};

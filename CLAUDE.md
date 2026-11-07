@@ -20,6 +20,7 @@ Keep the slides clean: no progress bar, dots or slide numbers. Each slide's foot
 ## Commands
 
 - `npm run dev` starts the deck at http://localhost:3000
+- `/pip` (or the H key) opens Pip's hologram screen for the fog projector: Pip alone on black, following the deck through a BroadcastChannel in the same browser. Cues per slide live in `pipCues` in `src/content/content.ts`.
 - `/print` (or the P key) is the print version, one landscape page per slide or build step, for PDF export
 - `npm run build` writes the static export to `out/`. `npm run build:single` also folds it into one self-contained file, `dist/pip-deck.html`, for hosts that take a single page (there, P opens the print view at `#print`).
 - Pushing to `main` on GitHub runs `.github/workflows/deploy.yml`, which checks, builds and publishes the deck to GitHub Pages (repo Settings, Pages, Source: GitHub Actions).

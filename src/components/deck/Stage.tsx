@@ -8,7 +8,7 @@ function fitScale(): number {
 }
 
 /** A fixed 1920 by 1080 canvas, scaled to fit the window and centered. */
-export function Stage({ children }: { children: ReactNode }) {
+export function Stage({ children, tone = "surface" }: { children: ReactNode; tone?: "surface" | "void" }) {
   const [scale, setScale] = useState(0);
 
   useEffect(() => {
@@ -19,9 +19,11 @@ export function Stage({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="fixed inset-0 grid place-items-center overflow-hidden bg-surface-sunken">
+    <div
+      className={`fixed inset-0 grid place-items-center overflow-hidden ${tone === "void" ? "bg-void" : "bg-surface-sunken"}`}
+    >
       <div
-        className="relative shrink-0 overflow-hidden bg-surface"
+        className={`relative shrink-0 overflow-hidden ${tone === "void" ? "bg-void" : "bg-surface"}`}
         style={{
           width: STAGE_WIDTH,
           height: STAGE_HEIGHT,
