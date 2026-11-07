@@ -72,9 +72,18 @@ People who have never built anything and never will learn to: clinic directors, 
 - **Try it:** Pip plays a patient and finds the gap ("My daughter translates for me, and there was nowhere to say so").
 - **Launch it:** one word gives a working walk-in page and a QR code. Check-ins arrive live and the front desk gets one list by visit type, with interpreter requests flagged.
 
-## One more use case: Pip can come to you
+## Listening mode: what makes Pip special
 
-For workplaces too busy even to sit down and talk, Pip can spend about a week on site, listening to complaints from patients and customers, needs from staff and everyday conversation, then ask the same friendly questions and move on to the next workplace. Visible rules: Pip glows when listening, everyone is told first and anyone can say "Pip, pause", it keeps patterns not recordings, nothing is built without a yes, health details stay out in clinics, and the listening leaves with Pip. These are prototype design rules, not legal certifications; a real clinic deployment would need a privacy and HIPAA review.
+Besides talking, Pip has a listening mode. It sits in the workplace on its fog screen and hears the passive, everyday conversation: patients in the waiting room, staff at the front desk, calls in the back office. Over about a week it maps the workplace in four layers:
+
+1. **How patients move:** walk-ins peak from 9 to 11 a.m. and the waiting room spills outside.
+2. **How staff work:** one person answers the phone and checks patients in at the same time.
+3. **How operations run:** refill requests go on sticky notes and get called back after closing.
+4. **What patients complain about:** "How much longer?" is the question asked most at the desk.
+
+From that map Pip knows exactly what to build for better organization (a walk-in list that texts patients, one front desk list, a refill board) without anyone describing it. The slide shows Gloria's clinic as a floor plan with the four findings pinned where they happen; the findings are demo data. Pip can do this at one workplace after another.
+
+Visible rules: Pip glows when listening, everyone is told first and anyone can say "Pip, pause", it keeps patterns not recordings, nothing is built without a yes, health details stay out in clinics, and the listening leaves with Pip. These are prototype design rules, not legal certifications; a real clinic deployment would need a privacy and HIPAA review.
 
 ## Why now
 

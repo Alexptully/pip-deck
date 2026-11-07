@@ -11,9 +11,9 @@ import { HologramSlide } from "./HologramSlide";
 import { JourneySlide } from "./JourneySlide";
 import { LaunchSlide } from "./LaunchSlide";
 import { LearnedSlide } from "./LearnedSlide";
+import { MapSlide } from "./MapSlide";
 import { OwnersSlide } from "./OwnersSlide";
 import { PersonaSlide } from "./PersonaSlide";
-import { RouteSlide } from "./RouteSlide";
 import { SaySlide } from "./SaySlide";
 import { SourcesSlide } from "./SourcesSlide";
 import { StatSlide } from "./StatSlide";
@@ -35,11 +35,11 @@ export const slideComponents: Record<SlideId, ComponentType<SlideProps>> = {
   broken: BrokenSlide,
   journey: JourneySlide,
   friendly: FriendlySlide,
+  listen: MapSlide,
   say: SaySlide,
   ask: AskSlide,
   try: TrySlide,
   launch: LaunchSlide,
-  route: RouteSlide,
   trust: TrustSlide,
   hologram: HologramSlide,
   whyNow: WhyNowSlide,

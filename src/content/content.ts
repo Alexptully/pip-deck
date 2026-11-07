@@ -14,12 +14,12 @@ export type SlideId =
   | "builders"
   | "broken"
   | "friendly"
+  | "listen"
   | "journey"
   | "say"
   | "ask"
   | "try"
   | "launch"
-  | "route"
   | "trust"
   | "hologram"
   | "whyNow"
@@ -57,7 +57,7 @@ export const slides: SlideMeta[] = [
     mist: { x: 1360, width: 640, strength: 1 },
     notes: [
       "Hi, we're the team behind Pip. The prompt asked what comes after typing a request into an AI builder.",
-      "Our answer is a character. Pip lives in a sheet of fog, talks with you like a person and builds the app while you talk. It is made for people who find today's AI builders intimidating.",
+      "Our answer is a character. Pip lives in a sheet of fog, talks with you like a person and builds the app while you talk. It can also just listen to a workplace and work out what it needs. It is made for people who find today's AI builders intimidating.",
       "If the fog screen is running, wave a hand through Pip now. It gets a laugh and it shows the screen is only mist.",
     ],
   },
@@ -163,6 +163,36 @@ export const slides: SlideMeta[] = [
     ],
   },
   {
+    id: "listen",
+    name: "Listening mode",
+    section: "What Pip makes newly possible",
+    rubric: "Original",
+    steps: 2,
+    sources: [],
+    mist: { x: 1840, width: 140, strength: 0.4 },
+    notes: [
+      "This is what makes Pip special. Besides talking, Pip has a listening mode. It sits in the workplace on its fog screen and hears the everyday conversation: patients in the waiting room, staff at the front desk, calls in the back office.",
+      "Over about a week, Pip builds a map of the workplace. It learns how patients move through the clinic, how staff actually work, how operations run and what patients complain about.",
+      "Walk the four pins. Walk-ins peak from 9 to 11 and spill outside. One person answers the phone and checks patients in at the same time. Refills live on sticky notes. And the question asked most at the desk is 'How much longer?'",
+      "Advance. Because Pip knows the workplace, it knows exactly what to build, without Gloria having to describe any of it. These observations are demo data for the pitch.",
+      "Pip can do this at one workplace after another: a clinic, a corner store, a salon, a food bank.",
+    ],
+  },
+  {
+    id: "trust",
+    name: "Listening in the open",
+    section: "What Pip makes newly possible",
+    rubric: "Believable",
+    steps: 1,
+    sources: [],
+    mist: { x: 1800, width: 200, strength: 0.4 },
+    notes: [
+      "Listening mode only works if people trust it, so we designed the rules first.",
+      "Pip glows whenever it is listening, and everyone is told before it arrives. Anyone can say 'Pip, pause.' It keeps patterns, not recordings, and nothing gets built without the owner's yes.",
+      "These are design rules for our prototype, not legal certifications. A real clinic deployment would need a privacy and HIPAA review, and we say so up front.",
+    ],
+  },
+  {
     id: "journey",
     name: "How Pip works",
     section: "What Pip makes easier",
@@ -202,6 +232,7 @@ export const slides: SlideMeta[] = [
       "Pip asks four questions, one at a time, as plain choices with a reason attached. Gloria never has to think of a feature.",
       "The daily limit is the best example. 'How many walk-ins can you see a day? I'll close the list before your doctors get swamped' sounds like a scheduling question, and it quietly builds capacity logic.",
       "Every change flies from Pip's hand into the app, so nothing is hidden behind code.",
+      "If listening mode has been on, Pip already knows some of the answers, so it asks fewer questions and starts each one from what it heard.",
     ],
   },
   {
@@ -230,34 +261,6 @@ export const slides: SlideMeta[] = [
       "Gloria says one word and the page goes live with a QR code she can tape to the front door.",
       "Advance. Check-ins arrive live, and the front desk gets one list grouped by visit type, with interpreter requests flagged. The check-ins shown here are demo data.",
       "If the room can reach the demo, ask everyone to scan the code and join the list now. Their check-ins show up during the pitch.",
-    ],
-  },
-  {
-    id: "route",
-    name: "Pip can come to you",
-    section: "What Pip makes newly possible",
-    rubric: "Useful",
-    steps: 1,
-    sources: [],
-    mist: { x: 1760, width: 240, strength: 0.45 },
-    notes: [
-      "One more way to use Pip. Some workplaces are too busy even to sit down and talk for ten minutes.",
-      "For them, Pip can come to the workplace and spend about a week there, listening to complaints from customers or patients, needs from staff and everyday conversation.",
-      "At the end of the week it shows the owner what it noticed and asks the same friendly questions. Then it moves on to the next workplace.",
-    ],
-  },
-  {
-    id: "trust",
-    name: "Listening in the open",
-    section: "What Pip makes newly possible",
-    rubric: "Believable",
-    steps: 1,
-    sources: [],
-    mist: { x: 1800, width: 200, strength: 0.4 },
-    notes: [
-      "A friendly character that listens only works if people trust it, so we designed the rules first.",
-      "Pip glows whenever it is listening, and everyone is told before it arrives. Anyone can say 'Pip, pause.' It keeps patterns, not recordings, and nothing gets built without the owner's yes.",
-      "These are design rules for our prototype, not legal certifications. A real clinic deployment would need a privacy and HIPAA review, and we say so up front.",
     ],
   },
   {
@@ -354,7 +357,7 @@ export const slides: SlideMeta[] = [
 
 export const titleSlide = {
   name: "Pip",
-  line: "Pip is a friendly character that helps anyone build the app they need by talking it through.",
+  line: "Pip is a friendly character that helps anyone build the app they need, by talking it through or by listening to how their workplace runs.",
 };
 
 export const humanSlide = {
@@ -650,29 +653,68 @@ export const launchSlide = {
   ] satisfies DemoCheckIn[],
 };
 
-export const routeSlide = {
-  heading: "Pip can also come to you",
-  facts: [
-    { key: "For", value: "Workplaces too busy to sit down and talk for ten minutes" },
-    { key: "How", value: "Pip spends about a week at the workplace, then moves on" },
-    { key: "Where", value: "Clinics, stores, salons, food banks" },
+export const mapSlide = {
+  heading: "Listening mode maps the whole workplace",
+  rooms: [
+    { id: "waiting", label: "Waiting room", x: 0, y: 0, w: 420, h: 600 },
+    { id: "desk", label: "Front desk", x: 420, y: 0, w: 220, h: 250 },
+    { id: "office", label: "Back office", x: 420, y: 250, w: 220, h: 350 },
+    { id: "exam1", label: "Exam room 1", x: 640, y: 0, w: 260, h: 300 },
+    { id: "exam2", label: "Exam room 2", x: 640, y: 300, w: 260, h: 300 },
   ],
-  listensTitle: "At every stop, Pip listens to",
-  streams: [
+  layersTitle: "What Pip learned in a week at Gloria's clinic",
+  layers: [
+    {
+      id: "patients",
+      number: 1,
+      name: "How patients move",
+      text: "Walk-ins peak from 9 to 11 a.m., and the waiting room spills outside.",
+      pin: { x: 200, y: 330 },
+    },
+    {
+      id: "staff",
+      number: 2,
+      name: "How staff work",
+      text: "One person answers the phone and checks patients in at the same time.",
+      pin: { x: 530, y: 120 },
+    },
+    {
+      id: "operations",
+      number: 3,
+      name: "How operations run",
+      text: "Refill requests go on sticky notes and get called back after closing.",
+      pin: { x: 530, y: 430 },
+    },
     {
       id: "complaints",
-      name: "Complaints from patients and customers",
-      example: "I've been on hold for twenty minutes.",
+      number: 4,
+      name: "What patients complain about",
+      text: "“How much longer?” is the question asked most at the desk.",
+      pin: { x: 340, y: 120 },
     },
-    { id: "needs", name: "Needs from staff", example: "Who's covering the front desk Thursday?" },
-    { id: "talk", name: "Everyday conversation", example: "I wrote that refill on a sticky note somewhere." },
   ],
-  stops: [
-    { id: "clinic", name: "Gloria's clinic", week: "Week 1" },
-    { id: "market", name: "Corner market", week: "Week 2" },
-    { id: "salon", name: "Salon", week: "Week 3" },
-    { id: "foodBank", name: "Food bank", week: "Week 4" },
+  buildsTitle: "So Pip knows exactly what to build",
+  builds: [
+    {
+      id: "waitlist",
+      from: [1, 4],
+      name: "A walk-in list that texts patients",
+      text: "The waiting room empties and nobody has to ask how long.",
+    },
+    {
+      id: "desk",
+      from: [2],
+      name: "One front desk list",
+      text: "Check-ins and calls land in one place instead of two.",
+    },
+    {
+      id: "refills",
+      from: [3],
+      name: "A refill board",
+      text: "Every refill has a status, so the sticky notes go away.",
+    },
   ],
+  demoLabel: "Observations are demo data",
 };
 
 export const trustSlide = {
