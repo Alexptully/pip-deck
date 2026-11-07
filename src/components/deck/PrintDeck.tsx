@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { slides, type SlideMeta } from "@/content/content";
 import { STAGE_HEIGHT, STAGE_WIDTH } from "@/lib/motion";
-import { Mist } from "@/components/mist/Mist";
+import { Mist, mistFor } from "@/components/mist/Mist";
 import { StillProvider } from "@/components/primitives/Still";
 import { slideComponents } from "@/components/slides/registry";
 import { Grain } from "./Grain";
@@ -13,7 +13,7 @@ type Page = { meta: SlideMeta; step: number };
 
 const pages: Page[] = slides.flatMap((meta) => Array.from({ length: meta.steps }, (_, step) => ({ meta, step })));
 
-const backHref = process.env.NEXT_PUBLIC_SINGLE_FILE ? "#title" : "/#title";
+const backHref = process.env.NEXT_PUBLIC_SINGLE_FILE ? "#title" : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/#title`;
 
 function PrintPage({ meta, step }: Page) {
   const SlideBody = slideComponents[meta.id];
@@ -22,7 +22,7 @@ function PrintPage({ meta, step }: Page) {
       className="relative overflow-hidden bg-surface break-after-page last:break-after-auto"
       style={{ width: STAGE_WIDTH, height: STAGE_HEIGHT }}
     >
-      <Mist setting={meta.mist} />
+      <Mist setting={mistFor(meta, step)} />
       <SlideFrame meta={meta}>
         <SlideBody step={step} />
       </SlideFrame>

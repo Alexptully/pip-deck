@@ -19,6 +19,8 @@ export function TitleSlide() {
           <dd className="text-text">
             <Fill value={config.teamName} />
           </dd>
+          <dt className="text-text-faint">Members</dt>
+          <dd className="text-text-muted">{config.teamMembers.join(", ")}</dd>
           <dt className="text-text-faint">Event</dt>
           <dd className="text-text-muted">{config.event}</dd>
           <dt className="text-text-faint">Prompt</dt>

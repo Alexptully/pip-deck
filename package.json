@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/dev.mjs",
     "build": "next build",
     "build:single": "SINGLE_FILE=1 next build --webpack && node scripts/bundle-single-file.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "scan:dashes": "node scripts/scan-dashes.mjs",
-    "check": "npm run typecheck && npm run lint && npm run scan:dashes"
+    "check": "npm run typecheck && npm run lint && npm run scan:dashes",
+    "present": "next build && node scripts/present.mjs",
+    "start": "node scripts/present.mjs",
+    "relay": "node scripts/pip-relay.mjs"
   },
   "author": "",
   "license": "ISC",

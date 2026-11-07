@@ -19,6 +19,22 @@ Your project might explore:
 - A new way to test, improve, or launch an idea
 - Something entirely different that changes who gets to build
 
+Do not simply create another app with AI features. Build a prototype of the future of building apps.
+
+**Who is this for.** Name your audience before you build. Pick one person and one sector (education, non-profit, sports, local government, healthcare, small business). Define the persona (what they do all day, what they cannot do today), the sector and its constraints (budget, regulation, technical skill, the tools they are stuck with), why they want it, why they need it, and who else benefits.
+
+**What you will create.** A working prototype in Replit whose idea is clear through interaction, not explanation; a live demonstration of someone moving from an idea toward something real; and a clear point of view.
+
+**Point of view questions.** What is broken or limited about building software today? Who does your idea allow to build? What does your product make easier, faster, or newly possible? Why could this experience only exist now? What did you learn while building it? Who is this for, and how do you know they want it? Who benefits beyond your primary user?
+
+**Standards.** The strongest projects will not just make coding faster. They will rethink the relationship between people, ideas, and software. Original, useful, believable, accessible to non-engineers, possible to understand through the product itself, built for a specific person in a specific context.
+
+## Script
+
+The talk track follows the team's script in the "IF Prompt 3 G7" Google Doc: hook, problem statement, Rosa, the "any ideas, Pip?" moment, Pip reversing the roles, the four features, then the live demo. Speaker notes (N) carry the script lines slide by slide.
+
+Team: Group 7 (Alex Tully, Daisy Wang, Ame Wang, Jerry Wu, Cara Austring).
+
 ## Required sections (from the team's point of view doc)
 
 Every one of these must be visible in the deck, and each slide's footer names the one it covers.

@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { MistSetting } from "@/content/content";
+import type { MistSetting, SlideMeta } from "@/content/content";
 import { STAGE_HEIGHT, STAGE_WIDTH } from "@/lib/motion";
 import { useStill } from "@/components/primitives/Still";
 import { approach, createDroplets, createSprite, drawMist, hexToRgb, seededRandom, stepDroplets } from "./mist-field";
+
+/** The mist for a slide at a build step, falling back to the slide's own setting. */
+export function mistFor(meta: SlideMeta, step: number): MistSetting {
+  return meta.mistByStep?.[step] ?? meta.mist;
+}
 
 function readAccent(): string {
   const value = getComputedStyle(document.documentElement).getPropertyValue("--color-accent");
@@ -12,7 +17,7 @@ function readAccent(): string {
 }
 
 /**
- * The deck's motif: a falling sheet of mist, like the fog screen Pip lives on.
+ * The deck's motif: a rising sheet of mist, like the fog screen Pip lives on.
  * Each slide moves the sheet to a new place and the sheet glides there.
  */
 export function Mist({ setting }: { setting: MistSetting }) {

@@ -7,15 +7,20 @@ import type { SourceId } from "./sources";
 
 export type SlideId =
   | "title"
+  | "hook"
+  | "gaps"
+  | "problems"
   | "rosa"
   | "owners"
   | "builders"
-  | "broken"
+  | "ask"
+  | "reverse"
   | "journey"
   | "say"
   | "shape"
   | "try"
   | "launch"
+  | "demo"
   | "hologram"
   | "whyNow"
   | "learned"
@@ -35,6 +40,8 @@ export type SlideMeta = {
   steps: number;
   sources: SourceId[];
   mist: MistSetting;
+  /** Optional mist position for each build step, for slides where the mist itself moves the story. */
+  mistByStep?: MistSetting[];
   notes: string[];
 };
 
@@ -54,6 +61,20 @@ export const slides: SlideMeta[] = [
     ],
   },
   {
+    id: "hook",
+    name: "Hook",
+    section: "What is broken about building today",
+    rubric: "Original",
+    steps: 2,
+    sources: [],
+    mist: { x: 1420, width: 420, strength: 0.6 },
+    notes: [
+      "Imagine you're building your first app. What would get you further?",
+      "A blank box asking you to describe everything you need?",
+      "Advance. Or a conversation that helps you discover what you've left out?",
+    ],
+  },
+  {
     id: "rosa",
     name: "Who it's for",
     section: "Who it's for",
@@ -62,7 +83,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1760, width: 240, strength: 0.45 },
     notes: [
-      "Meet Rosa. She owns a two-oven panadería in Boyle Heights. She is at the ovens by 4 a.m. and at the counter from 7.",
+      "Now think about what that means for a small business owner. Meet Rosa. She owns a two-oven panadería in Boyle Heights. She is at the ovens by 4 a.m. and at the counter from 7.",
+      "She knows how much bread she can promise each morning, but her customers need to know what's available, and her helpers need to know what to bake.",
       "Between batches she answers Instagram DMs and texts from people reserving conchas, a rosca or a birthday tres leches. Every order goes into a paper notebook by the register.",
       "Point at the timeline. At 4 a.m. she guesses how much to bake. During the day an order slips through the DMs. At midnight she is still answering messages.",
       "Rosa is a persona built from our interviews. Swap in the real details you heard before the pitch.",
@@ -83,6 +105,34 @@ export const slides: SlideMeta[] = [
     ],
   },
   {
+    id: "gaps",
+    name: "The gaps AI fills",
+    section: "What is broken about building today",
+    rubric: "Believable",
+    steps: 2,
+    sources: [],
+    mist: { x: 1840, width: 140, strength: 0.35 },
+    notes: [
+      "In vibe coding, you describe what you want and AI builds a first version. The hard part is knowing what to say, and how much to say.",
+      "You can explain your goal clearly and still leave out details that matter, especially if you've never built software before.",
+      "Advance. When the AI fills those gaps on its own, its assumptions become part of the app's foundation. You might only discover them when you try to use it. For a small business owner, that means finding out on a busy Saturday.",
+    ],
+  },
+  {
+    id: "problems",
+    name: "Three problems",
+    section: "What is broken about building today",
+    rubric: "Accessible to non-engineers",
+    steps: 1,
+    sources: [],
+    mist: { x: 1840, width: 140, strength: 0.35 },
+    notes: [
+      "Problem one: every vibe coding platform starts with a chat box that expects clear, well-arranged written instructions, a skill most non-engineers don't have.",
+      "Problem two: the building process is invisible. You see the finished output, not how it got there, so when something breaks you don't have the confidence to decide what to change.",
+      "Problem three: input stops at a screen, a keyboard and a mouse. That shuts out people who think out loud, with their hands or through play, like kids, older adults and anyone who struggles with dense text.",
+    ],
+  },
+  {
     id: "builders",
     name: "Who gets to build",
     section: "Who Pip allows to build",
@@ -99,17 +149,36 @@ export const slides: SlideMeta[] = [
     ],
   },
   {
-    id: "broken",
-    name: "What is broken",
-    section: "What is broken about building today",
+    id: "ask",
+    name: "Any ideas, Pip?",
+    section: "What Pip makes easier",
+    rubric: "Understandable through the product itself",
+    steps: 3,
+    sources: [],
+    mist: { x: 1410, width: 160, strength: 0.25 },
+    mistByStep: [
+      { x: 1410, width: 160, strength: 0.25 },
+      { x: 1410, width: 420, strength: 0.7 },
+      { x: 1410, width: 620, strength: 1 },
+    ],
+    notes: [
+      "Ask the room: so what would actually help Rosa? Let the half-answers hang for a beat. A template? A tutorial? Hire a developer? Look at each other like you're stuck.",
+      "Advance. One of you turns to the fog screen and says: Hey Pip, any ideas?",
+      "Advance. Pip gathers out of the mist on the fog screen and answers out loud from the hologram computer. With no hologram screen connected, the deck speaks the line itself.",
+    ],
+  },
+  {
+    id: "reverse",
+    name: "Pip reverses the roles",
+    section: "What Pip makes easier",
     rubric: "Original",
     steps: 2,
     sources: [],
-    mist: { x: 960, width: 110, strength: 0.7 },
+    mist: { x: 180, width: 220, strength: 0.5 },
     notes: [
-      "Today's AI builders still assume you think like an engineer. You face a blank box and you're expected to write a spec.",
-      "Then you get a wall of code or a generated screen you can't reason about. Fixing it means learning words like fields, components, deploy and database.",
-      "Advance. The questions that matter to Rosa, like how people pay, how many she can bake and whether her customers read Spanish, are buried under the technical ones or never asked. Pip asks them first.",
+      "That's Pip, a conversational app builder. Most vibe coding platforms run on command and execute: you write the instructions and the AI carries them out.",
+      "Advance. Pip reverses the roles and asks the questions. Rosa says what she wants to get done, Pip works out which decisions it needs her help with, and it asks about them one at a time.",
+      "For example, Pip asks how much bread she can bake tomorrow. Rosa answers from experience, Pip sets the order limit, and she sees the change right away in the preview.",
     ],
   },
   {
@@ -134,7 +203,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 470, width: 560, strength: 0.9 },
     notes: [
-      "Rosa doesn't write a prompt. She talks, the way she would to a friend, and she can be messy and emotional about it.",
+      "Say it. Pip has an animated holographic face, and you can speak to it or type. Rosa doesn't write a prompt. She talks, the way she would to a friend, and she can be messy about it.",
       "Advance. Pip says back what it heard in four lines: who, business, problem and goal. Rosa can fix any line before anything gets built.",
       "In testing, this reflection did more for trust than any explanation we tried.",
     ],
@@ -149,7 +218,7 @@ export const slides: SlideMeta[] = [
     mist: { x: 330, width: 460, strength: 0.85 },
     notes: [
       "This slide is live. Click the answers and watch the shop page change.",
-      "Pip asks four questions, one at a time, as big choices with a reason attached. Business, design and technical thinking arrive together.",
+      "Shape it. Pip asks one focused question at a time and shows what each answer changes, so the decisions stay manageable and Rosa can judge the result as she builds. While the app builds in the background, Pip keeps asking design questions instead of making every decision itself.",
       "The daily limit is the best example. 'How many can you bake a day? I'll close orders before you get swamped' sounds like a business question, and it quietly builds inventory logic.",
       "Every change flies from Pip's hand into the app, so nothing is hidden behind code.",
     ],
@@ -163,7 +232,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 400, width: 480, strength: 0.85 },
     notes: [
-      "Before launch, Pip tests the app for Rosa by pretending to be a customer. We call the customer Doña Lupe.",
+      "Try it. Before launch, Pip plays a user of the app. We call this customer Doña Lupe. When Pip runs into a problem, it describes what it was trying to do, so the building process stops being a black box.",
       "Advance. Lupe finds the gap: she is allergic to nuts and there was nowhere to tell Rosa.",
       "Advance. Rosa says to add a box for notes. Testing becomes a story she can follow instead of a QA step.",
       "This was the most useful AI moment in our whole build, more than any code generation.",
@@ -178,9 +247,23 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 300, width: 380, strength: 0.6 },
     notes: [
-      "Rosa says one word and the page goes live with a QR code she can print for the counter.",
+      "Launch it. Rosa says one word and a QR code puts the finished app on someone else's phone.",
       "Advance. Orders arrive live and the team gets a bake list that adds them up. The orders shown here are demo data.",
       "If the room can reach the demo, ask everyone to scan the code and place an order now. Their orders show up on the bake list during the pitch.",
+    ],
+  },
+  {
+    id: "demo",
+    name: "Live demo",
+    section: "A live demonstration",
+    rubric: "Believable",
+    steps: 1,
+    sources: [],
+    mist: { x: 1500, width: 520, strength: 0.9 },
+    notes: [
+      "Let's show you how one answer from Rosa shapes the results for her customer and her team.",
+      "Switch to the Replit app and the fog screen now. Walk through Say it, Shape it, Try it and Launch it with Rosa's story, then invite the room to scan the code and order.",
+      "Press the right arrow to come back to the deck when the demo ends.",
     ],
   },
   {
@@ -189,10 +272,10 @@ export const slides: SlideMeta[] = [
     section: "What Pip makes newly possible",
     rubric: "Original",
     steps: 1,
-    sources: ["fogscreenContent", "ucsbFogscreen", "fogscreenLaminar"],
+    sources: ["teamBuildPlan", "fogscreenContent", "ucsbFogscreen", "fogscreenLaminar"],
     mist: { x: 820, width: 150, strength: 1 },
     notes: [
-      "Pip lives on a small fog screen. A generator above makes mist so fine it feels dry, and fans on both sides hold it in a flat sheet.",
+      "Pip lives on a small fog screen we built: about 50 centimeters wide, rising 30 to 50 centimeters from a base. Ultrasonic misters fill a sealed box, a fan pushes the mist up a 12 millimeter slot, and fans on both sides blow clean air beside it so it rises as a flat sheet.",
       "A projector draws Pip on the mist, and a laptop runs Pip and listens through its microphone.",
       "People who build fog displays report that line drawings read better on fog than photos, so we drew Pip in light lines.",
       "A character in the room changes how people talk. In our testing, people gave Pip more detail than they gave a text box.",
@@ -340,28 +423,6 @@ export const buildersSlide = {
   promise: "If you can describe your problem to a friend, you can build with Pip.",
 };
 
-export const brokenSlide = {
-  heading: "Today's builders start with a blank box",
-  todayLabel: "Today",
-  pipLabel: "With Pip",
-  promptPlaceholder: "Describe the app you want to build",
-  jargon: [
-    "fields",
-    "components",
-    "schema",
-    "deploy",
-    "database",
-    "env vars",
-    "API routes",
-    "auth",
-    "state",
-    "build errors",
-  ],
-  rosaQuestions: ["How do people pay?", "How many can I bake a day?", "Do my customers read Spanish?"],
-  todayCaption: "Rosa's real questions end up buried under the technical ones.",
-  pipCaption: "Pip asks her questions first, in her own words.",
-};
-
 export const journeySlide = {
   heading: "Four steps from a story to a shop page",
   steps: [
@@ -384,6 +445,7 @@ export const saySlide = {
     { key: "Goal", value: "Customers order in two taps, and Rosa stops answering DMs at midnight" },
   ],
   confirm: "Did I get that right?",
+  inputModes: "Speak or type",
 };
 
 export type ShapeChoice = { id: string; label: string; builds: string };
@@ -396,13 +458,13 @@ export const shapeSlide = {
   questions: [
     {
       id: "limit",
-      ask: "How many conchas can you bake a day?",
+      ask: "How many conchas can you bake tomorrow?",
       reason: "I'll close orders before you get swamped.",
       defaultChoice: "48",
       choices: [
-        { id: "24", label: "24", builds: "Orders close after 24 conchas a day." },
-        { id: "48", label: "48", builds: "Orders close after 48 conchas a day." },
-        { id: "96", label: "96", builds: "Orders close after 96 conchas a day." },
+        { id: "24", label: "24", builds: "Tomorrow's orders close after 24 conchas." },
+        { id: "48", label: "48", builds: "Tomorrow's orders close after 48 conchas." },
+        { id: "96", label: "96", builds: "Tomorrow's orders close after 96 conchas." },
       ],
     },
     {
@@ -506,9 +568,21 @@ export const launchSlide = {
 export const hologramSlide = {
   heading: "Pip lives in a sheet of fog",
   parts: [
-    { id: "generator", text: "A fog generator makes mist so fine it feels dry.", source: "fogscreenContent" },
-    { id: "curtains", text: "Fans on both sides sandwich the mist so it falls flat.", source: "ucsbFogscreen" },
-    { id: "projector", text: "A projector behind the sheet draws Pip on the mist.", source: undefined },
+    {
+      id: "generator",
+      text: "A fog box at the base makes mist so fine it feels dry and pushes it up a narrow slot.",
+      source: "fogscreenContent",
+    },
+    {
+      id: "curtains",
+      text: "Fans on both sides blow clean air up beside the mist so it rises as a flat sheet.",
+      source: "ucsbFogscreen",
+    },
+    {
+      id: "projector",
+      text: "A projector 1 to 2 meters behind the sheet draws Pip on the mist.",
+      source: "teamBuildPlan",
+    },
     {
       id: "hand",
       text: "A hand passes right through, because the screen is only air and water.",
@@ -596,4 +670,196 @@ export const closeSlide = {
 export const sourcesSlide = {
   heading: "Sources",
   note: "Ratios marked as team calculations divide two published figures. Rosa is a persona based on our interviews.",
+};
+
+export const hookSlide = {
+  heading: "What would get you further on your first app?",
+  boxLabel: "A blank box that asks you to describe everything you need",
+  boxPlaceholder: "Describe the app you want to build",
+  talkLabel: "A conversation that helps you find what you left out",
+  talk: [
+    { who: "pip", text: "Who orders from you?" },
+    { who: "rosa", text: "Mostly regulars. Lots of them read Spanish." },
+    { who: "pip", text: "How many conchas can you bake tomorrow?" },
+  ],
+};
+
+export const gapsSlide = {
+  heading: "AI fills the gaps you leave",
+  saidLabel: "What Rosa types",
+  said: "I need a page where my customers can order pan dulce.",
+  gaps: [
+    { left: "How many she can bake", assumed: "Unlimited orders" },
+    { left: "How people pay", assumed: "Card only" },
+    { left: "What her customers read", assumed: "English only" },
+    { left: "Where allergies go", assumed: "No notes box" },
+  ],
+  gapsLabel: "What she left out",
+  assumedLabel: "What the AI assumed",
+  foundation: "These guesses become the app's foundation.",
+  consequence: "Rosa finds them on a busy Saturday, when the orders run past what her two ovens can bake.",
+};
+
+export const problemsSlide = {
+  heading: "Three things stop Rosa today",
+  problems: [
+    {
+      id: "writing",
+      name: "You have to write it all down",
+      text: "Every platform starts with a chat box that expects clear, complete, written instructions.",
+    },
+    {
+      id: "invisible",
+      name: "You can't see it being built",
+      text: "You only see the finished output, so when something breaks you don't know what to change.",
+    },
+    {
+      id: "screen",
+      name: "You can only type",
+      text: "Input stops at a screen, a keyboard and a mouse, which leaves out people who think out loud, with their hands or through play.",
+    },
+  ],
+};
+
+export const askSlide = {
+  question: "So what would actually help Rosa?",
+  guesses: [
+    { text: "A prompt template?", x: 60, y: 480 },
+    { text: "A longer tutorial?", x: 640, y: 610 },
+    { text: "Hire a developer?", x: 220, y: 740 },
+    { text: "A simpler website builder?", x: 900, y: 450 },
+  ],
+  usLabel: "Us",
+  call: "Hey Pip, any ideas?",
+  pipLabel: "Pip",
+  answer:
+    "What if I asked the questions? Tell me what you want to get done, and I'll ask about the decisions only you can make, one at a time.",
+};
+
+export const reverseSlide = {
+  heading: "Pip reverses the roles",
+  todayLabel: "Today: command and execute",
+  today: [
+    { id: "you", name: "You", detail: "write the whole spec" },
+    { id: "ai", name: "AI", detail: "guesses the rest" },
+    { id: "app", name: "App", detail: "built on those guesses" },
+  ],
+  pipLabel: "With Pip: Pip asks, Rosa decides",
+  withPip: [
+    { id: "goal", name: "Rosa", detail: "says what she wants done" },
+    { id: "ask", name: "Pip", detail: "asks one question" },
+    { id: "answer", name: "Rosa", detail: "answers from experience" },
+    { id: "preview", name: "Preview", detail: "changes right away" },
+  ],
+  loop: "Repeat until nothing is left to guess",
+  example: {
+    ask: "How much bread can you bake tomorrow?",
+    answer: "48 conchas.",
+    result: "Tomorrow's orders close at 48.",
+  },
+};
+
+export const demoSlide = {
+  heading: "Let's show you",
+  line: "Watch one answer from Rosa reach her customer's phone and her team's bake list.",
+  scanText: "Scan to order during the demo",
+};
+
+/**
+ * What Pip does on the fog screen at each slide and build step. Slides before the reveal keep
+ * the fog screen dark, so Pip's first appearance lands on "Hey Pip, any ideas?".
+ */
+export type PipCue = {
+  show: boolean;
+  mood: "smile" | "talk" | "listen" | "think";
+  reach?: "none" | "left" | "right";
+  /** Light gathering in the mist just before Pip appears. */
+  forming?: boolean;
+  line?: string;
+  /** Speak the line out loud from the hologram window. */
+  speak?: boolean;
+};
+
+const hidden: PipCue = { show: false, mood: "smile" };
+
+export const pipCues: Partial<Record<SlideId, PipCue[]>> = {
+  ask: [hidden, { ...hidden, forming: true }, { show: true, mood: "talk", line: askSlide.answer, speak: true }],
+  reverse: [
+    { show: true, mood: "listen" },
+    { show: true, mood: "smile", line: "I ask, and you decide." },
+  ],
+  journey: [{ show: true, mood: "smile", reach: "right" }],
+  say: [
+    { show: true, mood: "listen" },
+    { show: true, mood: "talk", line: "Did I get that right?" },
+  ],
+  shape: [{ show: true, mood: "talk", reach: "right", line: "How many conchas can you bake tomorrow?" }],
+  try: [
+    { show: true, mood: "talk", line: "I'd like a dozen conchas for Sunday morning." },
+    { show: true, mood: "think", line: "I'm allergic to nuts, and there was nowhere to tell you." },
+    { show: true, mood: "smile", line: "Every order has a notes box now." },
+  ],
+  launch: [
+    { show: true, mood: "smile", line: "Your page is live." },
+    { show: true, mood: "smile", reach: "left" },
+  ],
+  demo: [{ show: true, mood: "smile", reach: "right" }],
+  hologram: [{ show: true, mood: "smile", reach: "left" }],
+  whyNow: [{ show: true, mood: "listen" }],
+  learned: [{ show: true, mood: "listen" }],
+  benefits: [{ show: true, mood: "smile" }],
+  standards: [{ show: true, mood: "listen" }],
+  close: [{ show: true, mood: "talk", line: "Tell me about your problem.", speak: true }],
+  sources: [{ show: true, mood: "smile" }],
+};
+
+/** The cue for a slide and step. Slides with no cue stay dark before the reveal and show a calm Pip after it. */
+export function pipCueFor(slideId: SlideId, step: number): PipCue {
+  const cues = pipCues[slideId];
+  if (cues) return cues[Math.min(step, cues.length - 1)];
+  const revealIndex = slides.findIndex((slide) => slide.id === "ask");
+  const index = slides.findIndex((slide) => slide.id === slideId);
+  return index > revealIndex ? { show: true, mood: "smile" } : hidden;
+}
+
+export const hologramCopy = {
+  title: "Pip on the fog screen",
+  help: "Start it to go full screen on the fog projector and let Pip speak. In Chrome, allow window management when asked and it picks the extended display itself; otherwise drag this window onto the projector first.",
+  start: "Start the hologram",
+  waiting:
+    "Waiting for the deck. Open the deck in another window of this browser, or start it with npm run present on the presenting laptop.",
+  keys: [
+    { keys: "F", does: "Full screen" },
+    { keys: "M", does: "Mirror the image, if the projector isn't in rear-projection mode" },
+    { keys: "C", does: "Show or hide Pip's lines as captions" },
+    { keys: "Left, Right", does: "Move the deck from this window" },
+  ],
+};
+
+export const hologramSetup = {
+  heading: "Pip's hologram screen",
+  intro:
+    "Pip can follow the deck on a second computer that feeds the fog projector, the same way the Fold with Nara kiosk followed its deck. Start the deck on this laptop with npm run present, then open the hologram page on the second computer. Both need the same Wi-Fi.",
+  secondComputer: {
+    name: "Second computer",
+    line: "Scan the code or type the address on the computer plugged into the fog projector, then click Start the hologram.",
+  },
+  thisLaptop: {
+    name: "This laptop",
+    line: "If the fog projector is a second screen on this laptop, press H in the deck instead and drag the window onto it.",
+  },
+  statusTitle: "Connected now",
+  deckLabel: "Deck is on",
+  hologramsLabel: "Hologram screens",
+  relayOff:
+    "The hologram link isn't running. Start the deck with npm run present (or npm run dev to rehearse), then reload this page.",
+  noNetwork: "This laptop isn't on a Wi-Fi network yet. Join the same network as the second computer, then reload.",
+  notStarted: "Not started yet",
+  openHere: "Open the hologram on this computer",
+  tips: [
+    "Event Wi-Fi often stops devices from seeing each other. If the second computer can't connect, turn on a phone hotspot and join it with both computers.",
+    "Pip speaks from the computer running the hologram, so plug the speaker into that one. The deck stays quiet while a hologram screen is connected.",
+    "If the Wi-Fi drops, the hologram keeps its last pose and catches up as soon as it reconnects.",
+    "The hosted copy on GitHub Pages can't reach the relay on a laptop, so present from npm run present.",
+  ],
 };

@@ -4,16 +4,16 @@ import { Heading } from "@/components/primitives/Heading";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Pip } from "@/components/pip/Pip";
 
-/** The sheet sits where the deck's mist falls on this slide, so the motif becomes the hardware. */
+/** The sheet sits where the deck's mist rises on this slide, so the motif becomes the hardware. */
 const SHEET_X = 700;
 
 type Callout = { id: string; left: number; top: number; width: number; align: "left" | "right" };
 
 const callouts: Callout[] = [
-  { id: "generator", left: 830, top: 150, width: 560, align: "left" },
-  { id: "curtains", left: 170, top: 240, width: 440, align: "right" },
-  { id: "projector", left: 1140, top: 385, width: 420, align: "left" },
-  { id: "hand", left: 0, top: 690, width: 440, align: "left" },
+  { id: "curtains", left: 170, top: 250, width: 440, align: "right" },
+  { id: "projector", left: 1140, top: 385, width: 440, align: "left" },
+  { id: "hand", left: 0, top: 650, width: 440, align: "left" },
+  { id: "generator", left: 60, top: 760, width: 500, align: "right" },
   { id: "laptop", left: 960, top: 690, width: 430, align: "right" },
 ];
 
@@ -21,47 +21,56 @@ function textFor(id: string): string {
   return hologramSlide.parts.find((part) => part.id === id)?.text ?? "";
 }
 
+/** Side view of our build: a fog box on the floor, the sheet rising from its slot, the projector behind. */
 function Hardware() {
   return (
     <svg viewBox="0 0 1680 900" width={1680} height={900} className="absolute inset-0 overflow-visible" aria-hidden>
       <rect
         x={SHEET_X - 110}
-        y={160}
+        y={700}
         width={220}
-        height={52}
+        height={100}
         className="fill-surface-raised stroke-text-muted"
         strokeWidth={3}
       />
-      <DrawPath d={`M${SHEET_X - 60} 212 H ${SHEET_X + 60}`} className="stroke-accent" strokeWidth={4} />
-      {[-48, 48].map((offset) => (
+      <rect
+        x={SHEET_X - 60}
+        y={668}
+        width={120}
+        height={32}
+        className="fill-surface-raised stroke-text-muted"
+        strokeWidth={3}
+      />
+      <DrawPath d={`M${SHEET_X - 8} 668 H ${SHEET_X + 8}`} className="stroke-accent" strokeWidth={6} />
+      {[-40, 40].map((offset) => (
         <g key={offset}>
           <DrawPath
-            d={`M${SHEET_X + offset} 228 V 800`}
+            d={`M${SHEET_X + offset} 656 V 250`}
             className="stroke-text-faint"
             strokeWidth={2}
             strokeDasharray="10 14"
             delay={0.4}
           />
           <path
-            d={`M${SHEET_X + offset - 10} 786 L ${SHEET_X + offset} 804 L ${SHEET_X + offset + 10} 786`}
+            d={`M${SHEET_X + offset - 10} 264 L ${SHEET_X + offset} 246 L ${SHEET_X + offset + 10} 264`}
             className="stroke-text-faint"
             strokeWidth={2}
             fill="none"
           />
         </g>
       ))}
-      <path d={`M1140 520 L ${SHEET_X + 4} 300 L ${SHEET_X + 4} 720 Z`} className="fill-accent/10" />
+      <path d={`M1140 540 L ${SHEET_X + 4} 290 L ${SHEET_X + 4} 660 Z`} className="fill-accent/10" />
       <rect
         x={1140}
-        y={470}
+        y={490}
         width={190}
         height={100}
         className="fill-surface-raised stroke-text-muted"
         strokeWidth={3}
       />
-      <circle cx={1160} cy={520} r={24} className="fill-surface stroke-accent" strokeWidth={4} />
+      <circle cx={1160} cy={540} r={24} className="fill-surface stroke-accent" strokeWidth={4} />
       <DrawPath
-        d="M1330 540 C 1400 540, 1380 690, 1420 700"
+        d="M1330 560 C 1400 560, 1380 690, 1420 700"
         className="stroke-text-faint"
         strokeWidth={2}
         strokeDasharray="6 8"
@@ -89,14 +98,14 @@ function Hardware() {
       <circle cx={260} cy={440} r={54} className="fill-none stroke-text-muted" strokeWidth={3} />
       <path d="M160 640 C 170 540, 350 540, 360 640" className="fill-none stroke-text-muted" strokeWidth={3} />
       <DrawPath
-        d={`M330 590 C 450 600, 560 640, ${SHEET_X - 12} 640`}
+        d={`M330 585 C 450 590, 560 600, ${SHEET_X - 12} 600`}
         className="stroke-text-muted"
         strokeWidth={3}
         fill="none"
         delay={1}
       />
-      <circle cx={SHEET_X - 4} cy={640} r={16} className="fill-surface stroke-text-muted" strokeWidth={3} />
-      <path d="M40 820 H 1640" className="stroke-line" strokeWidth={2} />
+      <circle cx={SHEET_X - 4} cy={600} r={16} className="fill-surface stroke-text-muted" strokeWidth={3} />
+      <path d="M40 800 H 1640" className="stroke-line" strokeWidth={2} />
     </svg>
   );
 }
@@ -108,7 +117,7 @@ export function HologramSlide() {
       <div className="absolute inset-0">
         <Hardware />
         <Reveal delay={0.5} className="absolute">
-          <div style={{ transform: `translate(${SHEET_X - 150}px, 330px)` }}>
+          <div style={{ transform: `translate(${SHEET_X - 150}px, 300px)` }}>
             <Pip height={220} mood="smile" />
           </div>
         </Reveal>

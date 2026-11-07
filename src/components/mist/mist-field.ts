@@ -34,8 +34,8 @@ export function createDroplets(random: () => number): Droplet[] {
 
 export function stepDroplets(droplets: Droplet[], seconds: number): void {
   for (const drop of droplets) {
-    drop.y += drop.speed * seconds;
-    if (drop.y > STAGE_HEIGHT + 40) drop.y = -40;
+    drop.y -= drop.speed * seconds;
+    if (drop.y < -40) drop.y = STAGE_HEIGHT + 40;
   }
 }
 
@@ -82,7 +82,14 @@ function drawSheet(context: CanvasRenderingContext2D, band: MistSetting, color: 
   context.fillStyle = sheet;
   context.fillRect(band.x - half, 0, band.width, STAGE_HEIGHT);
 
-  const source = context.createRadialGradient(band.x, -60, 0, band.x, -60, Math.max(half, 80) * 1.4);
+  const source = context.createRadialGradient(
+    band.x,
+    STAGE_HEIGHT + 60,
+    0,
+    band.x,
+    STAGE_HEIGHT + 60,
+    Math.max(half, 80) * 1.4,
+  );
   source.addColorStop(0, rgba(color, 0.32 * band.strength));
   source.addColorStop(1, rgba(color, 0));
   context.fillStyle = source;
