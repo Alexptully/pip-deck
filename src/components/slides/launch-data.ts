@@ -2,7 +2,7 @@ import { launchSlide } from "@/content/content";
 
 export type BakeLine = { item: string; count: number; notes: string[] };
 
-/** Adds the reservations up into the order Marisol sends the bakery. */
+/** Adds the reservations up into the order the market sends the bakery. */
 export function bakeryOrder(): BakeLine[] {
   const lines = new Map<string, BakeLine>();
   for (const order of launchSlide.orders) {

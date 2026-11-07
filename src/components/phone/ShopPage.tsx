@@ -73,7 +73,7 @@ function NotesField({ state, label }: { state: NotesState; label: string }) {
   );
 }
 
-/** Marisol's reservation page. Every answer she gives Pip shows up here as a visible change. */
+/** The market's reservation page. Every answer the owner gives Pip shows up here as a visible change. */
 export function ShopPage({ state }: { state: ShopState }) {
   const copy = copyFor(state.language);
   const size = state.large ? sizes.large : sizes.regular;

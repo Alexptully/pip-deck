@@ -7,7 +7,7 @@ export const defaultAnswers: Answers = Object.fromEntries(
   askSlide.questions.map((question) => [question.id, question.defaultChoice]),
 );
 
-/** Turns Marisol's plain answers into the settings the shop page is built from. */
+/** Turns the owner's plain answers into the settings the shop page is built from. */
 export function shopFromAnswers(answers: Answers): ShopState {
   return {
     limit: Number(answers.limit),
