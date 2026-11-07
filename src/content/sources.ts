@@ -119,8 +119,6 @@ export const sourceOrder: SourceId[] = [
   "promptBrief",
   "gs10ksb2026",
   "nhsGpTraining2022",
-  "sbaNation2025",
-  "blsOoh",
   "mdnSpeechSynthesis",
   "mdnSpeechRecognition",
   "fogscreenLaminar",

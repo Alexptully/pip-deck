@@ -10,12 +10,8 @@ export type SlideId =
   | "human"
   | "persona"
   | "stat"
-  | "owners"
-  | "builders"
-  | "broken"
   | "friendly"
   | "listen"
-  | "journey"
   | "say"
   | "ask"
   | "try"
@@ -102,64 +98,23 @@ export const slides: SlideMeta[] = [
       "People like Gloria want easier ways to work. In Goldman Sachs' 2026 survey of 1,256 small business owners in its 10,000 Small Businesses program, 84% of those using AI said the main benefit was saving time and working more efficiently.",
       "But they get stuck at the learning part. In the same survey, 73% said more training and help setting it up would help them, and only 14% said AI was fully part of their day-to-day operations.",
       "Clinics have it worse. In NHS England's survey of 791 general-practice staff, 74% said their workload kept them from finishing training, and the next barrier was having no protected time to learn. That one is a UK survey, so we say so.",
+      "If you have real quotes from clinic staff or owners, read one here. Judges will ask how you know people want this.",
       "Advance. So what if building an app took no learning at all, and felt like talking to a friend?",
     ],
   },
-  {
-    id: "owners",
-    name: "What people told us",
-    section: "Who it's for",
-    rubric: "Believable",
-    steps: 1,
-    sources: [],
-    mist: { x: 180, width: 220, strength: 0.4 },
-    notes: [
-      "Judges will ask how we know people like Gloria want this. This slide is the answer.",
-      "Replace the placeholders in src/content/config.ts with two or three real quotes from clinic staff, shop owners or other non-technical people you talked to, with their permission.",
-      "Read one quote out loud. Pick the one that sounds the most like Gloria.",
-    ],
-  },
-  {
-    id: "builders",
-    name: "Who gets to build",
-    section: "Who Pip allows to build",
-    rubric: "Accessible to non-engineers",
-    steps: 1,
-    sources: ["sbaNation2025", "blsOoh"],
-    mist: { x: 1830, width: 150, strength: 0.4 },
-    notes: [
-      "There are 36.2 million small businesses in the U.S., per the SBA's 2025 profiles, which use 2022 Census data. The BLS counts about 1.7 million software developers in 2025.",
-      "That works out to about 21 small businesses for every developer. That ratio is our own division of the two published numbers.",
-      "Most clinics, shops and nonprofits will never hire a developer. Pip is for the people who run them.",
-      "Hover a group in the chart to highlight it, or click the key to hide it.",
-    ],
-  },
-  {
-    id: "broken",
-    name: "What is broken",
-    section: "What is broken about building today",
-    rubric: "Original",
-    steps: 2,
-    sources: [],
-    mist: { x: 960, width: 110, strength: 0.7 },
-    notes: [
-      "Today's AI builders feel like they were made for engineers. You face a blank box and you're expected to write a spec.",
-      "Then you get a wall of code or a generated screen you can't reason about. Gloria's real questions get buried under fields, components and deploys. That is where she closed the tab.",
-      "Advance. Pip starts a different way. It says hello, asks what's been hard this week and talks with her in her own words.",
-    ],
-  },
+
   {
     id: "friendly",
     name: "Like a real person",
-    section: "What Pip makes easier",
+    section: "What is broken about building today",
     rubric: "Accessible to non-engineers",
     steps: 1,
     sources: [],
     mist: { x: 300, width: 460, strength: 0.8 },
     notes: [
-      "This is the heart of Pip. Building software should feel like talking to a helpful person, not operating a machine.",
-      "Walk down the table. Pip starts with a hello instead of a blank box. It speaks Gloria's words, shows what it heard instead of code and asks one question at a time. And like a real coworker, it notices things nobody told it, then brings them up.",
-      "And it has a face. People told a character more about their problem than they ever typed into a box.",
+      "Today's AI builders feel made for engineers. You face a blank box, you're expected to write a spec, and then you get code you can't check. That is where Gloria closed the tab.",
+      "Pip is the opposite, and the table shows it row by row. It starts with a hello, talks in Gloria's words, shows what it heard instead of code and asks one question at a time.",
+      "And like a real coworker, it notices things nobody told it, and it has a face. People told a character more about their problem than they ever typed into a box.",
     ],
   },
   {
@@ -191,19 +146,7 @@ export const slides: SlideMeta[] = [
       "These are design rules for our prototype, not legal certifications. A real clinic deployment would need a privacy and HIPAA review, and we say so up front.",
     ],
   },
-  {
-    id: "journey",
-    name: "How Pip works",
-    section: "What Pip makes easier",
-    rubric: "Understandable through the product itself",
-    steps: 1,
-    sources: [],
-    mist: { x: 960, width: 1500, strength: 0.25 },
-    notes: [
-      "Pip has four steps, and the product shows them on screen the whole time, so a user always knows where they are.",
-      "Say it, shape it, try it, launch it. The next four slides walk through each one with Gloria.",
-    ],
-  },
+
   {
     id: "say",
     name: "Say it",
@@ -213,7 +156,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 470, width: 560, strength: 0.9 },
     notes: [
-      "Gloria doesn't write a prompt. She talks to Pip the way she would to a friend, and she can be messy and frustrated about it.",
+      "Now the demo. Building with Pip takes four steps: say it, shape it, try it and launch it. First, Gloria doesn't write a prompt. She talks to Pip the way she would to a friend, and she can be messy and frustrated about it.",
       "Advance. Pip says back what it heard in four lines: who, clinic, problem and goal. Gloria can fix any line before anything gets built.",
       "In testing, this reflection did more for trust than any explanation we tried.",
     ],
@@ -307,7 +250,7 @@ export const slides: SlideMeta[] = [
   {
     id: "benefits",
     name: "Who else benefits",
-    section: "Who benefits beyond the primary user",
+    section: "Who gets to build and who benefits",
     rubric: "Useful",
     steps: 1,
     sources: [],
@@ -315,7 +258,7 @@ export const slides: SlideMeta[] = [
     notes: [
       "Gloria's front desk spends less time on hold-and-callback. Her patients, including older patients who prefer Spanish and bigger text, can check in from home.",
       "The neighborhood gets a clinic that is easier to reach, without the clinic paying a developer.",
-      "Anyone who can describe a problem can build with Pip: a corner store, a salon, a food-bank coordinator. Offer to let a judge tell Pip about one.",
+      "And Pip lets anyone build who could never learn to code: if you can describe your problem to a friend, you can build with Pip. A corner store, a salon, a food-bank coordinator. Offer to let a judge tell Pip about one.",
     ],
   },
   {
@@ -430,57 +373,6 @@ export const statSlide = {
   pivot: "What if building an app felt like talking to a friend?",
 };
 
-export const ownersSlide = {
-  heading: "What clinic staff and owners told us",
-};
-
-export const buildersSlide = {
-  heading: "Who gets to build software",
-  ratio: "21",
-  ratioLabel: "small businesses in the U.S. for every software developer",
-  ratioNote: "Team calculation: 36.2 million divided by 1.72 million",
-  dotValue: 100_000,
-  dotLabel: "Each dot is 100,000",
-  groups: [
-    {
-      id: "business",
-      label: "Small businesses",
-      value: 36_200_000,
-      valueLabel: "36.2 million",
-      detail: "2025 SBA profile, 2022 data",
-      ours: true,
-    },
-    {
-      id: "developers",
-      label: "Software developers",
-      value: 1_717_800,
-      valueLabel: "1.7 million",
-      detail: "BLS, 2025",
-      ours: false,
-    },
-  ],
-  promise: "If you can describe your problem to a friend, you can build with Pip.",
-};
-
-export const brokenSlide = {
-  heading: "Today's builders feel made for engineers",
-  todayLabel: "Today",
-  pipLabel: "With Pip",
-  promptPlaceholder: "Describe the app you want to build",
-  buriedQuestions: [
-    "Can patients see how long the wait is?",
-    "How many walk-ins can we take a day?",
-    "Do my patients read Spanish?",
-  ],
-  conversation: [
-    { who: "Pip", text: "Hi Gloria! What's been hardest this week?" },
-    { who: ownerName, text: "The phones. They never stop." },
-    { who: "Pip", text: "Tell me about the calls." },
-  ],
-  todayCaption: "Gloria's real questions end up buried under the technical ones, so she closes the tab.",
-  pipCaption: "Pip starts with a hello and talks with her in her own words.",
-};
-
 export const friendlySlide = {
   heading: "Pip acts like a real person",
   todayLabel: "An AI builder today",
@@ -497,16 +389,6 @@ export const friendlySlide = {
     { id: "asks", aspect: "Asks", today: "For everything at once", pip: "One question at a time" },
     { id: "notices", aspect: "Notices", today: "Only what you type", pip: "What it overhears, like a coworker would" },
     { id: "face", aspect: "Looks like", today: "A text field", pip: "A face and a voice you can wave a hand through" },
-  ],
-};
-
-export const journeySlide = {
-  heading: "Four steps from a conversation to a working app",
-  steps: [
-    { id: "say", name: "Say it", text: "Describe the problem out loud, the way you would tell a friend." },
-    { id: "shape", name: "Shape it", text: "Answer one plain question at a time." },
-    { id: "try", name: "Try it", text: "Pip plays a patient and finds what is missing." },
-    { id: "launch", name: "Launch it", text: "Say the word and get a live page with a QR code." },
   ],
 };
 

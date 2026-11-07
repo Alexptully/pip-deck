@@ -2,17 +2,13 @@ import type { ComponentType } from "react";
 import type { SlideId } from "@/content/content";
 import { AskSlide } from "./AskSlide";
 import { BenefitsSlide } from "./BenefitsSlide";
-import { BrokenSlide } from "./BrokenSlide";
-import { BuildersSlide } from "./BuildersSlide";
 import { CloseSlide } from "./CloseSlide";
 import { FriendlySlide } from "./FriendlySlide";
 import { HumanSlide } from "./HumanSlide";
 import { HologramSlide } from "./HologramSlide";
-import { JourneySlide } from "./JourneySlide";
 import { LaunchSlide } from "./LaunchSlide";
 import { LearnedSlide } from "./LearnedSlide";
 import { MapSlide } from "./MapSlide";
-import { OwnersSlide } from "./OwnersSlide";
 import { PersonaSlide } from "./PersonaSlide";
 import { SaySlide } from "./SaySlide";
 import { SourcesSlide } from "./SourcesSlide";
@@ -30,10 +26,6 @@ export const slideComponents: Record<SlideId, ComponentType<SlideProps>> = {
   human: HumanSlide,
   persona: PersonaSlide,
   stat: StatSlide,
-  owners: OwnersSlide,
-  builders: BuildersSlide,
-  broken: BrokenSlide,
-  journey: JourneySlide,
   friendly: FriendlySlide,
   listen: MapSlide,
   say: SaySlide,
