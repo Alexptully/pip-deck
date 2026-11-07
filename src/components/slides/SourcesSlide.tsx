@@ -12,7 +12,7 @@ export function SourcesSlide() {
     <div className="relative h-full">
       <Heading>{sourcesSlide.heading}</Heading>
       <Reveal delay={0.15} className="mt-6">
-        <ol className="grid grid-cols-2 gap-x-20 gap-y-5">
+        <ol className="grid grid-cols-3 gap-x-14 gap-y-6">
           {sourceOrder.map((id) => {
             const source = sources[id];
             return (
@@ -23,8 +23,8 @@ export function SourcesSlide() {
               </li>
             );
           })}
+          <li className="type-fine col-span-2 max-w-[900px] self-start text-text-faint">{sourcesSlide.note}</li>
         </ol>
-        <p className="type-fine mt-6 text-text-faint">{sourcesSlide.note}</p>
       </Reveal>
     </div>
   );

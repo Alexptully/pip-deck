@@ -91,20 +91,18 @@ export const sources: Record<SourceId, Source> = {
     short: "Goldman Sachs 10,000 Small Businesses Voices survey, 2026",
     publisher: "Goldman Sachs 10,000 Small Businesses Voices (Business Wire)",
     title: "Survey: Small Businesses Embrace AI But Need Training and Support to Fully Harness It",
-    date: "March 17, 2026 (1,256 program participants surveyed January 27 to February 4, 2026, by Babson College and David Binder Research)",
+    date: "March 17, 2026 (1,256 owners, surveyed early 2026)",
     url: "https://www.businesswire.com/news/home/20260317141697/en/Survey-Small-Businesses-Embrace-AI-But-Need-Training-and-Support-to-Fully-Harness-It",
-    usedFor:
-      "84% of AI users name efficiency and productivity as the main benefit; 73% say more training and implementation resources would help; 14% say AI is fully embedded in core operations.",
+    usedFor: "84% of AI users name efficiency as the main benefit; 73% say more training and setup help would help.",
   },
   nhsGpTraining2022: {
     id: "nhsGpTraining2022",
     short: "NHS England, staff training in general practice, 2022 survey",
     publisher: "NHS England, Workforce, Training and Education (Digital Transformation)",
-    title: "Research to inform staff training for digital delivery in general practice: Discussion",
-    date: "Published June 2023 (791 general-practice staff surveyed January to February 2022)",
+    title: "Research to inform staff training for digital delivery in general practice",
+    date: "June 2023 (791 staff, surveyed early 2022)",
     url: "https://digital-transformation.hee.nhs.uk/publications/research-to-inform-staff-training-for-digital-delivery-in-general-practice/discussion",
-    usedFor:
-      "74% of respondents named high workload as a barrier to completing training; lack of protected time came second.",
+    usedFor: "74% named high workload as a barrier to completing training.",
   },
   promptBrief: {
     id: "promptBrief",
