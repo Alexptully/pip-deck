@@ -17,12 +17,8 @@ export function BuildersSlide() {
           <UnitChart />
         </Reveal>
       </div>
-      <Reveal delay={0.6} className="absolute bottom-0 left-0 right-0 grid grid-cols-[480px_1fr] items-end gap-16">
+      <Reveal delay={0.6} className="absolute bottom-0 left-0 max-w-[1100px]">
         <p className="type-lead text-text">{buildersSlide.promise}</p>
-        <p className="type-body text-text-muted">
-          <span className="type-figure mr-4 text-text">{buildersSlide.localFigure}</span>
-          {buildersSlide.localText}
-        </p>
       </Reveal>
     </div>
   );

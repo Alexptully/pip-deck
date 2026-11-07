@@ -11,9 +11,10 @@ import { JourneySlide } from "./JourneySlide";
 import { LaunchSlide } from "./LaunchSlide";
 import { LearnedSlide } from "./LearnedSlide";
 import { ListenSlide } from "./ListenSlide";
-import { MarketSlide } from "./MarketSlide";
 import { OwnersSlide } from "./OwnersSlide";
+import { RouteSlide } from "./RouteSlide";
 import { SourcesSlide } from "./SourcesSlide";
+import { StatSlide } from "./StatSlide";
 import { StandardsSlide } from "./StandardsSlide";
 import { TitleSlide } from "./TitleSlide";
 import { TrustSlide } from "./TrustSlide";
@@ -24,7 +25,8 @@ export type SlideProps = { step: number };
 
 export const slideComponents: Record<SlideId, ComponentType<SlideProps>> = {
   title: TitleSlide,
-  market: MarketSlide,
+  stat: StatSlide,
+  route: RouteSlide,
   owners: OwnersSlide,
   builders: BuildersSlide,
   broken: BrokenSlide,

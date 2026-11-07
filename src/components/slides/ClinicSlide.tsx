@@ -13,7 +13,13 @@ const ROUTE_Y = 60;
 function Route() {
   return (
     <div className="relative h-[200px] w-[760px]">
-      <svg viewBox={`0 0 ${ROUTE_WIDTH} 120`} width={ROUTE_WIDTH} height={120} className="absolute left-0 top-[40px]" aria-hidden>
+      <svg
+        viewBox={`0 0 ${ROUTE_WIDTH} 120`}
+        width={ROUTE_WIDTH}
+        height={120}
+        className="absolute left-0 top-[40px]"
+        aria-hidden
+      >
         <DrawPath
           d={`M 70 ${ROUTE_Y} C 260 ${ROUTE_Y - 50}, 470 ${ROUTE_Y + 50}, 690 ${ROUTE_Y}`}
           className="stroke-accent"
@@ -44,14 +50,14 @@ function Heard() {
     <Reveal delay={0.6} className="mt-14">
       <p className="type-lead text-text">{clinicSlide.person}</p>
       <p className="type-caption mt-8 text-text-faint">{clinicSlide.heardTitle}</p>
-      <ul className="mt-4 flex flex-col gap-6">
+      <div className="mt-4 flex flex-col gap-6">
         {clinicSlide.heard.map((line, index) => (
           <Reveal key={line.text} delay={0.9 + index * 0.25} className="grid grid-cols-[170px_1fr] gap-x-6">
             <span className="type-body text-text-faint">{line.who}</span>
             <q className="type-body text-text">{line.text}</q>
           </Reveal>
         ))}
-      </ul>
+      </div>
     </Reveal>
   );
 }

@@ -40,21 +40,21 @@ Original, Useful, Believable, Accessible to non-engineers, Understandable throug
 
 Pip is for workplaces that run on operations and have nobody technical: corner stores, clinics, salons, food banks. The people there are too busy to learn vibe coding and too busy to stop and describe an app. Pip is a traveling builder. It visits a workplace for about a week, listens to customer complaints, staff requests and everyday conversation, works out how the place runs, then builds what is missing and moves on.
 
-**Primary persona: Marisol, 47. Owner of a corner market in Boyle Heights, Los Angeles.** (Sector: small business.)
+**Opening stat:** clinics and shops took up AI fast last year. In the AMA's survey of 1,183 physicians, 66% used AI in their practice in 2024, up from 38% in 2023. A Thryv survey of 540 small businesses (a vendor survey, labeled as such) found AI use rose from 39% in 2024 to 55% in 2025. Nearly all of that is software someone else designed. The pivot: what if Pip could help them build their own?
 
-- **Her day:** deliveries from 6 a.m., at the register until 10 p.m. Every morning a local bakery drops off four dozen pan dulce. It sells out by 10, and customers keep asking for it all day. Staff write reservations on the back of receipts. Three part-timers, one register.
-- **What she can't do today:** build anything. She has no budget for a developer, no time to learn a site builder, and no time to sit down and describe what she needs. The needs are said out loud at the counter all day, and nobody writes them down.
-- **Sector constraints:** thin margins, no IT person, a phone that is her whole computer, a bilingual (often older) customer base.
-- **Why she wants it:** she keeps working while Pip figures out what to build, and she only answers plain questions about her own shop.
-- **Why she needs it:** without it, reservations stay on receipts, people who can't come before 10 go without, and she guesses how much to order every morning.
+**The example is Pip's route, not one owner.** Pip goes from workplace to workplace, about a week at each: a corner market, a family clinic, a salon, a food bank. At every stop it listens to complaints from customers, needs from staff and everyday conversation, so it understands how the place runs.
 
-**Second stop: Janelle, front desk at a family clinic.** Pip hears patients asking how long the wait is and staff calling back about refills. It builds a text-me waitlist and a refill status board. In clinics, Pip excludes health details from what it learns.
+- **The corner market (demo stop):** pan dulce sells out by 10 and customers keep asking. Staff write reservations on receipts and some go missing. Pip builds a reservation page with a daily limit and a list for the bakery.
+- **The family clinic (next stop):** patients ask how long the wait is, and staff call back about refills. Pip builds a text-me waitlist and a refill status board. In clinics, Pip excludes health details from what it learns.
+- **Sector constraints:** thin margins, no IT person, phones as the main computer, bilingual customers and patients.
+- **Why they want it:** they keep working while Pip figures out what to build, and they only answer plain questions about their own workplace.
+- **Why they need it:** without it, requests said out loud are lost, and the software they get was designed for someone else.
 
-Both personas are illustrative. Before pitching, swap in quotes from two or three real owners or staff (`src/content/config.ts`).
+The market and clinic are illustrative. Before pitching, swap in quotes from two or three real owners or staff (`src/content/config.ts`).
 
 ## What is broken about building software today
 
-Today's AI builders assume you have time to stop working and the words to describe what you want: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to Marisol (how many she can set aside, how people pay, whether her customers read Spanish) are buried under technical ones. Meanwhile the real requirements are said out loud in the workplace every day and lost.
+Today's AI builders assume you have time to stop working and the words to describe what you want: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to a busy workplace (how many to set aside, how people pay, whether customers read Spanish) are buried under technical ones. Meanwhile the real requirements are said out loud in the workplace every day and lost.
 
 ## Who Pip allows to build
 
@@ -83,9 +83,9 @@ Models can turn a week of overlapping conversation into a few clear patterns and
 - The pretend customer catching a missing notes box was the most useful AI moment.
 - People relaxed once they could see when Pip was listening.
 
-## Who benefits beyond Marisol
+## Who benefits beyond the first workplace
 
-Her staff (one list instead of receipts), her customers (bilingual, bigger text, pan dulce after 10), the neighborhood (local shops get tools without paying a developer), and every next stop on Pip's route: a family clinic, a salon, a food-bank shift coordinator.
+Staff (one list instead of scraps of paper), customers and patients (shorter waits, answers in their own language), the neighborhood (local shops get tools without paying a developer), and every next stop on Pip's route: a family clinic, a salon, a food-bank shift coordinator.
 
 ## Hardware
 

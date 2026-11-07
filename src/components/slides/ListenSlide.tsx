@@ -9,14 +9,14 @@ function Overheard({ show }: { show: boolean }) {
   return (
     <Reveal show={show}>
       <VoiceWave />
-      <ul className="mt-10 flex flex-col gap-7">
+      <div className="mt-10 flex flex-col gap-7">
         {listenSlide.overheard.map((line, index) => (
           <Reveal key={line.text} show={show} delay={0.2 + index * 0.25} className="grid grid-cols-[200px_1fr] gap-x-8">
             <span className="type-body text-text-faint">{line.who}</span>
             <q className="type-lead text-text">{line.text}</q>
           </Reveal>
         ))}
-      </ul>
+      </div>
     </Reveal>
   );
 }

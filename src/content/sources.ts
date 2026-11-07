@@ -10,7 +10,8 @@ export type Source = {
 
 export type SourceId =
   | "sbaNation2025"
-  | "sbaMetroWest2025"
+  | "amaAi2024"
+  | "thryvAi2025"
   | "blsOoh"
   | "mdnSpeechSynthesis"
   | "mdnSpeechRecognition"
@@ -28,16 +29,6 @@ export const sources: Record<SourceId, Source> = {
     date: "June 30, 2025",
     url: "https://advocacy.sba.gov/2025/06/30/2025-small-business-profiles-for-the-states-territories-and-nation",
     usedFor: "36.2 million U.S. small businesses (firms with fewer than 500 employees).",
-  },
-  sbaMetroWest2025: {
-    id: "sbaMetroWest2025",
-    short: "SBA Office of Advocacy, 2025 metro profile for Los Angeles",
-    publisher: "U.S. Small Business Administration, Office of Advocacy",
-    title: "2025 Small Business Profiles for Major Metropolitan Areas: West",
-    date: "October 2025",
-    url: "https://advocacy.sba.gov/wp-content/uploads/2025/10/West_2025_FINAL.pdf",
-    usedFor:
-      "1.8 million small businesses in the LA metro; 453,201 Hispanic-owned businesses, 91.4% with no employees.",
   },
   blsOoh: {
     id: "blsOoh",
@@ -95,6 +86,24 @@ export const sources: Record<SourceId, Source> = {
     usedFor:
       "Wire diagrams look better on fog than photos or full-frame video; the fog is dry because the particles are so small.",
   },
+  amaAi2024: {
+    id: "amaAi2024",
+    short: "AMA physician AI sentiment survey, 2024",
+    publisher: "American Medical Association",
+    title: "Physician sentiments around the use of AI in health care: motivations, opportunities, risks, and use cases",
+    date: "February 2025 (survey run November 2024)",
+    url: "https://www.ama-assn.org/system/files/physician-ai-sentiment-report.pdf",
+    usedFor: "66% of 1,183 physicians used AI in their practice in 2024, up from 38% in 2023.",
+  },
+  thryvAi2025: {
+    id: "thryvAi2025",
+    short: "Thryv small business AI survey, 2025 (via Chain Store Age)",
+    publisher: "Chain Store Age, reporting a Thryv survey",
+    title: "Survey: AI usage among small businesses up 41%",
+    date: "2025 (survey of 540 small businesses, May 4 to 14, 2025)",
+    url: "https://chainstoreage.com/survey-ai-usage-among-small-businesses-41",
+    usedFor: "Small business AI use rose from 39% in 2024 to 55% in 2025. Thryv sells software to small businesses.",
+  },
   promptBrief: {
     id: "promptBrief",
     short: "Innovator's Forum, Fall 2026 Prompt 3a",
@@ -108,9 +117,10 @@ export const sources: Record<SourceId, Source> = {
 
 export const sourceOrder: SourceId[] = [
   "promptBrief",
+  "amaAi2024",
+  "thryvAi2025",
   "sbaNation2025",
   "blsOoh",
-  "sbaMetroWest2025",
   "mdnSpeechSynthesis",
   "mdnSpeechRecognition",
   "fogscreenLaminar",

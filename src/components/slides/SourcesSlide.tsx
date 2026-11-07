@@ -11,8 +11,8 @@ export function SourcesSlide() {
   return (
     <div className="relative h-full">
       <Heading>{sourcesSlide.heading}</Heading>
-      <Reveal delay={0.15} className="mt-10">
-        <ol className="grid grid-cols-2 gap-x-20 gap-y-7">
+      <Reveal delay={0.15} className="mt-6">
+        <ol className="grid grid-cols-2 gap-x-20 gap-y-5">
           {sourceOrder.map((id) => {
             const source = sources[id];
             return (
@@ -24,7 +24,7 @@ export function SourcesSlide() {
             );
           })}
         </ol>
-        <p className="type-fine mt-10 text-text-faint">{sourcesSlide.note}</p>
+        <p className="type-fine mt-6 text-text-faint">{sourcesSlide.note}</p>
       </Reveal>
     </div>
   );
