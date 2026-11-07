@@ -57,7 +57,7 @@ export const slides: SlideMeta[] = [
     mist: { x: 1360, width: 640, strength: 1 },
     notes: [
       "Hi, we're the team behind Pip. The prompt asked what comes after typing a request into an AI builder.",
-      "Our answer is a character. Pip lives in a sheet of fog, talks with you like a person and builds the app while you talk. It can also just listen to a workplace and work out what it needs. It is made for people who find today's AI builders intimidating.",
+      "Our answer is a character that acts like a real person. Pip lives in a sheet of fog at the counter. You can talk with it, and like any coworker it picks up on what it overhears and brings up the things that seem useful. It is made for people who find today's AI builders intimidating.",
       "If the fog screen is running, wave a hand through Pip now. It gets a laugh and it shows the screen is only mist.",
     ],
   },
@@ -150,7 +150,7 @@ export const slides: SlideMeta[] = [
   },
   {
     id: "friendly",
-    name: "Talking to a person",
+    name: "Like a real person",
     section: "What Pip makes easier",
     rubric: "Accessible to non-engineers",
     steps: 1,
@@ -158,24 +158,23 @@ export const slides: SlideMeta[] = [
     mist: { x: 300, width: 460, strength: 0.8 },
     notes: [
       "This is the heart of Pip. Building software should feel like talking to a helpful person, not operating a machine.",
-      "Walk down the table. Pip starts with a hello instead of a blank box. It speaks Gloria's words, shows what it heard instead of code, asks one question at a time and, when something goes wrong, tries another way instead of throwing an error.",
+      "Walk down the table. Pip starts with a hello instead of a blank box. It speaks Gloria's words, shows what it heard instead of code and asks one question at a time. And like a real coworker, it notices things nobody told it, then brings them up.",
       "And it has a face. People told a character more about their problem than they ever typed into a box.",
     ],
   },
   {
     id: "listen",
-    name: "Listening mode",
+    name: "Pip picks things up",
     section: "What Pip makes newly possible",
     rubric: "Original",
     steps: 2,
     sources: [],
     mist: { x: 1840, width: 140, strength: 0.4 },
     notes: [
-      "This is what makes Pip special. Besides talking, Pip has a listening mode. It sits in the workplace on its fog screen and hears the everyday conversation: patients in the waiting room, staff at the front desk, calls in the back office.",
-      "Over about a week, Pip builds a map of the workplace. It learns how patients move through the clinic, how staff actually work, how operations run and what patients complain about.",
-      "Walk the four pins. Walk-ins peak from 9 to 11 and spill outside. One person answers the phone and checks patients in at the same time. Refills live on sticky notes. And the question asked most at the desk is 'How much longer?'",
-      "Advance. Because Pip knows the workplace, it knows exactly what to build, without Gloria having to describe any of it. These observations are demo data for the pitch.",
-      "Pip can do this at one workplace after another: a clinic, a corner store, a salon, a food bank.",
+      "This is what makes Pip special. Pip isn't an app you open and close. It is more like a new coworker at the front desk.",
+      "You can talk with it any time. And like a real person, it picks things up in passing. It doesn't record everything. It pays attention to what seems interesting or useful, the way a new hire would after a week on the job.",
+      "Walk the four pins. Pip noticed that walk-ins peak from 9 to 11 and spill outside, that one person answers the phone and checks patients in at the same time, that refills live on sticky notes, and that the question asked most at the desk is 'How much longer?'",
+      "Advance. Then Pip does what a good coworker does: it brings it up. 'Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them?' Gloria never had to describe the problem. These observations are demo data for the pitch.",
     ],
   },
   {
@@ -187,7 +186,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1800, width: 200, strength: 0.4 },
     notes: [
-      "Listening mode only works if people trust it, so we designed the rules first.",
+      "A coworker who notices things only works if people trust it, so we designed the rules first.",
       "Pip glows whenever it is listening, and everyone is told before it arrives. Anyone can say 'Pip, pause.' It keeps patterns, not recordings, and nothing gets built without the owner's yes.",
       "These are design rules for our prototype, not legal certifications. A real clinic deployment would need a privacy and HIPAA review, and we say so up front.",
     ],
@@ -232,7 +231,7 @@ export const slides: SlideMeta[] = [
       "Pip asks four questions, one at a time, as plain choices with a reason attached. Gloria never has to think of a feature.",
       "The daily limit is the best example. 'How many walk-ins can you see a day? I'll close the list before your doctors get swamped' sounds like a scheduling question, and it quietly builds capacity logic.",
       "Every change flies from Pip's hand into the app, so nothing is hidden behind code.",
-      "If listening mode has been on, Pip already knows some of the answers, so it asks fewer questions and starts each one from what it heard.",
+      "Because Pip has been picking things up around the clinic, it already knows some of the answers, so it asks fewer questions and starts each one from what it noticed.",
     ],
   },
   {
@@ -357,7 +356,7 @@ export const slides: SlideMeta[] = [
 
 export const titleSlide = {
   name: "Pip",
-  line: "Pip is a friendly character that helps anyone build the app they need, by talking it through or by listening to how their workplace runs.",
+  line: "Pip acts like a real person. You can talk with it, and it picks up on what your workplace needs the way a coworker would.",
 };
 
 export const humanSlide = {
@@ -483,7 +482,7 @@ export const brokenSlide = {
 };
 
 export const friendlySlide = {
-  heading: "Pip feels like talking to a person",
+  heading: "Pip acts like a real person",
   todayLabel: "An AI builder today",
   pipLabel: "Pip",
   rows: [
@@ -496,7 +495,7 @@ export const friendlySlide = {
     },
     { id: "shows", aspect: "Shows you", today: "Code you can't check", pip: "What it heard, so you can fix it" },
     { id: "asks", aspect: "Asks", today: "For everything at once", pip: "One question at a time" },
-    { id: "stuck", aspect: "When something breaks", today: "An error message", pip: "“Let me try that another way.”" },
+    { id: "notices", aspect: "Notices", today: "Only what you type", pip: "What it overhears, like a coworker would" },
     { id: "face", aspect: "Looks like", today: "A text field", pip: "A face and a voice you can wave a hand through" },
   ],
 };
@@ -654,7 +653,7 @@ export const launchSlide = {
 };
 
 export const mapSlide = {
-  heading: "Listening mode maps the whole workplace",
+  heading: "Pip picks things up like a real person",
   rooms: [
     { id: "waiting", label: "Waiting room", x: 0, y: 0, w: 420, h: 600 },
     { id: "desk", label: "Front desk", x: 420, y: 0, w: 220, h: 250 },
@@ -662,7 +661,7 @@ export const mapSlide = {
     { id: "exam1", label: "Exam room 1", x: 640, y: 0, w: 260, h: 300 },
     { id: "exam2", label: "Exam room 2", x: 640, y: 300, w: 260, h: 300 },
   ],
-  layersTitle: "What Pip learned in a week at Gloria's clinic",
+  layersTitle: "What Pip noticed in its first week at Gloria's clinic, without being asked",
   layers: [
     {
       id: "patients",
@@ -693,7 +692,10 @@ export const mapSlide = {
       pin: { x: 340, y: 120 },
     },
   ],
-  buildsTitle: "So Pip knows exactly what to build",
+  buildsTitle: "Then it brings it up, like a coworker would",
+  pipSays:
+    "Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them when it's their turn?",
+  buildsLead: "What Pip offers to build",
   builds: [
     {
       id: "waitlist",
@@ -718,7 +720,7 @@ export const mapSlide = {
 };
 
 export const trustSlide = {
-  heading: "Pip listens in the open",
+  heading: "Pip pays attention in the open",
   rules: [
     {
       id: "visible",
@@ -732,8 +734,8 @@ export const trustSlide = {
     },
     {
       id: "patterns",
-      rule: "It keeps patterns, not recordings",
-      detail: "Pip remembers that patients asked about the wait 30 times, not who asked.",
+      rule: "It remembers what's useful, not every word",
+      detail: "Like a person, Pip remembers that patients asked about the wait 30 times, not who asked.",
     },
     {
       id: "owner",
@@ -816,7 +818,7 @@ export const standardsSlide = {
     {
       standard: "Original",
       where:
-        "A friendly character on a fog screen is the building interface, and it tests the app by playing a patient.",
+        "Pip acts like a real person: you talk with it, and it picks up on what a workplace needs the way a coworker would.",
     },
     {
       standard: "Useful",

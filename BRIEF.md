@@ -38,7 +38,7 @@ Original, Useful, Believable, Accessible to non-engineers, Understandable throug
 
 ## The point of Pip
 
-**The future of AI is human.** We can already tell AI what to do, but people connect best with people, especially people who aren't comfortable with technology. This is the deck's opening idea, right after the title.
+**The future of AI is human.** Pip acts like a real person: you can talk with it, and it picks things up like a coworker would. We can already tell AI what to do, but people connect best with people, especially people who aren't comfortable with technology. This is the deck's opening idea, right after the title.
 
 Pip is a friendly, human-facing way to build software. Today's AI builders feel made for engineers: a blank box, technical words and code you can't check. Non-technical people find them intimidating and give up. Pip is a character on a fog screen that says hello, talks in your words, says back what it heard, asks one question at a time and never shows code. The friendliness is the product: it makes people feel open to building.
 
@@ -72,16 +72,16 @@ People who have never built anything and never will learn to: clinic directors, 
 - **Try it:** Pip plays a patient and finds the gap ("My daughter translates for me, and there was nowhere to say so").
 - **Launch it:** one word gives a working walk-in page and a QR code. Check-ins arrive live and the front desk gets one list by visit type, with interpreter requests flagged.
 
-## Listening mode: what makes Pip special
+## Pip acts like a real person: what makes it special
 
-Besides talking, Pip has a listening mode. It sits in the workplace on its fog screen and hears the passive, everyday conversation: patients in the waiting room, staff at the front desk, calls in the back office. Over about a week it maps the workplace in four layers:
+Pip isn't an app you open and close. It is more like a new coworker. You can talk with it any time, and like a real person it picks things up in passing. It doesn't record everything; it pays attention to what seems interesting or useful, the way a new hire would after a week on the job. In its first week at Gloria's clinic, without being asked, it noticed:
 
 1. **How patients move:** walk-ins peak from 9 to 11 a.m. and the waiting room spills outside.
 2. **How staff work:** one person answers the phone and checks patients in at the same time.
 3. **How operations run:** refill requests go on sticky notes and get called back after closing.
 4. **What patients complain about:** "How much longer?" is the question asked most at the desk.
 
-From that map Pip knows exactly what to build for better organization (a walk-in list that texts patients, one front desk list, a refill board) without anyone describing it. The slide shows Gloria's clinic as a floor plan with the four findings pinned where they happen; the findings are demo data. Pip can do this at one workplace after another.
+Then it brings it up, like a coworker would: "Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them when it's their turn?" It offers to build a walk-in list that texts patients, one front desk list and a refill board. The slide shows the clinic as a floor plan with the four findings pinned where they happen; the findings are demo data.
 
 Visible rules: Pip glows when listening, everyone is told first and anyone can say "Pip, pause", it keeps patterns not recordings, nothing is built without a yes, health details stay out in clinics, and the listening leaves with Pip. These are prototype design rules, not legal certifications; a real clinic deployment would need a privacy and HIPAA review.
 

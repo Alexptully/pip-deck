@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { mapSlide } from "@/content/content";
+import { Card } from "@/components/primitives/Card";
 import { Heading } from "@/components/primitives/Heading";
 import { Reveal } from "@/components/primitives/Reveal";
 import { useStill } from "@/components/primitives/Still";
@@ -98,18 +99,24 @@ function Builds({ show }: { show: boolean }) {
   return (
     <Reveal show={show}>
       <p className="type-caption text-accent">{mapSlide.buildsTitle}</p>
-      <ul className="mt-6 flex flex-col gap-8">
+      <Reveal show={show} delay={0.2} className="mt-5">
+        <Card className="px-9 py-6">
+          <p className="type-caption text-accent">Pip</p>
+          <p className="type-lead mt-2 text-text">{`“${mapSlide.pipSays}”`}</p>
+        </Card>
+      </Reveal>
+      <p className="type-caption mt-6 text-text-muted">{mapSlide.buildsLead}</p>
+      <ul className="mt-3 flex flex-col gap-3">
         {mapSlide.builds.map((build, index) => (
           <li key={build.id}>
-            <Reveal show={show} delay={0.2 + index * 0.2}>
-              <p className="type-caption text-text-faint">{`From ${build.from.join(" and ")}`}</p>
-              <p className="type-lead mt-1 text-text">{build.name}</p>
-              <p className="type-body mt-1 text-text-muted">{build.text}</p>
+            <Reveal show={show} delay={0.5 + index * 0.2} className="grid grid-cols-[150px_1fr] items-baseline gap-x-6">
+              <span className="type-caption text-text-faint">{`From ${build.from.join(" and ")}`}</span>
+              <span className="type-lead text-text">{build.name}</span>
             </Reveal>
           </li>
         ))}
       </ul>
-      <p className="type-fine mt-8 text-text-faint">{mapSlide.demoLabel}</p>
+      <p className="type-fine mt-5 text-text-faint">{mapSlide.demoLabel}</p>
     </Reveal>
   );
 }
