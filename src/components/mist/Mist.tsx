@@ -17,7 +17,7 @@ function readAccent(): string {
 }
 
 /**
- * The deck's motif: a falling sheet of mist, like the fog screen Pip lives on.
+ * The deck's motif: a rising sheet of mist, like the fog screen Pip lives on.
  * Each slide moves the sheet to a new place and the sheet glides there.
  */
 export function Mist({ setting }: { setting: MistSetting }) {

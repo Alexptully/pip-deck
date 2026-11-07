@@ -13,7 +13,7 @@ type Page = { meta: SlideMeta; step: number };
 
 const pages: Page[] = slides.flatMap((meta) => Array.from({ length: meta.steps }, (_, step) => ({ meta, step })));
 
-const backHref = process.env.NEXT_PUBLIC_SINGLE_FILE ? "#title" : "/#title";
+const backHref = process.env.NEXT_PUBLIC_SINGLE_FILE ? "#title" : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/#title`;
 
 function PrintPage({ meta, step }: Page) {
   const SlideBody = slideComponents[meta.id];

@@ -13,7 +13,9 @@ import { NotesPanel } from "./NotesPanel";
 import { SlideFrame } from "./SlideFrame";
 import { Stage } from "./Stage";
 
-export const printHref = process.env.NEXT_PUBLIC_SINGLE_FILE ? "#print" : "/print/";
+export const printHref = process.env.NEXT_PUBLIC_SINGLE_FILE
+  ? "#print"
+  : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/print/`;
 
 export function Deck() {
   const { position, next, previous, first, last } = useDeckNavigation(slides);

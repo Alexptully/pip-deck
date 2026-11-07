@@ -17,7 +17,8 @@ export type SourceId =
   | "fogscreenLaminar"
   | "ucsbFogscreen"
   | "fogscreenContent"
-  | "promptBrief";
+  | "promptBrief"
+  | "teamBuildPlan";
 
 export const sources: Record<SourceId, Source> = {
   sbaNation2025: {
@@ -95,6 +96,16 @@ export const sources: Record<SourceId, Source> = {
     usedFor:
       "Wire diagrams look better on fog than photos or full-frame video; the fog is dry because the particles are so small.",
   },
+  teamBuildPlan: {
+    id: "teamBuildPlan",
+    short: "Group 7 fog screen build plan",
+    publisher: "Group 7 (Alex Tully)",
+    title: "DIY Fog Screen Hologram: Build Plan",
+    date: "November 2, 2026",
+    url: "https://claude.ai/artifact/LA8GD9AhZbeMjKTpG1BmVi",
+    usedFor:
+      "Our build: a 50 cm wide mist sheet rising from a base box, sheath fans on both sides, projector 1 to 2 m behind.",
+  },
   promptBrief: {
     id: "promptBrief",
     short: "Innovator's Forum, Fall 2026 Prompt 3a",
@@ -113,6 +124,7 @@ export const sourceOrder: SourceId[] = [
   "sbaMetroWest2025",
   "mdnSpeechSynthesis",
   "mdnSpeechRecognition",
+  "teamBuildPlan",
   "fogscreenLaminar",
   "ucsbFogscreen",
   "fogscreenContent",

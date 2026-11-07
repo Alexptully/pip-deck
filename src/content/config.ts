@@ -12,7 +12,7 @@ export const config = {
   /** When true, the deck speaks Pip's answer out loud on the "Any ideas, Pip?" slide. */
   pipSpeaks: true,
   demoUrlLabel: "[DEMO URL]",
-  motif: "A sheet of falling mist, the same fog screen Pip lives in, drifts across every slide.",
+  motif: "A rising sheet of mist, the same fog screen Pip lives in, drifts across every slide.",
   ownerQuotes: [
     { quote: "[Quote from a bakery or small-shop owner you interviewed]", who: "[Name, shop and neighborhood]" },
     { quote: "[Quote from a second owner]", who: "[Name, shop and neighborhood]" },

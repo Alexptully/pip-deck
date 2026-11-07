@@ -272,10 +272,10 @@ export const slides: SlideMeta[] = [
     section: "What Pip makes newly possible",
     rubric: "Original",
     steps: 1,
-    sources: ["fogscreenContent", "ucsbFogscreen", "fogscreenLaminar"],
+    sources: ["teamBuildPlan", "fogscreenContent", "ucsbFogscreen", "fogscreenLaminar"],
     mist: { x: 820, width: 150, strength: 1 },
     notes: [
-      "Pip lives on a small fog screen. A generator above makes mist so fine it feels dry, and fans on both sides hold it in a flat sheet.",
+      "Pip lives on a small fog screen we built: about 50 centimeters wide, rising 30 to 50 centimeters from a base. Ultrasonic misters fill a sealed box, a fan pushes the mist up a 12 millimeter slot, and fans on both sides blow clean air beside it so it rises as a flat sheet.",
       "A projector draws Pip on the mist, and a laptop runs Pip and listens through its microphone.",
       "People who build fog displays report that line drawings read better on fog than photos, so we drew Pip in light lines.",
       "A character in the room changes how people talk. In our testing, people gave Pip more detail than they gave a text box.",
@@ -568,9 +568,21 @@ export const launchSlide = {
 export const hologramSlide = {
   heading: "Pip lives in a sheet of fog",
   parts: [
-    { id: "generator", text: "A fog generator makes mist so fine it feels dry.", source: "fogscreenContent" },
-    { id: "curtains", text: "Fans on both sides sandwich the mist so it falls flat.", source: "ucsbFogscreen" },
-    { id: "projector", text: "A projector behind the sheet draws Pip on the mist.", source: undefined },
+    {
+      id: "generator",
+      text: "A fog box at the base makes mist so fine it feels dry and pushes it up a narrow slot.",
+      source: "fogscreenContent",
+    },
+    {
+      id: "curtains",
+      text: "Fans on both sides blow clean air up beside the mist so it rises as a flat sheet.",
+      source: "ucsbFogscreen",
+    },
+    {
+      id: "projector",
+      text: "A projector 1 to 2 meters behind the sheet draws Pip on the mist.",
+      source: "teamBuildPlan",
+    },
     {
       id: "hand",
       text: "A hand passes right through, because the screen is only air and water.",

@@ -22,6 +22,7 @@ Keep the slides clean: no progress bar, dots or slide numbers. Each slide's foot
 - `npm run dev` starts the deck at http://localhost:3000
 - `/print` (or the P key) is the print version, one landscape page per slide or build step, for PDF export
 - `npm run build` writes the static export to `out/`. `npm run build:single` also folds it into one self-contained file, `dist/pip-deck.html`, for hosts that take a single page (there, P opens the print view at `#print`).
+- Pushing to `main` on GitHub runs `.github/workflows/deploy.yml`, which checks, builds and publishes the deck to GitHub Pages (repo Settings, Pages, Source: GitHub Actions).
 - `npm run check` runs the type checker, the linter with its complexity limit, and the em dash scan. Run it before saying a task is done.
 - Work on a branch and open a pull request. Never push straight to `main`.
 
@@ -97,7 +98,7 @@ The deck should look like a design textbook or a designer's portfolio. Take on t
 - Use real imagery: generated images, or models built in Blender or Inkscape. No stock photos and no real company logos. Refer to companies by name in text only.
 - Use animation and interactivity, and check animations frame by frame instead of assuming the CSS is right.
 - Carry detail all the way through: grain, texture, edge treatment and weight.
-- Repeat one motif across the whole deck, the way strong writers and photographers repeat an image. This deck's motif: a falling sheet of mist, the same fog screen Pip lives on. It drifts to a new place on every slide, and on the hardware slide it becomes the screen itself.
+- Repeat one motif across the whole deck, the way strong writers and photographers repeat an image. This deck's motif: a rising sheet of mist, the same fog screen Pip lives on. It drifts to a new place on every slide, and on the hardware slide it becomes the screen itself.
 
 ## Writing
 
