@@ -713,7 +713,7 @@ export const standardsSlide = {
     },
     {
       standard: "Understandable through the product",
-      where: 'The four steps and "What I heard" explain the idea without slides.',
+      where: '"What I heard" and Pip bringing up what it noticed explain the idea without slides.',
     },
     { standard: "Built for a specific person", where: "Gloria and her family clinic in East Los Angeles." },
   ],
