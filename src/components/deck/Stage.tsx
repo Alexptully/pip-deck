@@ -19,15 +19,13 @@ export function Stage({ children, tone = "surface" }: { children: ReactNode; ton
   }, []);
 
   return (
-    <div
-      className={`fixed inset-0 grid place-items-center overflow-hidden ${tone === "void" ? "bg-void" : "bg-surface-sunken"}`}
-    >
+    <div className={`fixed inset-0 overflow-hidden ${tone === "void" ? "bg-void" : "bg-surface-sunken"}`}>
       <div
-        className={`relative shrink-0 overflow-hidden ${tone === "void" ? "bg-void" : "bg-surface"}`}
+        className={`absolute left-1/2 top-1/2 overflow-hidden ${tone === "void" ? "bg-void" : "bg-surface"}`}
         style={{
           width: STAGE_WIDTH,
           height: STAGE_HEIGHT,
-          transform: `scale(${scale})`,
+          transform: `translate(-50%, -50%) scale(${scale})`,
           visibility: scale === 0 ? "hidden" : "visible",
         }}
       >
