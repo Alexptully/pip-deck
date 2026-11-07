@@ -81,13 +81,13 @@ export const slides: SlideMeta[] = [
     section: "Who it's for",
     rubric: "Believable",
     steps: 2,
-    sources: ["amaAi2024", "thryvAi2025"],
+    sources: ["gs10ksb2026", "nhsGpTraining2022"],
     mist: { x: 1700, width: 300, strength: 0.5 },
     notes: [
-      "Gloria's world is changing fast. In the AMA's survey of 1,183 physicians, 66% used AI in their practice in 2024, up from 38% the year before.",
-      "Small businesses moved the same way. A Thryv survey of 540 small businesses found AI use went from 39% in 2024 to 55% in 2025. That one is a vendor survey, so we label it as such.",
-      "But nearly all of that is software someone else designed. Gloria's clinic still has no app shaped around its own front desk.",
-      "Advance. So what if Pip could help her build her own?",
+      "People like Gloria want easier ways to work. In Goldman Sachs' 2026 survey of 1,256 small business owners in its 10,000 Small Businesses program, 84% of those using AI said the main benefit was saving time and working more efficiently.",
+      "But they get stuck at the learning part. In the same survey, 73% said more training and help setting it up would help them, and only 14% said AI was fully part of their day-to-day operations.",
+      "Clinics have it worse. In NHS England's survey of 791 general-practice staff, 74% said their workload kept them from finishing training, and the next barrier was having no protected time to learn. That one is a UK survey, so we say so.",
+      "Advance. So what if building an app took no learning at all, and felt like talking to a friend?",
     ],
   },
   {
@@ -369,25 +369,40 @@ export const personaSlide = {
 };
 
 export const statSlide = {
-  heading: "Clinics and shops took up AI fast last year",
-  stats: [
+  heading: "Busy people want easier tools but can't stop to learn them",
+  groups: [
     {
-      id: "physicians",
-      label: "Physicians using AI in their practice",
-      before: { year: "2023", value: 38 },
-      after: { year: "2024", value: 66 },
-      detail: "AMA survey of 1,183 physicians",
+      id: "want",
+      label: "They want easier ways to work",
+      figures: [
+        {
+          id: "efficiency",
+          figure: "84%",
+          text: "of small business owners using AI say saving time and working more efficiently is the main benefit",
+          detail: "Goldman Sachs 10,000 Small Businesses survey of 1,256 owners, 2026",
+        },
+      ],
     },
     {
-      id: "smallBusinesses",
-      label: "Small businesses using AI",
-      before: { year: "2024", value: 39 },
-      after: { year: "2025", value: 55 },
-      detail: "Thryv survey of 540 small businesses (vendor survey)",
+      id: "stuck",
+      label: "But learning new tools takes time they don't have",
+      figures: [
+        {
+          id: "training",
+          figure: "73%",
+          text: "say more training and help setting it up would help them",
+          detail: "Same Goldman Sachs survey, 2026",
+        },
+        {
+          id: "workload",
+          figure: "74%",
+          text: "of clinic staff say their workload keeps them from finishing training",
+          detail: "NHS England survey of 791 general-practice staff, 2022 (UK)",
+        },
+      ],
     },
   ],
-  gap: "Nearly all of it is software someone else designed. Gloria's clinic still has no app shaped around its own front desk.",
-  pivot: "What if Pip could help Gloria build her own?",
+  pivot: "What if building an app felt like talking to a friend?",
 };
 
 export const ownersSlide = {

@@ -10,8 +10,8 @@ export type Source = {
 
 export type SourceId =
   | "sbaNation2025"
-  | "amaAi2024"
-  | "thryvAi2025"
+  | "gs10ksb2026"
+  | "nhsGpTraining2022"
   | "blsOoh"
   | "mdnSpeechSynthesis"
   | "mdnSpeechRecognition"
@@ -86,23 +86,25 @@ export const sources: Record<SourceId, Source> = {
     usedFor:
       "Wire diagrams look better on fog than photos or full-frame video; the fog is dry because the particles are so small.",
   },
-  amaAi2024: {
-    id: "amaAi2024",
-    short: "AMA physician AI sentiment survey, 2024",
-    publisher: "American Medical Association",
-    title: "Physician sentiments around the use of AI in health care: motivations, opportunities, risks, and use cases",
-    date: "February 2025 (survey run November 2024)",
-    url: "https://www.ama-assn.org/system/files/physician-ai-sentiment-report.pdf",
-    usedFor: "66% of 1,183 physicians used AI in their practice in 2024, up from 38% in 2023.",
+  gs10ksb2026: {
+    id: "gs10ksb2026",
+    short: "Goldman Sachs 10,000 Small Businesses Voices survey, 2026",
+    publisher: "Goldman Sachs 10,000 Small Businesses Voices (Business Wire)",
+    title: "Survey: Small Businesses Embrace AI But Need Training and Support to Fully Harness It",
+    date: "March 17, 2026 (1,256 program participants surveyed January 27 to February 4, 2026, by Babson College and David Binder Research)",
+    url: "https://www.businesswire.com/news/home/20260317141697/en/Survey-Small-Businesses-Embrace-AI-But-Need-Training-and-Support-to-Fully-Harness-It",
+    usedFor:
+      "84% of AI users name efficiency and productivity as the main benefit; 73% say more training and implementation resources would help; 14% say AI is fully embedded in core operations.",
   },
-  thryvAi2025: {
-    id: "thryvAi2025",
-    short: "Thryv small business AI survey, 2025 (via Chain Store Age)",
-    publisher: "Chain Store Age, reporting a Thryv survey",
-    title: "Survey: AI usage among small businesses up 41%",
-    date: "2025 (survey of 540 small businesses, May 4 to 14, 2025)",
-    url: "https://chainstoreage.com/survey-ai-usage-among-small-businesses-41",
-    usedFor: "Small business AI use rose from 39% in 2024 to 55% in 2025. Thryv sells software to small businesses.",
+  nhsGpTraining2022: {
+    id: "nhsGpTraining2022",
+    short: "NHS England, staff training in general practice, 2022 survey",
+    publisher: "NHS England, Workforce, Training and Education (Digital Transformation)",
+    title: "Research to inform staff training for digital delivery in general practice: Discussion",
+    date: "Published June 2023 (791 general-practice staff surveyed January to February 2022)",
+    url: "https://digital-transformation.hee.nhs.uk/publications/research-to-inform-staff-training-for-digital-delivery-in-general-practice/discussion",
+    usedFor:
+      "74% of respondents named high workload as a barrier to completing training; lack of protected time came second.",
   },
   promptBrief: {
     id: "promptBrief",
@@ -117,8 +119,8 @@ export const sources: Record<SourceId, Source> = {
 
 export const sourceOrder: SourceId[] = [
   "promptBrief",
-  "amaAi2024",
-  "thryvAi2025",
+  "gs10ksb2026",
+  "nhsGpTraining2022",
   "sbaNation2025",
   "blsOoh",
   "mdnSpeechSynthesis",

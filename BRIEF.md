@@ -50,7 +50,7 @@ Pip is a friendly, human-facing way to build software. Today's AI builders feel 
 - **Why she wants it:** patients join the walk-in list from their phones and hear back when it's their turn, so they stop waiting on hold.
 - **Why she needs it:** without it, the phones stay the system, and the software she has was designed for someone else.
 
-**Opening stat:** in the AMA's survey of 1,183 physicians, 66% used AI in their practice in 2024, up from 38% in 2023. A Thryv survey of 540 small businesses (a vendor survey, labeled as such) found AI use rose from 39% in 2024 to 55% in 2025. Nearly all of that is software someone else designed. The pivot: what if Pip could help Gloria build her own?
+**Opening stat (people want easier tools but can't stop to learn them):** in Goldman Sachs' 2026 survey of 1,256 small business owners in its 10,000 Small Businesses program, 84% of those using AI said the main benefit was saving time and working more efficiently, yet 73% said more training and help setting it up would help them, and only 14% said AI was fully part of daily operations. In NHS England's 2022 survey of 791 general-practice staff (UK), 74% said high workload kept them from finishing training, with lack of protected time second. The pivot: what if building an app felt like talking to a friend?
 
 Gloria is a persona. Before pitching, swap in quotes from two or three real clinic staff or owners (`src/content/config.ts`).
 
