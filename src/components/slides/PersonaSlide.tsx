@@ -9,10 +9,10 @@ export function PersonaSlide() {
   return (
     <div className="relative h-full">
       <Heading>{personaSlide.heading}</Heading>
-      <Reveal delay={0.2} className="absolute left-0 top-[170px]">
+      <Reveal delay={0.2} className="absolute left-0 top-[125px]">
         <KeyValue rows={personaSlide.facts} />
       </Reveal>
-      <Reveal delay={0.35} className="absolute right-[200px] top-[170px]">
+      <Reveal delay={0.35} className="absolute right-[200px] top-[125px]">
         <div className="rounded-card bg-paper p-10 shadow-card">
           <Stethoscope size={200} weight="light" className="text-ink" aria-hidden />
         </div>

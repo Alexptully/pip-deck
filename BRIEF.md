@@ -48,7 +48,7 @@ Pip is a friendly, human-facing way to build software. Today's AI builders feel 
 
 - **Her day:** the phones start before the doors open. Patients call all day to ask how long the wait is and whether a refill went through. A voicemail gets missed. She is still returning calls after closing.
 - **What she can't do today:** build anything. She tried an AI app builder once, and closed it when it showed her code. There is no budget for a developer.
-- **Sector constraints:** thin margins, no IT person, a scheduling system she didn't choose, mostly walk-in patients, many older and more at home in Spanish. Health information needs care.
+- **Sector constraints:** no budget for a developer, patient privacy rules (HIPAA), no IT person, a scheduling system she didn't choose and a phone as her main computer. Mostly walk-in patients, many older and more at home in Spanish.
 - **Why she wants it:** patients join the walk-in list from their phones and hear back when it's their turn, so they stop waiting on hold.
 - **Why she needs it:** without it, the phones stay the system, and the software she has was designed for someone else.
 

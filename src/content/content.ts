@@ -82,7 +82,9 @@ export const slides: SlideMeta[] = [
     notes: [
       "Meet Gloria. She runs a two-doctor family clinic in East Los Angeles. She is not a doctor and not technical. She keeps the clinic running.",
       "Point at the timeline. The phones start before the doors open. Every dot is a patient calling to ask how long the wait is or whether a refill went through. The hollow dot is the voicemail that got missed.",
+      "Her constraints are real: no budget for a developer, patient privacy rules to follow, a scheduling system she didn't choose, and a phone as her main computer.",
       "Gloria tried an AI app builder once. It opened to a blank box, then showed her code. She closed the tab and never went back.",
+      "Why she needs something better: without it, the phones stay the system. Patients wait on hold, voicemails get missed, and she keeps returning calls after closing.",
       "Gloria is a persona built from our interviews. Swap in the real details you heard before the pitch.",
     ],
   },
@@ -262,18 +264,6 @@ export const slides: SlideMeta[] = [
     ],
   },
   {
-    id: "standards",
-    name: "How Pip meets the prompt",
-    section: "Prompt standards",
-    rubric: "All standards",
-    steps: 1,
-    sources: ["promptBrief"],
-    mist: { x: 1850, width: 110, strength: 0.3 },
-    notes: [
-      "This is the map from each standard in the prompt to the place you can see it in the product. Leave it up during questions.",
-    ],
-  },
-  {
     id: "close",
     name: "Close",
     section: "The ask",
@@ -284,6 +274,18 @@ export const slides: SlideMeta[] = [
     notes: [
       "Pip lets anyone who can describe a problem build the software for it, by talking to someone friendly instead of a machine.",
       "Invite the judges to walk up and tell Pip what's been hard this week. Thank you.",
+    ],
+  },
+  {
+    id: "standards",
+    name: "How Pip meets the prompt",
+    section: "Prompt standards",
+    rubric: "All standards",
+    steps: 1,
+    sources: ["promptBrief"],
+    mist: { x: 1850, width: 110, strength: 0.3 },
+    notes: [
+      "This is the map from each standard in the prompt to the place you can see it in the product. Leave it up during questions.",
     ],
   },
   {
@@ -316,8 +318,9 @@ export const personaSlide = {
     { key: "Who", value: "Gloria, 56, clinic director" },
     { key: "Clinic", value: "East Los Angeles, two doctors and a front desk of two" },
     { key: "Patients", value: "Mostly walk-ins, many more at home in Spanish" },
-    { key: "Tech", value: "A scheduling system she didn't choose, and her phone" },
+    { key: "Constraints", value: "No budget for a developer, patient privacy rules, and her phone" },
     { key: "AI builders", value: "Tried one once and closed it when it showed her code" },
+    { key: "Without help", value: "The phones stay the system, and patients wait on hold" },
   ],
   dayStartHour: 7,
   dayEndHour: 20,
