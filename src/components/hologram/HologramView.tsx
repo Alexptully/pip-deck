@@ -6,6 +6,7 @@ import { hologramCopy, pipCueFor, type PipCue } from "@/content/content";
 import { relayBase } from "@/lib/pip-link";
 import { useHologramSync, type DeckPosition } from "@/lib/pip-sync";
 import { speakAsPip, unlockPipVoice } from "@/lib/use-pip-voice";
+import { fullscreenOnExtendedScreen } from "@/lib/screens";
 import { toggleFullscreen } from "@/lib/use-deck-keys";
 import { Mist } from "@/components/mist/Mist";
 import { Stage } from "@/components/deck/Stage";
@@ -133,7 +134,7 @@ export function HologramView() {
 
   const start = () => {
     unlockPipVoice();
-    toggleFullscreen();
+    void fullscreenOnExtendedScreen();
     setStarted(true);
   };
 

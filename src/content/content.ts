@@ -824,7 +824,7 @@ export function pipCueFor(slideId: SlideId, step: number): PipCue {
 
 export const hologramCopy = {
   title: "Pip on the fog screen",
-  help: "Drag this window onto the fog projector, then start it. It goes full screen and lets Pip speak.",
+  help: "Start it to go full screen on the fog projector and let Pip speak. In Chrome, allow window management when asked and it picks the extended display itself; otherwise drag this window onto the projector first.",
   start: "Start the hologram",
   waiting:
     "Waiting for the deck. Open the deck in another window of this browser, or start it with npm run present on the presenting laptop.",

@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { slides } from "@/content/content";
 import { duration, ease } from "@/lib/motion";
 import { HologramConnectedProvider, useDeckSync } from "@/lib/pip-sync";
+import { findExtendedScreen, placeOnScreen } from "@/lib/screens";
 import { toggleFullscreen, useDeckKeys } from "@/lib/use-deck-keys";
 import { useDeckNavigation } from "@/lib/use-deck-navigation";
 import { Mist, mistFor } from "@/components/mist/Mist";
@@ -22,10 +23,16 @@ export const hologramHref = process.env.NEXT_PUBLIC_SINGLE_FILE
   ? "#pip"
   : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/pip/`;
 
-/** Opens Pip's hologram screen in its own window, ready to drag onto the fog projector. */
+/**
+ * Opens Pip's hologram screen in its own window and, where the browser allows it, moves that
+ * window onto the extended display. The window opens first so the click still counts as the
+ * presenter's own, then it moves once the screens are known.
+ */
 function openHologramWindow() {
   const href = hologramHref.startsWith("#") ? `${window.location.pathname}${hologramHref}` : hologramHref;
-  window.open(href, "pip-hologram", "popup,width=960,height=540");
+  const hologram = window.open(href, "pip-hologram", "popup,width=960,height=540");
+  if (!hologram) return;
+  void findExtendedScreen().then((screen) => (screen ? placeOnScreen(hologram, screen) : undefined));
 }
 
 export function Deck() {
