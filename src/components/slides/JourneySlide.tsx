@@ -1,4 +1,4 @@
-import { ChatCircleDots, Microphone, RocketLaunch, SlidersHorizontal, type Icon } from "@phosphor-icons/react";
+import { ChatCircleDots, Ear, MapTrifold, RocketLaunch, SlidersHorizontal, type Icon } from "@phosphor-icons/react";
 import { journeySlide } from "@/content/content";
 import { DrawPath } from "@/components/primitives/DrawPath";
 import { Heading } from "@/components/primitives/Heading";
@@ -6,17 +6,18 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { Pip } from "@/components/pip/Pip";
 
 const icons: Record<string, Icon> = {
-  say: Microphone,
-  shape: SlidersHorizontal,
+  listen: Ear,
+  ask: SlidersHorizontal,
   try: ChatCircleDots,
   launch: RocketLaunch,
+  move: MapTrifold,
 };
 
-const NODE_X = [100, 520, 940, 1300];
-const NODE_Y = [300, 220, 300, 220];
+const NODE_X = [80, 410, 740, 1070, 1400];
+const NODE_Y = [300, 220, 300, 220, 300];
 const TEXT_TOP = 370;
 const PATH =
-  "M -40 320 C 40 320, 60 300, 100 300 S 380 214, 520 220 S 800 306, 940 300 S 1180 214, 1300 220 S 1600 212, 1720 200";
+  "M -40 320 C 20 320, 40 300, 80 300 S 300 214, 410 220 S 630 306, 740 300 S 960 214, 1070 220 S 1290 306, 1400 300 S 1640 290, 1720 280";
 
 export function JourneySlide() {
   return (
@@ -42,11 +43,11 @@ export function JourneySlide() {
         {journeySlide.steps.map((step, index) => {
           const StepIcon = icons[step.id];
           return (
-            <Reveal key={step.id} delay={0.5 + index * 0.35} className="absolute w-[400px]">
+            <Reveal key={step.id} delay={0.5 + index * 0.35} className="absolute w-[300px]">
               <div style={{ transform: `translate(${NODE_X[index] - 20}px, ${TEXT_TOP}px)` }}>
                 <StepIcon size={56} weight="light" className="text-accent" />
-                <p className="type-title mt-4 text-text">{step.name}</p>
-                <p className="type-body mt-4 text-text-muted">{step.text}</p>
+                <p className="type-lead mt-4 text-text">{step.name}</p>
+                <p className="type-body mt-3 text-text-muted">{step.text}</p>
               </div>
             </Reveal>
           );

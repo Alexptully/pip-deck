@@ -38,46 +38,55 @@ Original, Useful, Believable, Accessible to non-engineers, Understandable throug
 
 ## Who it's for
 
-**Rosa, 52. Owner and baker, a two-oven panadería in Boyle Heights, Los Angeles.** (Sector: small business.)
+Pip is for workplaces that run on operations and have nobody technical: corner stores, clinics, salons, food banks. The people there are too busy to learn vibe coding and too busy to stop and describe an app. Pip is a traveling builder. It visits a workplace for about a week, listens to customer complaints, staff requests and everyday conversation, works out how the place runs, then builds what is missing and moves on.
 
-- **Her day:** at the ovens by 4 a.m. Counter from 7. Between batches she answers Instagram DMs and texts from customers trying to reserve conchas, a rosca, a birthday tres leches. Orders live in a paper notebook by the register. Her nephew helps on weekends.
-- **What she can't do today:** build anything. She has no budget for a developer, no time to learn a site builder, and every AI app builder she's seen opens to a blank text box and a wall of code she can't check.
-- **Sector constraints:** thin margins, no IT person, a phone that is her whole computer, a bilingual (often older) customer base, and food that can't be un-baked. Overselling means working until midnight; underselling means waste.
-- **Why she wants it:** customers order in two taps; she stops answering DMs at midnight.
-- **Why she needs it:** without it, the notebook stays the system. Orders get lost in DMs, she guesses how much to bake every morning, and she turns away anyone who can't reach her before closing.
+**Primary persona: Marisol, 47. Owner of a corner market in Boyle Heights, Los Angeles.** (Sector: small business.)
 
-Before pitching, swap in quotes from two or three real bakery or small-shop owners (`src/content/config.ts`).
+- **Her day:** deliveries from 6 a.m., at the register until 10 p.m. Every morning a local bakery drops off four dozen pan dulce. It sells out by 10, and customers keep asking for it all day. Staff write reservations on the back of receipts. Three part-timers, one register.
+- **What she can't do today:** build anything. She has no budget for a developer, no time to learn a site builder, and no time to sit down and describe what she needs. The needs are said out loud at the counter all day, and nobody writes them down.
+- **Sector constraints:** thin margins, no IT person, a phone that is her whole computer, a bilingual (often older) customer base.
+- **Why she wants it:** she keeps working while Pip figures out what to build, and she only answers plain questions about her own shop.
+- **Why she needs it:** without it, reservations stay on receipts, people who can't come before 10 go without, and she guesses how much to order every morning.
+
+**Second stop: Janelle, front desk at a family clinic.** Pip hears patients asking how long the wait is and staff calling back about refills. It builds a text-me waitlist and a refill status board. In clinics, Pip excludes health details from what it learns.
+
+Both personas are illustrative. Before pitching, swap in quotes from two or three real owners or staff (`src/content/config.ts`).
 
 ## What is broken about building software today
 
-Today's AI builders still assume you think like an engineer: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to Rosa (how people pay, how many she can bake, whether her customers read Spanish) are buried under technical ones, or never asked.
+Today's AI builders assume you have time to stop working and the words to describe what you want: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to Marisol (how many she can set aside, how people pay, whether her customers read Spanish) are buried under technical ones. Meanwhile the real requirements are said out loud in the workplace every day and lost.
 
 ## Who Pip allows to build
 
-People who have never built anything and never will learn to: shop owners, coaches, pantry volunteers, teachers. If you can describe your problem to a friend, you can build with Pip.
+Whole workplaces that will never learn to code and never hire a developer. If people at your workplace talk about a problem, Pip can hear it and build for it.
 
 ## What Pip makes easier
 
-- **Say it:** Rosa talks; Pip reflects back what it heard (Who, Business, Problem, Goal).
-- **Shape it:** four questions, one at a time, as big choices with a reason. "How many can you bake a day? I'll close orders before you get swamped" is a business decision that quietly creates inventory logic. Every change flies from Pip's hand into the app.
-- **Try it:** Pip pretends to be a customer and finds the gap ("I'm allergic to nuts and there was nowhere to tell you").
-- **Launch it:** one word gives a working page and a QR code. Orders arrive live and the team gets a bake list.
+- **Listen:** Pip spends a week at the counter on its fog screen. It hears customers, staff and passing conversation, then shows the owner "What I noticed" as patterns and counts (demo data on the slide).
+- **Ask:** Pip asks the owner one plain question at a time, each starting from something it heard. "People asked after it sold out 14 times. How many can you set aside each day?" is a business question that quietly builds inventory logic. Every change flies from Pip's hand into the app.
+- **Try:** Pip pretends to be a customer and finds the gap ("I'm allergic to nuts and there was nowhere to tell you").
+- **Launch:** one word gives a working page and a QR code. Reservations arrive live and add up into tomorrow's order for the bakery.
+- **Move on:** Pip travels to the next workplace (the clinic) and checks back in a month.
+
+## Trust
+
+A listening agent needs visible rules: Pip glows whenever it listens, everyone is told first and anyone can say "Pip, pause", it keeps patterns not recordings, nothing is built without the owner's yes, health details stay out in clinics, and the listening leaves with Pip. These are prototype design rules, not legal certifications; a real clinic deployment would need a privacy and HIPAA review.
 
 ## Why now
 
-Models can hold a conversation, turn a messy description into structure and make small reliable changes in real time. Browser speech makes voice free and instant.
+Models can turn a week of overlapping conversation into a few clear patterns and make small reliable changes in real time. Browser speech makes listening and talking free and instant. Fog screens give a listening agent a visible body.
 
 ## What we learned (starting points, replace with the team's own)
 
-- Free-form "build anything" overwhelmed even us. One question at a time felt calm.
-- Showing what Pip heard before building did more for trust than any explanation.
+- Owners describe problems, never features. Listening first skips the hardest part.
+- Showing what Pip noticed before building did more for trust than any explanation.
 - The pretend customer catching a missing notes box was the most useful AI moment.
-- People are more specific with a character than with a text box.
+- People relaxed once they could see when Pip was listening.
 
-## Who benefits beyond Rosa
+## Who benefits beyond Marisol
 
-Her helpers (a shared bake list), her customers (bilingual, bigger text), the neighborhood (local shops compete without paying for software), and other builders such as a youth soccer coach, a tutor or a food-bank shift coordinator.
+Her staff (one list instead of receipts), her customers (bilingual, bigger text, pan dulce after 10), the neighborhood (local shops get tools without paying a developer), and every next stop on Pip's route: a family clinic, a salon, a food-bank shift coordinator.
 
 ## Hardware
 
-Pip runs on a laptop and is projected onto a small fog screen.
+Pip runs on a laptop and is projected onto a small fog screen at the counter, so everyone can see when it is listening.

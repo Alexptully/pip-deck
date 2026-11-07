@@ -12,14 +12,14 @@ import { Pip } from "@/components/pip/Pip";
 type CodeLine = { text: string; buried?: boolean };
 
 function codeLines(): CodeLine[] {
-  const [pay, bake, spanish] = brokenSlide.rosaQuestions;
+  const [first, second, third] = brokenSlide.buriedQuestions;
   return [
     { text: "const schema = z.object({ fields, components });" },
-    { text: `// ${pay}`, buried: true },
+    { text: `// ${first}`, buried: true },
     { text: "await deploy({ database, auth, routes });" },
-    { text: `// ${bake}`, buried: true },
+    { text: `// ${second}`, buried: true },
     { text: "const [state, dispatch] = useReducer(reducer);" },
-    { text: `// ${spanish}`, buried: true },
+    { text: `// ${third}`, buried: true },
     { text: "if (!env.ok) throw new Error(buildErrors);" },
   ];
 }
@@ -73,9 +73,12 @@ function PipPane({ show }: { show: boolean }) {
         <Pip height={110} mood="listen" />
       </div>
       <ul className="flex flex-col gap-10 pt-6">
-        {brokenSlide.rosaQuestions.map((question, index) => (
-          <Reveal key={question} show={show} delay={0.2 + index * 0.12}>
-            <li className="type-lead text-text">{question}</li>
+        {brokenSlide.overheard.map((line, index) => (
+          <Reveal key={line.text} show={show} delay={0.2 + index * 0.12}>
+            <li>
+              <p className="type-caption text-text-faint">{line.who}</p>
+              <p className="type-lead mt-1 text-text">{`"${line.text}"`}</p>
+            </li>
           </Reveal>
         ))}
       </ul>

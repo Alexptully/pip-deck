@@ -1,13 +1,13 @@
-import { demoReservedToday, shapeSlide, type ShapeQuestion } from "@/content/content";
+import { demoReservedToday, askSlide, type AskQuestion } from "@/content/content";
 import type { ShopLanguage, ShopState } from "@/components/phone/ShopPage";
 
 export type Answers = Record<string, string>;
 
 export const defaultAnswers: Answers = Object.fromEntries(
-  shapeSlide.questions.map((question) => [question.id, question.defaultChoice]),
+  askSlide.questions.map((question) => [question.id, question.defaultChoice]),
 );
 
-/** Turns Rosa's plain answers into the settings the shop page is built from. */
+/** Turns Marisol's plain answers into the settings the shop page is built from. */
 export function shopFromAnswers(answers: Answers): ShopState {
   return {
     limit: Number(answers.limit),
@@ -19,10 +19,10 @@ export function shopFromAnswers(answers: Answers): ShopState {
   };
 }
 
-export function buildsFor(question: ShapeQuestion, answers: Answers): string {
+export function buildsFor(question: AskQuestion, answers: Answers): string {
   return question.choices.find((choice) => choice.id === answers[question.id])?.builds ?? "";
 }
 
-export function choiceLabel(question: ShapeQuestion, answers: Answers): string {
+export function choiceLabel(question: AskQuestion, answers: Answers): string {
   return question.choices.find((choice) => choice.id === answers[question.id])?.label ?? "";
 }

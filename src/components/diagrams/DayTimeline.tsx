@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { rosaSlide } from "@/content/content";
+import { marketSlide } from "@/content/content";
 import { duration, ease } from "@/lib/motion";
 import { DrawPath } from "@/components/primitives/DrawPath";
 import { useStill } from "@/components/primitives/Still";
@@ -11,10 +11,9 @@ const HEIGHT = 380;
 const BAR_Y = 230;
 const DOT_Y = 190;
 const LABEL_Y = 40;
-const ticks = [4, 8, 12, 16, 20, 24];
 
 function hourToX(hour: number): number {
-  const { dayStartHour, dayEndHour } = rosaSlide;
+  const { dayStartHour, dayEndHour } = marketSlide;
   return ((hour - dayStartHour) / (dayEndHour - dayStartHour)) * (WIDTH - 40) + 20;
 }
 
@@ -47,9 +46,9 @@ function MessageDot({ hour, order, lost }: { hour: number; order: number; lost: 
   );
 }
 
-/** Rosa's day from 4 a.m. to midnight, with messages landing between batches. */
+/** Marisol's day at the market, with requests said out loud landing across it. */
 export function DayTimeline() {
-  const moments = rosaSlide.moments;
+  const { moments, ticks } = marketSlide;
   return (
     <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} width={WIDTH} height={HEIGHT} className="overflow-visible">
       <defs>
@@ -58,15 +57,15 @@ export function DayTimeline() {
           <stop offset="1" className="[stop-color:var(--color-text)] [stop-opacity:0]" />
         </linearGradient>
       </defs>
-      {rosaSlide.blocks.map((block) => (
+      {marketSlide.blocks.map((block, index) => (
         <g key={block.label}>
           <rect
             x={hourToX(block.from)}
             y={BAR_Y}
             width={hourToX(block.to) - hourToX(block.from)}
             height={56}
-            className={block.label === "Ovens" ? "fill-text/25" : ""}
-            fill={block.label === "Ovens" ? undefined : "url(#counter-fade)"}
+            className={index === 0 ? "fill-text/25" : ""}
+            fill={index === 0 ? undefined : "url(#counter-fade)"}
           />
           <text x={hourToX(block.from) + 18} y={BAR_Y + 37} className="fill-text type-caption">
             {block.label}
@@ -85,11 +84,11 @@ export function DayTimeline() {
           {hourLabel(hour)}
         </text>
       ))}
-      <text x={hourToX(rosaSlide.messageHours[0])} y={DOT_Y - 30} className="fill-text-muted type-fine">
-        {rosaSlide.messagesLabel}
+      <text x={hourToX(marketSlide.requestHours[0])} y={DOT_Y - 30} className="fill-text-muted type-fine">
+        {marketSlide.requestsLabel}
       </text>
-      {rosaSlide.messageHours.map((hour, order) => (
-        <MessageDot key={hour} hour={hour} order={order} lost={hour === rosaSlide.lostMessageHour} />
+      {marketSlide.requestHours.map((hour, order) => (
+        <MessageDot key={hour} hour={hour} order={order} lost={hour === marketSlide.lostRequestHour} />
       ))}
       {moments.map((moment, index) => (
         <g key={moment.text}>

@@ -7,15 +7,17 @@ import type { SourceId } from "./sources";
 
 export type SlideId =
   | "title"
-  | "rosa"
+  | "market"
   | "owners"
   | "builders"
   | "broken"
   | "journey"
-  | "say"
-  | "shape"
+  | "listen"
+  | "ask"
   | "try"
   | "launch"
+  | "clinic"
+  | "trust"
   | "hologram"
   | "whyNow"
   | "learned"
@@ -38,6 +40,9 @@ export type SlideMeta = {
   notes: string[];
 };
 
+/** The owner Pip visits first. Used in labels across the demo slides. */
+export const ownerName = "Marisol";
+
 export const slides: SlideMeta[] = [
   {
     id: "title",
@@ -49,12 +54,12 @@ export const slides: SlideMeta[] = [
     mist: { x: 1360, width: 640, strength: 1 },
     notes: [
       "Hi, we're the team behind Pip. The prompt asked what comes after typing a request into an AI builder.",
-      "Our answer is a character you talk to. Pip lives in a sheet of fog on stage, and by the end of this pitch it will have built a real ordering page for a real kind of shop.",
+      "Our answer is a builder that comes to you. Pip is a character who lives in a sheet of fog at the counter. It travels from workplace to workplace, listens to how each one runs and builds the app that place needs.",
       "If the fog screen is running, wave a hand through Pip now. It gets a laugh and it shows the screen is only mist.",
     ],
   },
   {
-    id: "rosa",
+    id: "market",
     name: "Who it's for",
     section: "Who it's for",
     rubric: "Built for a specific person",
@@ -62,10 +67,11 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1760, width: 240, strength: 0.45 },
     notes: [
-      "Meet Rosa. She owns a two-oven panadería in Boyle Heights. She is at the ovens by 4 a.m. and at the counter from 7.",
-      "Between batches she answers Instagram DMs and texts from people reserving conchas, a rosca or a birthday tres leches. Every order goes into a paper notebook by the register.",
-      "Point at the timeline. At 4 a.m. she guesses how much to bake. During the day an order slips through the DMs. At midnight she is still answering messages.",
-      "Rosa is a persona built from our interviews. Swap in the real details you heard before the pitch.",
+      "Meet Marisol. She owns a corner market in Boyle Heights. She takes deliveries at 6 a.m. and is at the register until 10 at night.",
+      "Every morning a local bakery drops off four dozen pieces of pan dulce. It sells out by 10, and people keep asking for it all day.",
+      "Point at the timeline. Every dot is a request someone said out loud: a customer asking her to save conchas, a staff member asking where a reservation went. The hollow dot is the reservation that got lost on a receipt.",
+      "Nobody writes any of this down, and Marisol has no time to sit and describe an app. That is who Pip is for: workplaces too busy running to stop and build.",
+      "Marisol is a persona built from our interviews. Swap in the real details you heard before the pitch.",
     ],
   },
   {
@@ -77,9 +83,9 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 180, width: 220, strength: 0.4 },
     notes: [
-      "Judges will ask how we know shop owners want this. This slide is the answer.",
-      "Replace the placeholders in src/content/config.ts with two or three real quotes from bakery or small-shop owners you talked to, with their permission.",
-      "Read one quote out loud. Pick the one that sounds the most like Rosa.",
+      "Judges will ask how we know workplaces want this. This slide is the answer.",
+      "Replace the placeholders in src/content/config.ts with two or three real quotes from shop owners, clinic staff or other busy workplaces you talked to, with their permission.",
+      "Read one quote out loud. Pick the one that sounds the most like Marisol.",
     ],
   },
   {
@@ -93,8 +99,8 @@ export const slides: SlideMeta[] = [
     notes: [
       "There are 36.2 million small businesses in the U.S., per the SBA's 2025 profiles, which use 2022 Census data. The BLS counts about 1.7 million software developers in 2025.",
       "That works out to about 21 small businesses for every developer. That ratio is our own division of the two published numbers.",
-      "Closer to Rosa: in the Los Angeles metro, 91.4% of the 453,201 Hispanic-owned businesses have no employees at all. There is nobody on staff to hand the tech to.",
-      "Pip is for people who will never learn to code: shop owners, coaches, pantry volunteers, teachers. If you can describe your problem to a friend, you can build with Pip.",
+      "Closer to Marisol: in the Los Angeles metro, 91.4% of the 453,201 Hispanic-owned businesses have no employees at all. There is nobody on staff to hand the tech to.",
+      "Pip is for workplaces that will never hire a developer: corner stores, clinics, salons, food banks. If people at your workplace talk about a problem, Pip can hear it and build for it.",
       "Hover a group in the chart to highlight it, or click the key to hide it.",
     ],
   },
@@ -107,9 +113,9 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 110, strength: 0.7 },
     notes: [
-      "Today's AI builders still assume you think like an engineer. You face a blank box and you're expected to write a spec.",
-      "Then you get a wall of code or a generated screen you can't reason about. Fixing it means learning words like fields, components, deploy and database.",
-      "Advance. The questions that matter to Rosa, like how people pay, how many she can bake and whether her customers read Spanish, are buried under the technical ones or never asked. Pip asks them first.",
+      "Today's AI builders assume you have the time to stop working and the words to describe what you want. You face a blank box and you're expected to write a spec.",
+      "Then you get a wall of code or a generated screen you can't reason about. Marisol's real questions get buried under fields, components and deploys.",
+      "Advance. The needs are already being said out loud at the register, every day. Pip hears them while Marisol keeps working, so she never has to write the prompt.",
     ],
   },
   {
@@ -121,27 +127,28 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 1500, strength: 0.25 },
     notes: [
-      "Pip has four steps, and the product shows them on screen the whole time, so a user always knows where they are.",
-      "Say it, shape it, try it, launch it. The next four slides walk through each one with Rosa.",
+      "Pip works in five steps. It listens to the workplace for about a week, asks the owner about what it heard, tests the app by playing a customer, launches it and then moves on to the next workplace.",
+      "The next four slides walk through the first four steps at Marisol's market. After that, we follow Pip to its next stop.",
     ],
   },
   {
-    id: "say",
-    name: "Say it",
+    id: "listen",
+    name: "Listen",
     section: "What Pip makes easier",
     rubric: "Accessible to non-engineers",
     steps: 2,
     sources: [],
     mist: { x: 470, width: 560, strength: 0.9 },
     notes: [
-      "Rosa doesn't write a prompt. She talks, the way she would to a friend, and she can be messy and emotional about it.",
-      "Advance. Pip says back what it heard in four lines: who, business, problem and goal. Rosa can fix any line before anything gets built.",
-      "In testing, this reflection did more for trust than any explanation we tried.",
+      "Pip sits at the counter on its fog screen for a week. Marisol doesn't stop to talk to it. She just runs the shop.",
+      "These are the kinds of things Pip hears. The Spanish line means: can you save me six for tomorrow?",
+      "Advance. At the end of the week, Pip shows Marisol what it noticed. It keeps patterns and counts, not recordings or names. Marisol can correct any line before anything gets built.",
+      "The counts on this slide are demo data. Swap in what your team actually observed if you ran a real listening session.",
     ],
   },
   {
-    id: "shape",
-    name: "Shape it",
+    id: "ask",
+    name: "Ask",
     section: "What Pip makes easier",
     rubric: "Useful",
     steps: 1,
@@ -149,38 +156,66 @@ export const slides: SlideMeta[] = [
     mist: { x: 330, width: 460, strength: 0.85 },
     notes: [
       "This slide is live. Click the answers and watch the shop page change.",
-      "Pip asks four questions, one at a time, as big choices with a reason attached. Business, design and technical thinking arrive together.",
-      "The daily limit is the best example. 'How many can you bake a day? I'll close orders before you get swamped' sounds like a business question, and it quietly builds inventory logic.",
+      "Every question Pip asks starts from something it heard. Marisol never has to think of a feature. She answers questions about her own shop.",
+      "The daily limit is the best example. 'People asked after it sold out 14 times. How many can you set aside?' sounds like a business question, and it quietly builds inventory logic.",
       "Every change flies from Pip's hand into the app, so nothing is hidden behind code.",
     ],
   },
   {
     id: "try",
-    name: "Try it",
+    name: "Try",
     section: "What Pip makes easier",
     rubric: "Original",
     steps: 3,
     sources: [],
     mist: { x: 400, width: 480, strength: 0.85 },
     notes: [
-      "Before launch, Pip tests the app for Rosa by pretending to be a customer. We call the customer Doña Lupe.",
-      "Advance. Lupe finds the gap: she is allergic to nuts and there was nowhere to tell Rosa.",
-      "Advance. Rosa says to add a box for notes. Testing becomes a story she can follow instead of a QA step.",
-      "This was the most useful AI moment in our whole build, more than any code generation.",
+      "Before launch, Pip tests the app for Marisol by pretending to be a customer. We call the customer Doña Lupe.",
+      "Advance. Lupe finds the gap: she is allergic to nuts and there was nowhere to tell Marisol.",
+      "Advance. Marisol says to add a box for notes. Testing becomes a story she can follow instead of a QA step.",
     ],
   },
   {
     id: "launch",
-    name: "Launch it",
+    name: "Launch",
     section: "What Pip makes easier",
     rubric: "Believable",
     steps: 2,
     sources: [],
     mist: { x: 300, width: 380, strength: 0.6 },
     notes: [
-      "Rosa says one word and the page goes live with a QR code she can print for the counter.",
-      "Advance. Orders arrive live and the team gets a bake list that adds them up. The orders shown here are demo data.",
-      "If the room can reach the demo, ask everyone to scan the code and place an order now. Their orders show up on the bake list during the pitch.",
+      "Marisol says one word and the page goes live with a QR code she can tape to the register.",
+      "Advance. Reservations arrive live, and the app adds them up into tomorrow's order for the bakery. The reservations shown here are demo data.",
+      "If the room can reach the demo, ask everyone to scan the code and reserve now. Their reservations show up on the list during the pitch.",
+    ],
+  },
+  {
+    id: "clinic",
+    name: "Move on",
+    section: "What Pip makes newly possible",
+    rubric: "Useful",
+    steps: 2,
+    sources: [],
+    mist: { x: 1500, width: 360, strength: 0.6 },
+    notes: [
+      "Once the market's app is running, Pip moves on. Its next stop is a family clinic a few blocks away, where Janelle runs the front desk.",
+      "Same listening, different workplace. Pip hears patients asking how much longer they'll wait, and staff calling the pharmacy back about refills.",
+      "Advance. Pip builds two different tools here: a waitlist that texts patients when they're next, and a board that shows where every refill stands.",
+      "In a clinic, Pip leaves health details out of what it learns. It keeps patterns, never patient names. Janelle is an illustrative persona.",
+    ],
+  },
+  {
+    id: "trust",
+    name: "Listening in the open",
+    section: "What Pip makes newly possible",
+    rubric: "Believable",
+    steps: 1,
+    sources: [],
+    mist: { x: 1800, width: 200, strength: 0.4 },
+    notes: [
+      "A builder that listens only works if people trust it, so we designed the rules first.",
+      "Pip glows whenever it is listening, and everyone is told before it arrives. Anyone can say 'Pip, pause.' It keeps patterns, not recordings, and nothing gets built without the owner's yes.",
+      "These are design rules for our prototype, not legal certifications. A real clinic deployment would need a privacy and HIPAA review, and we say so up front.",
     ],
   },
   {
@@ -192,10 +227,10 @@ export const slides: SlideMeta[] = [
     sources: ["fogscreenContent", "ucsbFogscreen", "fogscreenLaminar"],
     mist: { x: 820, width: 150, strength: 1 },
     notes: [
-      "Pip lives on a small fog screen. A generator above makes mist so fine it feels dry, and fans on both sides hold it in a flat sheet.",
+      "Pip lives on a small fog screen at the counter. A generator above makes mist so fine it feels dry, and fans on both sides hold it in a flat sheet.",
       "A projector draws Pip on the mist, and a laptop runs Pip and listens through its microphone.",
-      "People who build fog displays report that line drawings read better on fog than photos, so we drew Pip in light lines.",
-      "A character in the room changes how people talk. In our testing, people gave Pip more detail than they gave a text box.",
+      "We gave a listening agent a body on purpose. Customers and staff can see Pip and see when it is listening, which a hidden microphone in a tablet never shows.",
+      "People who build fog displays report that line drawings read better on fog than photos, so we drew Pip in lines of light.",
     ],
   },
   {
@@ -207,7 +242,7 @@ export const slides: SlideMeta[] = [
     sources: ["mdnSpeechSynthesis", "mdnSpeechRecognition"],
     mist: { x: 1840, width: 140, strength: 0.4 },
     notes: [
-      "Pip needs four things to work. The browser has to hear Rosa and talk back, a model has to turn a messy description like 'I'm drowning in DMs' into structure, and the model has to make small, reliable changes on request in real time.",
+      "Pip needs four things to work. The browser has to hear the workplace and talk back. A model has to turn a week of overlapping conversation into a few patterns, like 'pan dulce sold out 14 times'. And the model has to make small, reliable changes in real time.",
       "Browser speech is free and instant. MDN lists speech synthesis as working across major browsers since September 2018. Speech recognition is still limited to some browsers, so our demo laptop runs Chrome.",
       "A few years ago each of these pieces needed its own team. We prototyped all of them as a student team.",
     ],
@@ -222,7 +257,7 @@ export const slides: SlideMeta[] = [
     mist: { x: 1720, width: 300, strength: 0.5 },
     notes: [
       "These are our starting points. Replace or sharpen them with what actually surprised your team.",
-      "The biggest lesson: free-form 'build anything' overwhelmed even us. Asking one question at a time made the whole thing feel calm.",
+      "The biggest lesson: owners describe problems, never features. Building from what people already say out loud skips the hardest part of vibe coding.",
     ],
   },
   {
@@ -234,9 +269,9 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 460, width: 700, strength: 0.35 },
     notes: [
-      "Rosa's helpers get a shared bake list. Her customers, including the abuelitas who prefer Spanish and bigger text, get something they can actually use.",
-      "Neighbors who can't make it before 10 can still get pan dulce, and local shops can compete without paying for software.",
-      "The same flow works for a youth soccer coach, a tutor or a food-bank shift coordinator. Offer to let a judge tell Pip about one.",
+      "Marisol's staff stop hunting for reservations on receipts. Her customers, including the abuelitas who prefer Spanish and bigger text, can save their pan dulce.",
+      "Neighbors who can't make it before 10 still get conchas, and local shops get tools without paying a developer.",
+      "Because Pip travels, every stop makes the next one faster. A clinic, a salon or a food bank gets the same week of listening. Offer to let a judge tell Pip about their own workplace.",
     ],
   },
   {
@@ -260,8 +295,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 720, strength: 1 },
     notes: [
-      "Pip lets anyone who can describe a problem build the software for it.",
-      "Invite the judges to walk up and tell Pip about a problem of their own. Thank you.",
+      "Pip doesn't wait for a prompt. It shows up, listens and builds what a workplace already says it needs.",
+      "Invite the judges to walk up and tell Pip what isn't working where they work. Thank you.",
     ],
   },
   {
@@ -277,36 +312,37 @@ export const slides: SlideMeta[] = [
 
 export const titleSlide = {
   name: "Pip",
-  line: "Pip lets anyone build a working app by talking it through.",
+  line: "Pip visits a workplace, listens to how it runs and builds the app it needs.",
 };
 
-export const rosaSlide = {
-  heading: "Rosa's panadería in Boyle Heights",
+export const marketSlide = {
+  heading: "Marisol's corner market in Boyle Heights",
   facts: [
-    { key: "Who", value: "Rosa, 52, owner and baker" },
-    { key: "Shop", value: "Two ovens in Boyle Heights, Los Angeles" },
-    { key: "Computer", value: "Her phone" },
-    { key: "Order system", value: "A paper notebook by the register" },
-    { key: "Help", value: "Her nephew, on weekends" },
+    { key: "Who", value: "Marisol, 47, owner" },
+    { key: "Shop", value: "A corner market in Boyle Heights, Los Angeles" },
+    { key: "Staff", value: "Three part-timers and one register" },
+    { key: "Computer", value: "Her phone, between customers" },
+    { key: "Reservations", value: "Written on the back of receipts" },
   ],
-  dayStartHour: 4,
-  dayEndHour: 24,
+  dayStartHour: 6,
+  dayEndHour: 22,
+  ticks: [6, 10, 14, 18, 22],
   blocks: [
-    { label: "Ovens", from: 4, to: 7 },
-    { label: "Counter", from: 7, to: 16 },
+    { label: "Deliveries", from: 6, to: 8 },
+    { label: "Register", from: 8, to: 22 },
   ],
-  messageHours: [5.6, 7.8, 8.9, 10.2, 11.4, 12.7, 13.9, 15.2, 16.6, 18.1, 19.4, 20.8, 22.1, 23.3],
-  lostMessageHour: 12.7,
+  requestHours: [7.4, 8.6, 9.3, 10.1, 10.8, 11.6, 12.9, 13.7, 15.1, 16.4, 17.6, 18.8, 20.1, 21.2],
+  lostRequestHour: 12.9,
   moments: [
-    { hour: 4, text: "She guesses how many conchas to bake." },
-    { hour: 12.7, text: "A birthday order slips past in the DMs." },
-    { hour: 24, text: "She is still answering messages at midnight." },
+    { hour: 6, text: "Four dozen pan dulce arrive from the bakery." },
+    { hour: 12.9, text: "A reservation on a receipt gets lost." },
+    { hour: 22, text: "Nobody wrote a single request down." },
   ],
-  messagesLabel: "Instagram DMs and texts",
+  requestsLabel: "Requests said out loud at the counter",
 };
 
 export const ownersSlide = {
-  heading: "What shop owners told us",
+  heading: "What owners and staff told us",
 };
 
 export const buildersSlide = {
@@ -337,7 +373,7 @@ export const buildersSlide = {
   localFigure: "91.4%",
   localText:
     "of the 453,201 Hispanic-owned businesses in the Los Angeles metro have no employees, so nobody on staff can take on the tech.",
-  promise: "If you can describe your problem to a friend, you can build with Pip.",
+  promise: "If people at your workplace talk about a problem, Pip can hear it and build for it.",
 };
 
 export const brokenSlide = {
@@ -345,80 +381,93 @@ export const brokenSlide = {
   todayLabel: "Today",
   pipLabel: "With Pip",
   promptPlaceholder: "Describe the app you want to build",
-  jargon: [
-    "fields",
-    "components",
-    "schema",
-    "deploy",
-    "database",
-    "env vars",
-    "API routes",
-    "auth",
-    "state",
-    "build errors",
+  buriedQuestions: [
+    "Can people save pan dulce before it sells out?",
+    "How many can I set aside a day?",
+    "Do my customers read Spanish?",
   ],
-  rosaQuestions: ["How do people pay?", "How many can I bake a day?", "Do my customers read Spanish?"],
-  todayCaption: "Rosa's real questions end up buried under the technical ones.",
-  pipCaption: "Pip asks her questions first, in her own words.",
+  overheard: [
+    { who: "Customer", text: "Are there any conchas left?" },
+    { who: "Staff", text: "Where did that reservation go?" },
+    { who: "Customer", text: "¿Me guarda seis para mañana?" },
+  ],
+  todayCaption: "Marisol would have to leave the register to write this, and her real questions end up buried.",
+  pipCaption: "Pip hears the needs at the register while Marisol keeps working.",
 };
 
 export const journeySlide = {
-  heading: "Four steps from a story to a shop page",
+  heading: "Five steps from a busy shop floor to a working app",
   steps: [
-    { id: "say", name: "Say it", text: "Describe the problem out loud, the way you would tell a friend." },
-    { id: "shape", name: "Shape it", text: "Answer one plain question at a time." },
-    { id: "try", name: "Try it", text: "Pip plays a customer and finds what is missing." },
-    { id: "launch", name: "Launch it", text: "Say the word and get a live page with a QR code." },
+    { id: "listen", name: "Listen", text: "Pip spends a week in the workplace and hears what people keep asking for." },
+    { id: "ask", name: "Ask", text: "Pip asks the owner one plain question at a time about what it heard." },
+    { id: "try", name: "Try", text: "Pip plays a customer and finds what is missing." },
+    { id: "launch", name: "Launch", text: "The owner says the word and gets a live page with a QR code." },
+    { id: "move", name: "Move on", text: "Pip travels to the next workplace and checks back in a month." },
   ],
 };
 
-export const saySlide = {
-  heading: "Pip says back what it heard",
-  speaker: "Rosa",
-  said: "I'm drowning in DMs. Everyone wants conchas for Sunday, and I write it all in a notebook by the register.",
-  heardTitle: "What I heard",
-  heard: [
-    { key: "Who", value: "Rosa's regulars, many of them older and more at home in Spanish" },
-    { key: "Business", value: "A two-oven panadería in Boyle Heights" },
-    { key: "Problem", value: "Orders arrive by DM and get lost in the notebook" },
-    { key: "Goal", value: "Customers order in two taps, and Rosa stops answering DMs at midnight" },
+export const listenSlide = {
+  heading: "Pip listens while the shop runs",
+  overheard: [
+    { who: "Customer", text: "Are there any conchas left? It's only ten o'clock." },
+    { who: "Staff", text: "Someone left a reservation on a receipt and I can't find it." },
+    { who: "Customer", text: "¿Me puede guardar seis para mañana?" },
+    { who: ownerName, text: "I only get four dozen a day. I never know if it's enough." },
   ],
-  confirm: "Did I get that right?",
+  noticedTitle: "What I noticed this week",
+  noticed: [
+    { key: "Customers", value: "Asked for pan dulce after it sold out 14 times" },
+    { key: "Staff", value: "Wrote reservations on receipts, and 3 went missing" },
+    { key: "Language", value: "About half of the requests were in Spanish" },
+    { key: "Need", value: "A way to save pan dulce before it sells out" },
+  ],
+  confirm: `${ownerName}, can I ask you about this?`,
+  demoLabel: "Week one at the market, demo data",
 };
 
-export type ShapeChoice = { id: string; label: string; builds: string };
-export type ShapeQuestion = { id: string; ask: string; reason: string; choices: ShapeChoice[]; defaultChoice: string };
+export type AskChoice = { id: string; label: string; builds: string };
+export type AskQuestion = {
+  id: string;
+  topic: string;
+  ask: string;
+  reason: string;
+  choices: AskChoice[];
+  defaultChoice: string;
+};
 
-export const shapeSlide = {
-  heading: "One decision at a time",
-  answerLabel: "Rosa answers",
+export const askSlide = {
+  heading: "Pip asks about what it heard",
+  answerLabel: `${ownerName} answers`,
   buildsLabel: "Pip builds",
   questions: [
     {
       id: "limit",
-      ask: "How many conchas can you bake a day?",
-      reason: "I'll close orders before you get swamped.",
+      topic: "Daily limit",
+      ask: "People asked after the pan dulce sold out 14 times. How many conchas can you set aside each day?",
+      reason: "I'll stop taking reservations before you run out.",
       defaultChoice: "48",
       choices: [
-        { id: "24", label: "24", builds: "Orders close after 24 conchas a day." },
-        { id: "48", label: "48", builds: "Orders close after 48 conchas a day." },
-        { id: "96", label: "96", builds: "Orders close after 96 conchas a day." },
+        { id: "24", label: "24", builds: "Reservations close after 24 conchas a day." },
+        { id: "48", label: "48", builds: "Reservations close after 48 conchas a day." },
+        { id: "96", label: "96", builds: "Reservations close after 96 conchas a day." },
       ],
     },
     {
       id: "pay",
-      ask: "How should people pay?",
+      topic: "Payment",
+      ask: "Three reservations went missing this week. Should people pay when they reserve?",
       reason: "Paying ahead means fewer no-shows. Paying at pickup keeps it simple.",
       defaultChoice: "pickup",
       choices: [
-        { id: "pickup", label: "At pickup", builds: "Orders reserve bread, and payment happens at the counter." },
-        { id: "card", label: "Card, when they order", builds: "Checkout takes a card before the order goes through." },
+        { id: "pickup", label: "At pickup", builds: "Reservations hold the bread, and payment happens at the register." },
+        { id: "card", label: "Card, when they reserve", builds: "Checkout takes a card before the reservation goes through." },
       ],
     },
     {
       id: "language",
-      ask: "What do your customers read?",
-      reason: "I'll write every button in the language they use at the counter.",
+      topic: "Language",
+      ask: "About half the requests I heard were in Spanish. Which language should the page use?",
+      reason: "I'll write every button in the language people use at your register.",
       defaultChoice: "both",
       choices: [
         { id: "en", label: "English", builds: "The page is written in English." },
@@ -428,7 +477,8 @@ export const shapeSlide = {
     },
     {
       id: "size",
-      ask: "Do some customers need bigger text?",
+      topic: "Text size",
+      ask: "Some regulars held the price tags close to read them. Should the text be bigger?",
       reason: "Bigger text and buttons help anyone reading without glasses.",
       defaultChoice: "large",
       choices: [
@@ -436,13 +486,13 @@ export const shapeSlide = {
         { id: "large", label: "Bigger", builds: "Text and buttons are a size larger." },
       ],
     },
-  ] satisfies ShapeQuestion[],
+  ] satisfies AskQuestion[],
 };
 
 export const shopCopy = {
   en: {
-    shopName: "Panadería Rosa",
-    tagline: "Order today, pick up warm",
+    shopName: "Mercado Marisol",
+    tagline: "Save your pan dulce before it sells out",
     item: "Conchas",
     price: "$1.75 each",
     left: (count: number) => `${count} left today`,
@@ -450,12 +500,12 @@ export const shopCopy = {
     order: "Reserve",
     payCard: "Pay with card",
     payPickup: "Pay at pickup",
-    notes: "Notes for Rosa (allergies, names on cakes)",
+    notes: "Notes for Marisol (allergies, pickup time)",
     switchTo: "Español",
   },
   es: {
-    shopName: "Panadería Rosa",
-    tagline: "Pide hoy y recoge calientito",
+    shopName: "Mercado Marisol",
+    tagline: "Aparta tu pan dulce antes de que se acabe",
     item: "Conchas",
     price: "$1.75 cada una",
     left: (count: number) => `Quedan ${count} hoy`,
@@ -463,7 +513,7 @@ export const shopCopy = {
     order: "Apartar",
     payCard: "Pagar con tarjeta",
     payPickup: "Pagar al recoger",
-    notes: "Notas para Rosa (alergias, nombres en pasteles)",
+    notes: "Notas para Marisol (alergias, hora de recoger)",
     switchTo: "English",
   },
 } as const;
@@ -477,9 +527,9 @@ export const trySlide = {
   lines: [
     { who: "lupe", text: "I'd like a dozen conchas for Sunday morning." },
     { who: "lupe", text: "I'm allergic to nuts, and there was nowhere to tell you." },
-    { who: "rosa", text: "Add a box for notes." },
+    { who: "owner", text: "Add a box for notes." },
   ],
-  fixed: "Every order now has a notes box, and allergies print on the bake list.",
+  fixed: "Every reservation now has a notes box, and allergies print on tomorrow's bakery order.",
   gapLabel: "Missing: a place for notes",
 };
 
@@ -487,11 +537,11 @@ export type DemoOrder = { name: string; item: string; count: number; pickup: str
 
 export const launchSlide = {
   heading: "Launch takes one word",
-  rosaSays: "Launch it.",
+  ownerSays: "Launch it.",
   liveLabel: "Live",
-  scanText: "Scan to order from the live demo",
-  ordersTitle: "Orders",
-  bakeTitle: "Weekend bake list",
+  scanText: "Scan to reserve from the live demo",
+  ordersTitle: "Reservations",
+  listTitle: "Tomorrow's order to the bakery",
   demoLabel: "Demo data",
   orders: [
     { name: "Lupe M.", item: "Conchas", count: 12, pickup: "Sun 8:00", note: "Nut allergy" },
@@ -501,6 +551,46 @@ export const launchSlide = {
     { name: "Don Beto", item: "Orejas", count: 8, pickup: "Sat 7:30" },
     { name: "Carla V.", item: "Conchas", count: 12, pickup: "Sat 9:00" },
   ] satisfies DemoOrder[],
+};
+
+export const clinicSlide = {
+  heading: "Next stop is a family clinic",
+  from: "Mercado Marisol",
+  to: "Family clinic",
+  person: "Janelle runs the front desk",
+  heardTitle: "What Pip hears",
+  heard: [
+    { who: "Patient", text: "How much longer? Can I wait in my car?" },
+    { who: "Front desk", text: "Did that refill go through? Let me call you back." },
+    { who: "Front desk", text: "We lose half the morning hunting for lab faxes." },
+  ],
+  builtTitle: "What Pip builds",
+  built: [
+    { id: "waitlist", name: "Text-me waitlist", text: "Patients get a text when they're next, so they can wait in their car." },
+    { id: "refills", name: "Refill board", text: "Staff see where every refill stands without calling the pharmacy back." },
+  ],
+  privacy: "In a clinic, Pip leaves health details out of what it learns. It keeps patterns, never patient names.",
+};
+
+export const trustSlide = {
+  heading: "Pip listens in the open",
+  rules: [
+    { id: "visible", rule: "You can see it listening", detail: "Pip glows on the fog screen whenever its microphone is on." },
+    {
+      id: "consent",
+      rule: "Everyone is told first",
+      detail: "Signs go up at the door, staff agree before the visit, and anyone can say “Pip, pause.”",
+    },
+    {
+      id: "patterns",
+      rule: "It keeps patterns, not recordings",
+      detail: "Pip remembers that pan dulce sold out 14 times, not who asked.",
+    },
+    { id: "owner", rule: "The owner decides", detail: "Nothing gets built without a yes, and every tool can be switched off." },
+    { id: "health", rule: "Health details stay out", detail: "In clinics, Pip ignores health information by default." },
+    { id: "leaves", rule: "The listening leaves with Pip", detail: "When the visit ends, the microphone goes too. Only the tools stay." },
+  ],
+  caveat: "These are design rules for our prototype. A real clinic deployment would need a privacy and HIPAA review.",
 };
 
 export const hologramSlide = {
@@ -522,9 +612,9 @@ export const hologramSlide = {
 export const whyNowSlide = {
   heading: "Why Pip could only exist now",
   pipeline: [
-    { id: "talk", name: "Rosa talks", detail: '"I\'m drowning in DMs"' },
-    { id: "hear", name: "The browser hears her", detail: "Speech recognition and speech synthesis" },
-    { id: "structure", name: "A model finds the structure", detail: "Who, business, problem, goal" },
+    { id: "talk", name: "The shop talks", detail: '"Are there any conchas left?"' },
+    { id: "hear", name: "The browser hears it", detail: "Speech recognition and speech synthesis" },
+    { id: "structure", name: "A model finds the patterns", detail: "Who asked, for what and how often" },
     { id: "edit", name: "Small edits land live", detail: "One reliable change per answer" },
   ],
   facts: [
@@ -544,27 +634,27 @@ export const whyNowSlide = {
 export const learnedSlide = {
   heading: "What building Pip taught us",
   lessons: [
-    { icon: "calm", text: 'Free-form "build anything" overwhelmed even us. One question at a time felt calm.' },
-    { icon: "mirror", text: "Showing what Pip heard before building did more for trust than any explanation." },
+    { icon: "calm", text: "Owners describe problems, never features. Listening first skips the hardest part." },
+    { icon: "mirror", text: "Showing what Pip noticed before building did more for trust than any explanation." },
     { icon: "customer", text: "The pretend customer catching a missing notes box was our most useful AI moment." },
-    { icon: "character", text: "People describe their problem in more detail to a character than to a text box." },
+    { icon: "character", text: "People relaxed once they could see when Pip was listening." },
   ],
 };
 
 export const benefitsSlide = {
   heading: "Who else benefits",
-  center: "Rosa",
+  center: ownerName,
   rings: [
-    { id: "helpers", who: "Her helpers", text: "get a shared bake list instead of decoding her notebook." },
-    { id: "customers", who: "Her customers", text: "order in Spanish or English, with bigger text when they need it." },
+    { id: "helpers", who: "Her staff", text: "work from one list instead of receipts." },
+    { id: "customers", who: "Her customers", text: "reserve in Spanish or English, with bigger text." },
     {
       id: "neighbors",
       who: "The neighborhood",
-      text: "gets pan dulce after 10, and local shops compete without paying for software.",
+      text: "gets pan dulce after 10, and local shops get tools without paying a developer.",
     },
   ],
-  othersTitle: "The same flow works for other builders",
-  others: ["A youth soccer coach", "A tutor", "A food-bank shift coordinator"],
+  othersTitle: "Pip's next stops",
+  others: ["A family clinic", "A neighborhood salon", "A food-bank shift coordinator"],
 };
 
 export const standardsSlide = {
@@ -572,28 +662,31 @@ export const standardsSlide = {
   rows: [
     {
       standard: "Original",
-      where: "A holographic character is the building interface, and the AI tests the app by playing a customer.",
+      where: "The AI comes to the workplace and listens, so nobody writes a prompt, and it tests the app by playing a customer.",
     },
-    { standard: "Useful", where: "Real orders, a sold-out limit and a bake list for the team." },
-    { standard: "Believable", where: "It works: the room orders from their phones during the demo." },
+    { standard: "Useful", where: "Pip builds from needs people repeated all week, with a daily limit and a bakery list." },
+    {
+      standard: "Believable",
+      where: "It works: the room reserves from their phones during the demo, and the listening rules are spelled out.",
+    },
     {
       standard: "Accessible to non-engineers",
-      where: "Voice, one question at a time, no technical words, and Spanish with bigger text in one sentence.",
+      where: "Marisol only answers plain questions about her own shop, in her own words.",
     },
     {
       standard: "Understandable through the product",
-      where: 'The four steps and "What I heard" explain the idea without slides.',
+      where: 'The five steps and "What I noticed" explain the idea without slides.',
     },
-    { standard: "Built for a specific person", where: "Rosa, and her panadería in Boyle Heights." },
+    { standard: "Built for a specific person", where: "Marisol's corner market in Boyle Heights, then the clinic down the street." },
   ],
 };
 
 export const closeSlide = {
-  heading: "Tell Pip about your problem",
+  heading: "Let Pip listen to your workplace",
   scanText: "Try the demo",
 };
 
 export const sourcesSlide = {
   heading: "Sources",
-  note: "Ratios marked as team calculations divide two published figures. Rosa is a persona based on our interviews.",
+  note: "Ratios marked as team calculations divide two published figures. Marisol and Janelle are personas based on our interviews. Demo counts and reservations are demo data.",
 };

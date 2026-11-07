@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { shapeSlide, type ShapeQuestion } from "@/content/content";
+import { askSlide, type AskQuestion } from "@/content/content";
 import { Button } from "@/components/primitives/Button";
 import { Heading } from "@/components/primitives/Heading";
 import { Reveal } from "@/components/primitives/Reveal";
@@ -9,13 +9,13 @@ import { Phone } from "@/components/phone/Phone";
 import { ShopPage } from "@/components/phone/ShopPage";
 import { Pip } from "@/components/pip/Pip";
 import { Sparks } from "@/components/diagrams/Sparks";
-import { buildsFor, choiceLabel, defaultAnswers, shopFromAnswers, type Answers } from "./shape-state";
+import { buildsFor, choiceLabel, defaultAnswers, shopFromAnswers, type Answers } from "./ask-state";
 
 const PIP_HAND = { x: 347, y: 420 };
 const PHONE_TARGET = { x: 1480, y: 430 };
 
 type RowProps = {
-  question: ShapeQuestion;
+  question: AskQuestion;
   answers: Answers;
   active: boolean;
   onOpen: () => void;
@@ -49,7 +49,7 @@ function ClosedRow({ question, answers, onOpen }: Pick<RowProps, "question" | "a
       aria-label={`Change the answer to: ${question.ask}`}
       className="flex w-full cursor-pointer items-baseline justify-between gap-6 py-4 text-left transition-colors hover:text-text"
     >
-      <span className="type-caption text-text-muted">{question.ask}</span>
+      <span className="type-caption text-text-muted">{question.topic}</span>
       <span className="type-body shrink-0 text-text">{choiceLabel(question, answers)}</span>
     </button>
   );
@@ -59,11 +59,11 @@ function QuestionRow(props: RowProps) {
   return <div className="border-b border-line">{props.active ? <OpenRow {...props} /> : <ClosedRow {...props} />}</div>;
 }
 
-export function ShapeSlide() {
+export function AskSlide() {
   const [answers, setAnswers] = useState<Answers>(defaultAnswers);
-  const [activeId, setActiveId] = useState(shapeSlide.questions[0].id);
+  const [activeId, setActiveId] = useState(askSlide.questions[0].id);
   const [changes, setChanges] = useState(0);
-  const active = shapeSlide.questions.find((question) => question.id === activeId) ?? shapeSlide.questions[0];
+  const active = askSlide.questions.find((question) => question.id === activeId) ?? askSlide.questions[0];
 
   const choose = (questionId: string, choiceId: string) => {
     setAnswers((current) => ({ ...current, [questionId]: choiceId }));
@@ -76,9 +76,9 @@ export function ShapeSlide() {
         <Pip height={260} mood="talk" reach={changes > 0 ? "right" : "none"} />
       </div>
       <div className="absolute left-[460px] top-0 w-[720px]">
-        <Heading>{shapeSlide.heading}</Heading>
+        <Heading>{askSlide.heading}</Heading>
         <Reveal delay={0.2} className="mt-8 border-t border-line">
-          {shapeSlide.questions.map((question) => (
+          {askSlide.questions.map((question) => (
             <QuestionRow
               key={question.id}
               question={question}
@@ -90,7 +90,7 @@ export function ShapeSlide() {
           ))}
         </Reveal>
         <Reveal delay={0.4} className="mt-8 grid grid-cols-[170px_1fr] gap-6">
-          <p className="type-caption text-accent">{shapeSlide.buildsLabel}</p>
+          <p className="type-caption text-accent">{askSlide.buildsLabel}</p>
           <p className="type-body text-text">{buildsFor(active, answers)}</p>
         </Reveal>
       </div>

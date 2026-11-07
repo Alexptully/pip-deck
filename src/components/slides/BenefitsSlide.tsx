@@ -1,4 +1,4 @@
-import { Basket, SoccerBall, Student, type Icon } from "@phosphor-icons/react";
+import { Basket, FirstAidKit, Scissors, type Icon } from "@phosphor-icons/react";
 import { benefitsSlide } from "@/content/content";
 import { DrawPath } from "@/components/primitives/DrawPath";
 import { Heading } from "@/components/primitives/Heading";
@@ -9,7 +9,7 @@ const RADII = [110, 220, 330];
 /** Where each outer ring's label line leaves the ring, in degrees above or below the horizontal. */
 const ANGLES = [-90, 4, 38];
 const LABEL_X = 800;
-const otherIcons: Icon[] = [SoccerBall, Student, Basket];
+const otherIcons: Icon[] = [FirstAidKit, Scissors, Basket];
 
 function circlePath(radius: number): string {
   const { x, y } = CENTER;

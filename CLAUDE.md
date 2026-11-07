@@ -1,6 +1,6 @@
 # Pip: the pitch deck
 
-A web slide deck for the Innovator's Forum, Fall 2026, Prompt 3a ("What does the future of vibe coding look like?"). The deck pitches Pip, a holographic character on a fog screen that lets a non-engineer like Rosa, a Boyle Heights baker, build a working ordering app by talking it through.
+A web slide deck for the Innovator's Forum, Fall 2026, Prompt 3a ("What does the future of vibe coding look like?"). The deck pitches Pip, a holographic character on a fog screen that travels from workplace to workplace. It listens to customers and staff at a busy workplace, like Marisol's corner market in Boyle Heights, then asks the owner a few plain questions and builds the app that place needs.
 
 `BRIEF.md` is the master brief. It sets the slide content, the required sections, the statistics and their sources, and the placeholders. When the brief and this file disagree on design or tooling, this file wins. When they disagree on content or required coverage, the brief wins.
 

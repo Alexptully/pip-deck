@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { config } from "@/content/config";
-import { launchSlide } from "@/content/content";
+import { launchSlide, ownerName } from "@/content/content";
 import { duration, ease } from "@/lib/motion";
 import { Card } from "@/components/primitives/Card";
 import { Heading } from "@/components/primitives/Heading";
@@ -10,7 +10,7 @@ import { Reveal } from "@/components/primitives/Reveal";
 import { useStill } from "@/components/primitives/Still";
 import { QrCode } from "@/components/diagrams/QrCode";
 import { Pip } from "@/components/pip/Pip";
-import { bakeList } from "./launch-data";
+import { bakeryOrder } from "./launch-data";
 
 function LiveDot() {
   const still = useStill();
@@ -43,14 +43,14 @@ function Orders({ show }: { show: boolean }) {
   );
 }
 
-function BakeList({ show }: { show: boolean }) {
+function BakeryOrder({ show }: { show: boolean }) {
   const still = useStill();
-  const lines = bakeList();
+  const lines = bakeryOrder();
   const most = Math.max(...lines.map((line) => line.count));
   return (
     <Reveal show={show} delay={0.4}>
       <Card tone="paper" className="px-10 py-9">
-        <p className="type-lead">{launchSlide.bakeTitle}</p>
+        <p className="type-lead">{launchSlide.listTitle}</p>
         <ul className="mt-6 flex flex-col gap-6">
           {lines.map((line) => (
             <li key={line.item}>
@@ -86,8 +86,8 @@ export function LaunchSlide({ step }: { step: number }) {
       <div className="absolute left-0 top-0 w-[560px]">
         <Heading>{launchSlide.heading}</Heading>
         <Reveal delay={0.2} className="mt-10">
-          <p className="type-caption text-text-muted">Rosa</p>
-          <p className="type-title mt-2 text-text">{launchSlide.rosaSays}</p>
+          <p className="type-caption text-text-muted">{ownerName}</p>
+          <p className="type-title mt-2 text-text">{launchSlide.ownerSays}</p>
         </Reveal>
         <Reveal delay={0.5} className="mt-16 flex items-center gap-8">
           <Card tone="paper" className="p-5">
@@ -109,7 +109,7 @@ export function LaunchSlide({ step }: { step: number }) {
         <Orders show={step >= 1} />
       </div>
       <div className="absolute right-0 top-0 w-[480px]">
-        <BakeList show={step >= 1} />
+        <BakeryOrder show={step >= 1} />
       </div>
     </div>
   );

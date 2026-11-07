@@ -1,11 +1,11 @@
-import { trySlide } from "@/content/content";
+import { ownerName, trySlide } from "@/content/content";
 import { Card } from "@/components/primitives/Card";
 import { Heading } from "@/components/primitives/Heading";
 import { Reveal } from "@/components/primitives/Reveal";
 import { Phone } from "@/components/phone/Phone";
 import { ShopPage, type NotesState } from "@/components/phone/ShopPage";
 import { Pip } from "@/components/pip/Pip";
-import { defaultAnswers, shopFromAnswers } from "./shape-state";
+import { defaultAnswers, shopFromAnswers } from "./ask-state";
 
 const notesByStep: NotesState[] = ["none", "gap", "present"];
 
@@ -13,12 +13,12 @@ const notesByStep: NotesState[] = ["none", "gap", "present"];
 const linesByStep = [1, 2, 3];
 
 function ChatLine({ who, text, show, delay }: { who: string; text: string; show: boolean; delay: number }) {
-  const fromRosa = who === "rosa";
+  const fromOwner = who === "owner";
   return (
-    <Reveal show={show} delay={delay} className={fromRosa ? "self-end" : "self-start"}>
-      <Card tone={fromRosa ? "paper" : "raised"} className="max-w-[600px] px-8 py-5">
-        <p className={`type-caption ${fromRosa ? "text-ink-muted" : "text-accent"}`}>
-          {fromRosa ? "Rosa" : trySlide.persona}
+    <Reveal show={show} delay={delay} className={fromOwner ? "self-end" : "self-start"}>
+      <Card tone={fromOwner ? "paper" : "raised"} className="max-w-[600px] px-8 py-5">
+        <p className={`type-caption ${fromOwner ? "text-ink-muted" : "text-accent"}`}>
+          {fromOwner ? ownerName : trySlide.persona}
         </p>
         <p className="type-body mt-1">{text}</p>
       </Card>

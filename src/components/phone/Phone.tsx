@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/** A phone, because Rosa's phone is her whole computer. */
+/** A phone, because Marisol's phone is her whole computer. */
 export function Phone({
   children,
   width = 430,

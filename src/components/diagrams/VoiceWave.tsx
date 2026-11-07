@@ -5,7 +5,7 @@ import { useStill } from "@/components/primitives/Still";
 
 const BARS = [0.3, 0.6, 0.9, 0.5, 1, 0.7, 0.4, 0.8, 0.55, 0.95, 0.35, 0.65, 0.45, 0.85, 0.3, 0.6, 0.75, 0.4];
 
-/** A voice waveform, the sign that Rosa is talking rather than typing. */
+/** A voice waveform, the sign that Pip is hearing speech rather than reading typing. */
 export function VoiceWave({ height = 80 }: { height?: number }) {
   const still = useStill();
   return (
