@@ -37,7 +37,7 @@ export function NotesPanel({ meta, next, index, total, step, hologramConnected }
           <p className={`mt-2 text-base ${hologramConnected ? "text-accent" : "text-text-faint"}`}>
             {hologramConnected
               ? "Pip's hologram screen is connected and following along."
-              : "Pip's hologram screen isn't open. Press H to open it."}
+              : "Pip's hologram screen isn't open. Press H here, or open /pip/setup/ for a second computer."}
           </p>
         </div>
         <dl className="grid grid-cols-[auto_1fr] content-start gap-x-4 gap-y-2 text-sm text-text-muted">

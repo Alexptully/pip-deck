@@ -164,7 +164,7 @@ export const slides: SlideMeta[] = [
     notes: [
       "Ask the room: so what would actually help Rosa? Let the half-answers hang for a beat. A template? A tutorial? Hire a developer? Look at each other like you're stuck.",
       "Advance. One of you turns to the fog screen and says: Hey Pip, any ideas?",
-      "Advance. Pip appears in the mist and answers out loud (the deck speaks the line if the browser allows it). If the live Pip is running on the fog screen, trigger it there instead and let the slide be the backup.",
+      "Advance. Pip gathers out of the mist on the fog screen and answers out loud from the hologram computer. With no hologram screen connected, the deck speaks the line itself.",
     ],
   },
   {
@@ -826,11 +826,40 @@ export const hologramCopy = {
   title: "Pip on the fog screen",
   help: "Drag this window onto the fog projector, then start it. It goes full screen and lets Pip speak.",
   start: "Start the hologram",
-  waiting: "Waiting for the deck. Open the deck in another window of this browser.",
+  waiting:
+    "Waiting for the deck. Open the deck in another window of this browser, or start it with npm run present on the presenting laptop.",
   keys: [
     { keys: "F", does: "Full screen" },
     { keys: "M", does: "Mirror the image, if the projector isn't in rear-projection mode" },
     { keys: "C", does: "Show or hide Pip's lines as captions" },
     { keys: "Left, Right", does: "Move the deck from this window" },
+  ],
+};
+
+export const hologramSetup = {
+  heading: "Pip's hologram screen",
+  intro:
+    "Pip can follow the deck on a second computer that feeds the fog projector, the same way the Fold with Nara kiosk followed its deck. Start the deck on this laptop with npm run present, then open the hologram page on the second computer. Both need the same Wi-Fi.",
+  secondComputer: {
+    name: "Second computer",
+    line: "Scan the code or type the address on the computer plugged into the fog projector, then click Start the hologram.",
+  },
+  thisLaptop: {
+    name: "This laptop",
+    line: "If the fog projector is a second screen on this laptop, press H in the deck instead and drag the window onto it.",
+  },
+  statusTitle: "Connected now",
+  deckLabel: "Deck is on",
+  hologramsLabel: "Hologram screens",
+  relayOff:
+    "The hologram link isn't running. Start the deck with npm run present (or npm run dev to rehearse), then reload this page.",
+  noNetwork: "This laptop isn't on a Wi-Fi network yet. Join the same network as the second computer, then reload.",
+  notStarted: "Not started yet",
+  openHere: "Open the hologram on this computer",
+  tips: [
+    "Event Wi-Fi often stops devices from seeing each other. If the second computer can't connect, turn on a phone hotspot and join it with both computers.",
+    "Pip speaks from the computer running the hologram, so plug the speaker into that one. The deck stays quiet while a hologram screen is connected.",
+    "If the Wi-Fi drops, the hologram keeps its last pose and catches up as soon as it reconnects.",
+    "The hosted copy on GitHub Pages can't reach the relay on a laptop, so present from npm run present.",
   ],
 };

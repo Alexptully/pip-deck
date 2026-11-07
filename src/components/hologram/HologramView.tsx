@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { hologramCopy, pipCueFor, type PipCue } from "@/content/content";
+import { relayBase } from "@/lib/pip-link";
 import { useHologramSync, type DeckPosition } from "@/lib/pip-sync";
 import { speakAsPip, unlockPipVoice } from "@/lib/use-pip-voice";
 import { toggleFullscreen } from "@/lib/use-deck-keys";
@@ -92,9 +93,25 @@ function Caption({ line }: { line?: string }) {
   );
 }
 
+/** A quiet note while nothing is following yet, and a small grey dot while a dropped Wi-Fi link reconnects. */
+function LinkStatus({ following, relayLinked }: { following: boolean; relayLinked: boolean }) {
+  if (!following) {
+    return <p className="fixed inset-x-0 bottom-6 text-center text-base text-text-faint">{hologramCopy.waiting}</p>;
+  }
+  if (relayBase() && !relayLinked) {
+    return (
+      <span
+        className="fixed bottom-4 right-4 size-3 rounded-control bg-text-faint"
+        aria-label="Reconnecting to the deck"
+      />
+    );
+  }
+  return null;
+}
+
 /** The second screen: Pip alone on black, following the deck, for the fog projector. */
 export function HologramView() {
-  const { position, navigate } = useHologramSync();
+  const { position, navigate, relayLinked } = useHologramSync();
   const [started, setStarted] = useState(false);
   const [mirrored, setMirrored] = useState(false);
   const [captions, setCaptions] = useState(false);
@@ -130,9 +147,7 @@ export function HologramView() {
           {captions ? <Caption line={cue.line} /> : null}
         </Stage>
       </div>
-      {started && !position ? (
-        <p className="fixed inset-x-0 bottom-6 text-center text-base text-text-faint">{hologramCopy.waiting}</p>
-      ) : null}
+      {started ? <LinkStatus following={position !== null} relayLinked={relayLinked} /> : null}
       {started ? null : <StartScreen onStart={start} />}
     </>
   );

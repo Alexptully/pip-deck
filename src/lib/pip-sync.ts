@@ -2,100 +2,168 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { SlideId } from "@/content/content";
+import { isNewer, isPositionMessage, openChannel, relayBase, type PositionMessage } from "./pip-link";
 
 /**
- * The deck and the hologram window talk over a BroadcastChannel, which links any windows of
- * the same site in the same browser. The presenter opens both on one laptop and drags the
- * hologram window onto the fog projector.
+ * Keeps Pip's hologram screen on the same slide as the deck, in a second window of this
+ * browser (BroadcastChannel) or on a second computer (the relay from `npm run present`).
  */
-const CHANNEL = "pip-deck";
-const HEARTBEAT_MS = 1500;
-const PRESENCE_TIMEOUT_MS = 4000;
+const HEARTBEAT_MS = 2000;
+const PRESENCE_TIMEOUT_MS = 5000;
+const RELAY_RETRY_MS = 5000;
+
+const HELLO = "pip-hologram:hello";
+const HERE = "pip-hologram:here";
 
 export type DeckPosition = { slideId: SlideId; step: number };
+type Direction = "next" | "previous";
+type NavigateMessage = { type: "pip-hologram:navigate"; direction: Direction };
 
-type Message =
-  | { type: "position"; position: DeckPosition }
-  | { type: "request-position" }
-  | { type: "hologram-here" }
-  | { type: "navigate"; direction: "next" | "previous" };
-
-function openChannel(): BroadcastChannel | null {
-  return typeof BroadcastChannel === "undefined" ? null : new BroadcastChannel(CHANNEL);
+function isNavigate(value: unknown): value is NavigateMessage {
+  return (value as NavigateMessage | null)?.type === "pip-hologram:navigate";
 }
 
-type DeckSyncInput = { position: DeckPosition; onNavigate: (direction: "next" | "previous") => void };
+/** Posts to the relay, backing off for a few seconds when it isn't running. Resolves to the hologram count. */
+function createRelayPoster() {
+  const base = relayBase();
+  let quietUntil = 0;
+  return async (message: PositionMessage): Promise<number> => {
+    if (!base || Date.now() < quietUntil) return 0;
+    try {
+      const response = await fetch(`${base}/state`, {
+        method: "POST",
+        headers: { "content-type": "text/plain" },
+        body: JSON.stringify(message),
+      });
+      const body = (await response.json()) as { holograms?: number };
+      return body.holograms ?? 0;
+    } catch {
+      quietUntil = Date.now() + RELAY_RETRY_MS;
+      return 0;
+    }
+  };
+}
 
-/** Deck side: shares the current slide and build step, and reports whether a hologram window is listening. */
+type DeckSyncInput = { position: DeckPosition; onNavigate: (direction: Direction) => void };
+
+/** Deck side: shares every slide and build step, and reports whether any hologram screen is following. */
 export function useDeckSync({ position, onNavigate }: DeckSyncInput): boolean {
-  const channelRef = useRef<BroadcastChannel | null>(null);
-  const positionRef = useRef(position);
+  const sendRef = useRef<(position: DeckPosition) => void>(() => undefined);
   const navigateRef = useRef(onNavigate);
-  const [lastSeen, setLastSeen] = useState(0);
+  const [windowSeen, setWindowSeen] = useState(0);
+  const [relayCount, setRelayCount] = useState(0);
   const [now, setNow] = useState(0);
 
   useEffect(() => {
-    positionRef.current = position;
     navigateRef.current = onNavigate;
   });
 
   useEffect(() => {
     const channel = openChannel();
-    channelRef.current = channel;
-    if (!channel) return;
-    const handlers: Record<Message["type"], (message: Message) => void> = {
-      "request-position": () => channel.postMessage({ type: "position", position: positionRef.current }),
-      "hologram-here": () => setLastSeen(Date.now()),
-      navigate: (message) => {
-        if (message.type === "navigate") navigateRef.current(message.direction);
-      },
-      position: () => undefined,
+    const postToRelay = createRelayPoster();
+    const deck = Math.random().toString(36).slice(2);
+    let seq = 0;
+    let latest: PositionMessage | null = null;
+    const publish = (message: PositionMessage) => {
+      channel?.postMessage(message);
+      void postToRelay(message).then(setRelayCount);
     };
-    channel.onmessage = (event: MessageEvent<Message>) => handlers[event.data.type]?.(event.data);
-    const clock = window.setInterval(() => setNow(Date.now()), HEARTBEAT_MS);
+    sendRef.current = (next) => {
+      seq += 1;
+      latest = { deck, seq, at: Date.now(), ...next };
+      publish(latest);
+    };
+    if (channel) {
+      channel.onmessage = (event: MessageEvent<unknown>) => {
+        if (event.data === HELLO && latest) channel.postMessage(latest);
+        if (event.data === HERE) setWindowSeen(Date.now());
+        if (isNavigate(event.data)) navigateRef.current(event.data.direction);
+      };
+    }
+    const beat = window.setInterval(() => {
+      setNow(Date.now());
+      if (latest) void postToRelay(latest).then(setRelayCount);
+    }, HEARTBEAT_MS);
     return () => {
-      window.clearInterval(clock);
-      channel.close();
+      window.clearInterval(beat);
+      channel?.close();
     };
   }, []);
 
   useEffect(() => {
-    channelRef.current?.postMessage({ type: "position", position });
+    sendRef.current(position);
   }, [position]);
 
-  return lastSeen > 0 && now - lastSeen < PRESENCE_TIMEOUT_MS;
+  const windowOpen = windowSeen > 0 && now - windowSeen < PRESENCE_TIMEOUT_MS;
+  return windowOpen || relayCount > 0;
 }
 
-/** Hologram side: follows the deck's position and lets the deck know a hologram window is open. */
+/** Follows the relay's event stream, reopening it if the browser gives up. */
+function listenToRelay(onMessage: (message: PositionMessage) => void, onLink: (linked: boolean) => void) {
+  const base = relayBase();
+  if (!base || typeof EventSource === "undefined") return () => undefined;
+  let source: EventSource | null = null;
+  let retry: ReturnType<typeof setTimeout> | undefined;
+  let stopped = false;
+  const open = () => {
+    source = new EventSource(`${base}/events`);
+    source.onopen = () => onLink(true);
+    source.addEventListener("position", (event) => {
+      const value: unknown = JSON.parse((event as MessageEvent<string>).data);
+      if (isPositionMessage(value)) onMessage(value);
+    });
+    source.onerror = () => {
+      onLink(false);
+      if (source?.readyState !== EventSource.CLOSED || stopped) return;
+      retry = setTimeout(open, RELAY_RETRY_MS);
+    };
+  };
+  open();
+  return () => {
+    stopped = true;
+    clearTimeout(retry);
+    source?.close();
+  };
+}
+
+/** Hologram side: follows the deck from this browser or from the relay, whichever speaks first and newest. */
 export function useHologramSync(): {
   position: DeckPosition | null;
-  navigate: (direction: "next" | "previous") => void;
+  navigate: (direction: Direction) => void;
+  relayLinked: boolean;
 } {
   const channelRef = useRef<BroadcastChannel | null>(null);
-  const [position, setPosition] = useState<DeckPosition | null>(null);
+  const [message, setMessage] = useState<PositionMessage | null>(null);
+  const [relayLinked, setRelayLinked] = useState(false);
 
   useEffect(() => {
+    const take = (next: PositionMessage) => setMessage((current) => (isNewer(next, current) ? next : current));
     const channel = openChannel();
     channelRef.current = channel;
-    if (!channel) return;
-    channel.onmessage = (event: MessageEvent<Message>) => {
-      if (event.data.type === "position") setPosition(event.data.position);
-    };
-    channel.postMessage({ type: "request-position" });
-    const beat = () => channel.postMessage({ type: "hologram-here" });
+    if (channel) {
+      channel.onmessage = (event: MessageEvent<unknown>) => {
+        if (isPositionMessage(event.data)) take(event.data);
+      };
+      channel.postMessage(HELLO);
+    }
+    const beat = () => channel?.postMessage(HERE);
     beat();
     const timer = window.setInterval(beat, HEARTBEAT_MS);
+    const stopRelay = listenToRelay(take, setRelayLinked);
     return () => {
       window.clearInterval(timer);
-      channel.close();
+      channel?.close();
+      stopRelay();
     };
   }, []);
 
-  const navigate = (direction: "next" | "previous") => channelRef.current?.postMessage({ type: "navigate", direction });
-  return { position, navigate };
+  const navigate = (direction: Direction) =>
+    channelRef.current?.postMessage({ type: "pip-hologram:navigate", direction } satisfies NavigateMessage);
+  const position = message ? { slideId: message.slideId, step: message.step } : null;
+  return { position, navigate, relayLinked };
 }
 
-/** True while a hologram window is open, so the deck lets Pip's voice come from the fog screen instead. */
+/** True while a hologram screen is following, so the deck lets Pip's voice come from the fog screen instead. */
 const HologramConnectedContext = createContext(false);
 export const HologramConnectedProvider = HologramConnectedContext.Provider;
 export function useHologramConnected(): boolean {
