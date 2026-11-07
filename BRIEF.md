@@ -38,6 +38,8 @@ Original, Useful, Believable, Accessible to non-engineers, Understandable throug
 
 ## The point of Pip
 
+**The future of AI is human.** We can already tell AI what to do, but people connect best with people, especially people who aren't comfortable with technology. This is the deck's opening idea, right after the title.
+
 Pip is a friendly, human-facing way to build software. Today's AI builders feel made for engineers: a blank box, technical words and code you can't check. Non-technical people find them intimidating and give up. Pip is a character on a fog screen that says hello, talks in your words, says back what it heard, asks one question at a time and never shows code. The friendliness is the product: it makes people feel open to building.
 
 ## Who it's for

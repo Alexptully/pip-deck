@@ -7,6 +7,7 @@ import type { SourceId } from "./sources";
 
 export type SlideId =
   | "title"
+  | "human"
   | "persona"
   | "stat"
   | "owners"
@@ -58,6 +59,20 @@ export const slides: SlideMeta[] = [
       "Hi, we're the team behind Pip. The prompt asked what comes after typing a request into an AI builder.",
       "Our answer is a character. Pip lives in a sheet of fog, talks with you like a person and builds the app while you talk. It is made for people who find today's AI builders intimidating.",
       "If the fog screen is running, wave a hand through Pip now. It gets a laugh and it shows the screen is only mist.",
+    ],
+  },
+  {
+    id: "human",
+    name: "The future of AI is human",
+    section: "The idea",
+    rubric: "Original",
+    steps: 2,
+    sources: [],
+    mist: { x: 1500, width: 520, strength: 0.7 },
+    notes: [
+      "Our starting belief: the future of AI is human.",
+      "We can already tell AI what to do. Type a command and it builds something. That works well for people who already think like engineers.",
+      "Advance. But humans connect best with humans, especially people who aren't comfortable with technology. They ask a person for help, not a text box. So the next step for AI is to feel like someone you can talk to.",
     ],
   },
   {
@@ -340,6 +355,14 @@ export const slides: SlideMeta[] = [
 export const titleSlide = {
   name: "Pip",
   line: "Pip is a friendly character that helps anyone build the app they need by talking it through.",
+};
+
+export const humanSlide = {
+  heading: "The future of AI is human",
+  commandLabel: "We can already tell AI what to do",
+  command: "build me a patient check-in app",
+  humanLabel: "But people connect best with people, especially people who aren't comfortable with technology",
+  humanLine: "Hi! What's been hardest this week?",
 };
 
 export const personaSlide = {
