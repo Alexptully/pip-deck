@@ -9,10 +9,11 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "scan:dashes": "node scripts/scan-dashes.mjs",
-    "check": "npm run typecheck && npm run lint && npm run scan:dashes",
+    "check": "npm run typecheck && npm run lint && npm run scan:dashes && npm run check:voice",
     "present": "next build && node scripts/present.mjs",
     "start": "node scripts/present.mjs",
-    "relay": "node scripts/pip-relay.mjs"
+    "relay": "node scripts/pip-relay.mjs",
+    "check:voice": "node scripts/check-pip-voice.mjs"
   },
   "author": "",
   "license": "ISC",

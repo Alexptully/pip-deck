@@ -23,6 +23,8 @@ Pip follows the deck on the fog screen. Until "Say hello to Pip" on the Meet Pip
 3. On the second computer, on the same Wi-Fi, open that address and click **Start the hologram**. It goes full screen.
 4. In the deck, press N. The notes say whether the hologram screen is connected.
 
-On the hologram screen: M mirrors the image, C shows Pip's lines as captions, F toggles full screen, and the arrow keys move the deck. Pip speaks from the hologram computer, so plug the speaker in there. If event Wi-Fi blocks the two computers from seeing each other, join both to a phone hotspot.
+On the hologram screen: M mirrors the image, C shows Pip's lines as captions, F toggles full screen, and the arrow keys move the deck. Pip speaks from the hologram computer, so plug the speaker in there.
+
+Pip's voice is a set of recordings made with Kokoro, an open voice model, so it doesn't sound like the browser reading text. After changing any line Pip says out loud, run `pip install kokoro-onnx soundfile` once and then `python3 scripts/make-pip-voice.py` (it needs ffmpeg). `npm run check` reminds you if a recording is missing. If event Wi-Fi blocks the two computers from seeing each other, join both to a phone hotspot.
 
 The hosted copy (GitHub Pages) and the single-file build only reach a hologram window in the same browser, not a second computer.
