@@ -50,7 +50,8 @@ export const slides: SlideMeta[] = [
     sources: ["promptBrief"],
     mist: { x: 1360, width: 640, strength: 1 },
     notes: [
-      "[Alex] Hi, we're Group 7. Our prompt asked what comes after typing a request into an AI builder. Our answer is Pip. You'll meet Pip in a minute; for now it's a question mark.",
+      "[Alex] Quick show of hands: who here has tried an AI app builder, stared at the empty box, and closed the tab? Hold on to that feeling.",
+      "We're Group 7, and this is Pip. Well, almost Pip. It's still figuring out its face.",
     ],
   },
   {
@@ -62,8 +63,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1500, width: 520, strength: 0.7 },
     notes: [
-      "[Alex] We believe the future of AI is human. Today we can tell AI what to do, and that works for people who think like engineers.",
-      "[Click] But people connect best with people, especially those who aren't comfortable with technology.",
+      "[Alex] Right now, AI speaks command. You type, it obeys. That's great if you already think in specs.",
+      "[Click] But when most people get stuck, they don't open a terminal. They turn to the person next to them and ask for help. That's the AI we wanted to build. Cara?",
     ],
   },
   {
@@ -75,10 +76,10 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1800, width: 200, strength: 0.4 },
     notes: [
-      "[Cara] Meet Gloria. She runs a family clinic and wants an app to end the nonstop calls, but she has no time and no budget to build one.",
-      "[Click] 7 a.m., the phones ring before the doors open. [Click] 10, the waiting room asks how much longer. [Click] 1 p.m., refills pile up on sticky notes.",
-      "[Click] 6 p.m., she tries an AI builder. It shows her code, so she closes the tab. [Click] 8 p.m., she's still returning calls.",
-      "[Click] Gloria doesn't need to learn to code. She needs help that works like a person.",
+      "[Cara] This is Gloria. Picture her clinic on a Tuesday.",
+      "[Click] It's 7 a.m. and the phone is already ringing. [Click] By 10, every chair is taken, and someone's asking how much longer for the third time. [Click] At lunch, she's writing refill requests on sticky notes.",
+      "[Click] That evening, she finally tries one of those AI app builders. It asks her to describe her app, then shows her code. Tab closed. [Click] At 8, she's still calling people back.",
+      "[Click] Gloria isn't missing an idea. She's missing a partner.",
     ],
   },
 
@@ -91,8 +92,8 @@ export const slides: SlideMeta[] = [
     sources: ["gs10ksb2026", "nhsGpTraining2022"],
     mist: { x: 1700, width: 300, strength: 0.5 },
     notes: [
-      "[Cara] She's not alone. In Goldman Sachs' 2026 survey, 84% of small business owners using AI want the time savings, but 73% need help getting started. In an NHS survey, 74% of clinic staff say their workload keeps them from finishing training.",
-      "[Click] So what if building an app felt like talking to a friend?",
+      "[Cara] And she's everywhere. Most small business owners using AI want it to save time, yet nearly three in four say they need help just getting started. In the UK, three in four clinic staff say they're too swamped to finish training. The appetite is there. The on-ramp isn't.",
+      "[Click] So we asked: what if building an app felt like talking to a friend? Daisy?",
     ],
   },
 
@@ -105,9 +106,9 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1500, width: 520, strength: 0.8 },
     notes: [
-      "[Daisy] Let's condense.",
-      "[Click] Say hello to Pip.",
-      "[Click] Pip is an AI that builds the apps you need, just by talking with you. You talk to it like a person, it picks up on what you need, and it builds the app. It lives on a fog screen, so it feels like someone in the room.",
+      "[Daisy] Let's condense. [Beat.]",
+      "[Click] Say hello to Pip. [Gesture to the fog screen.]",
+      "[Click] Pip lives in a sheet of fog, and it's made to feel like a person, not a program. You talk. It listens. It builds.",
     ],
   },
   {
@@ -119,8 +120,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1840, width: 140, strength: 0.4 },
     notes: [
-      "[Daisy] What makes Pip special is that, like a person, it picks things up. At Gloria's clinic it noticed walk-ins peak in the morning, one person juggles phones and check-ins, refills live on sticky notes, and everyone asks 'How much longer?'",
-      "[Click] Then it brings it up: 'Want me to make a list that texts people when it's their turn?' Gloria never had to describe the problem.",
+      "[Daisy] But here's the part we're proudest of: Pip doesn't wait to be asked. Like a new hire in their first week, it notices things. The morning rush. The one person juggling phones and check-ins. The sticky notes. The question everyone keeps asking.",
+      "[Click] And then, like a good coworker, it speaks up. Gloria never had to explain a thing. Jerry, show them.",
       "If asked about privacy: Pip glows when it listens, keeps patterns not recordings, anyone can say 'Pip, pause,' and nothing is built without a yes. These observations are demo data.",
     ],
   },
@@ -134,8 +135,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 470, width: 560, strength: 0.9 },
     notes: [
-      "[Jerry] Here's Gloria building it. She just talks: 'Our phones never stop.'",
-      "[Click] Pip says back what it heard, so she can fix anything before it's built.",
+      "[Jerry] So Gloria says yes, and she talks the way she'd vent to a friend: 'Our phones never stop.'",
+      "[Click] Pip says it back in plain language. No spec, no jargon. If it misheard, she just says so.",
     ],
   },
   {
@@ -147,7 +148,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 330, width: 460, strength: 0.85 },
     notes: [
-      "[Jerry] Then Pip asks one friendly question at a time. Click 12: 'How many walk-ins a day? I'll close the list before your doctors get swamped.' That's a scheduling answer, and it just built capacity logic. Click back to 30.",
+      "[Jerry] Now watch the phone. Pip asks one thing at a time. [Click 12.] She says twelve walk-ins a day, and the list is already full. She just made an engineering decision without knowing it. [Click back to 30.]",
     ],
   },
   {
@@ -159,8 +160,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 300, width: 380, strength: 0.6 },
     notes: [
-      "[Jerry] Then she says one word: 'Launch it.'",
-      "[Click] It's live, with a QR code, and check-ins arrive with interpreter requests flagged. Scan it if the demo is up.",
+      "[Jerry] And then two words: 'Launch it.'",
+      "[Click] That's a real page and a QR code. If the demo is up: scan it now and you're on Gloria's list. Ame?",
     ],
   },
   {
@@ -172,8 +173,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 1400, strength: 0.25 },
     notes: [
-      "[Ame] Gloria's clinic is one example.",
-      "[Click] Zoom out, and Pip works anywhere people need help: a market, a school, a food bank, a permit office, a salon. These are examples, not places we've tested.",
+      "[Ame] Gloria's clinic is one door.",
+      "[Click] Open the rest and it's the school office asking if a kid got picked up, the food bank short on Thursday volunteers, the permit office fielding the same call all day. Same problem everywhere: people who know exactly what's wrong and have no time to build the fix.",
     ],
   },
   {
@@ -185,7 +186,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 460, width: 700, strength: 0.35 },
     notes: [
-      "[Ame] When anyone can build, everyone benefits: their team, the people they serve and the community. If you can describe a problem to a friend, you can build with Pip.",
+      "[Ame] And when one of them can build, it ripples. Their team gets afternoons back, and the people they serve stop waiting on hold.",
     ],
   },
   {
@@ -197,7 +198,7 @@ export const slides: SlideMeta[] = [
     sources: ["mdnSpeechSynthesis", "mdnSpeechRecognition"],
     mist: { x: 1840, width: 140, strength: 0.4 },
     notes: [
-      "[Ame] This only works now: browsers can listen and speak, and models can turn messy talk into a working app in real time.",
+      "[Ame] Why now? A few years ago this needed a team of engineers. Today a browser can listen, a model can turn rambling into structure, and we built it as students.",
     ],
   },
   {
@@ -209,7 +210,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1720, width: 300, strength: 0.5 },
     notes: [
-      "[Ame] Our biggest lesson: people tell a character far more than they ever type into a box. Replace with your team's own surprise.",
+      "[Ame] What surprised us most: people told Pip things they'd never type into a box. A face changes what people say.",
     ],
   },
   {
@@ -221,7 +222,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 720, strength: 1 },
     notes: [
-      "[Ame] The future of vibe coding isn't a better text box. It's someone you can talk to. Come tell Pip what's been hard this week. Thank you.",
+      "[Ame] So, that empty box you closed? Pip's answer is to never hand you one. Come say hi, and tell it what's been hard this week. Thank you.",
     ],
   },
   {
