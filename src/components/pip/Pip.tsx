@@ -15,6 +15,9 @@ type PipProps = {
   className?: string;
 };
 
+/** Pip is out of focus until it is introduced, then condenses into a sharp drawing. */
+const MYSTERY_BLUR = 5;
+
 const BODY = "M120 36 C 140 72, 200 112, 200 176 A 80 80 0 0 1 40 176 C 40 112, 100 72, 120 36 Z";
 
 const handPositions: Record<PipReach, { left: [number, number]; right: [number, number] }> = {
@@ -134,8 +137,14 @@ export function Pip({ height, mood = "smile", reach = "none", className = "" }: 
       role="img"
       aria-label="Pip, a droplet-shaped holographic character"
       initial={false}
-      animate={still ? { y: 0 } : { y: [0, -10, 0] }}
-      transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+      animate={{
+        y: still ? 0 : [0, -10, 0],
+        filter: mood === "mystery" ? `blur(${MYSTERY_BLUR}px)` : "blur(0px)",
+      }}
+      transition={{
+        y: { duration: 3.4, repeat: Infinity, ease: "easeInOut" },
+        filter: { duration: still ? 0 : 1.2, ease: "easeOut" },
+      }}
     >
       <defs>
         <filter id={`glow-${id}`} x="-50%" y="-50%" width="200%" height="200%">

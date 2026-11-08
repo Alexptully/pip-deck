@@ -69,7 +69,7 @@ export const slides: SlideMeta[] = [
     notes: [
       "Our starting belief: the future of AI is human.",
       "We can already tell AI what to do. Type a command and it builds something. That works well for people who already think like engineers.",
-      "Advance. But humans connect best with humans, especially people who aren't comfortable with technology. They ask a person for help, not a text box. So the next step for AI is to feel like someone you can talk to.",
+      "Advance. But humans connect best with humans, especially those who aren't comfortable with technology. They ask a person for help, not a text box. So the next step for AI is to feel like someone you can talk to.",
     ],
   },
   {
@@ -326,7 +326,7 @@ export const humanSlide = {
   heading: "The future of AI is human",
   commandLabel: "We can already tell AI what to do",
   command: "build me a patient check-in app",
-  humanLabel: "But people connect best with people, especially people who aren't comfortable with technology",
+  humanLabel: "But people connect best with people, especially those who aren't comfortable with technology",
   humanLine: "Hi! What's been hardest this week?",
 };
 

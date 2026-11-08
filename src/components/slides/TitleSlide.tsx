@@ -25,7 +25,7 @@ export function TitleSlide() {
           <dd className="text-text-muted">{config.prompt}</dd>
         </dl>
       </Reveal>
-      <Reveal delay={0.3} rise={60} className="absolute left-[1000px] top-[170px]">
+      <Reveal delay={1.2} rise={90} pace="slow" className="absolute left-[1000px] top-[170px]">
         <Pip height={560} mood="mystery" />
       </Reveal>
     </div>
