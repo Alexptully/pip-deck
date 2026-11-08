@@ -45,7 +45,7 @@ export function StatSlide({ step }: { step: number }) {
         ))}
       </Reveal>
       <Reveal show={pivot} rise={40} className="absolute left-0 top-[260px] flex w-[1680px] items-center gap-14">
-        <Pip height={300} mood="smile" />
+        <Pip height={300} mood="mystery" />
         <p className="type-title w-[1150px] shrink-0 text-text">{statSlide.pivot}</p>
       </Reveal>
     </div>

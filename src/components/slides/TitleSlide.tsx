@@ -26,7 +26,7 @@ export function TitleSlide() {
         </dl>
       </Reveal>
       <Reveal delay={0.3} rise={60} className="absolute left-[1000px] top-[170px]">
-        <Pip height={560} mood="smile" />
+        <Pip height={560} mood="mystery" />
       </Reveal>
     </div>
   );

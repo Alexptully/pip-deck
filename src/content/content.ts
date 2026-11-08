@@ -113,13 +113,14 @@ export const slides: SlideMeta[] = [
     name: "Meet Pip",
     section: "What Pip makes easier",
     rubric: "Understandable through the product itself",
-    steps: 1,
+    steps: 3,
     sources: [],
     mist: { x: 1500, width: 520, strength: 0.8 },
     notes: [
-      "So what is Pip? Pip is an AI coworker that builds the apps your workplace needs.",
-      "It works in three moves. You talk to it like a person, or you just keep working. Pip figures out what would help. Then it builds the app, and you never see code.",
-      "Pip lives on a fog screen at the counter, so it feels like someone in the room, not software on a screen. Now let's look at what makes it special.",
+      "Let's condense. [Pause. Pip is still a question mark.]",
+      "[Click] Say hello to Pip. [Pip's face appears.]",
+      "[Click] Pip is an AI coworker that builds the apps your workplace needs. You talk to it, or you just keep working. Pip figures out what would help. Then it builds the app, and you never see code.",
+      "It lives on a fog screen at the counter, so it feels like someone in the room. Now, here's what makes it special.",
     ],
   },
   {
@@ -350,6 +351,8 @@ export const storySlide = {
 
 export const meetPipSlide = {
   heading: "Meet Pip",
+  condense: "Let's condense.",
+  hello: "Say hello to Pip.",
   definition: "Pip is an AI coworker that builds the apps your workplace needs.",
   flow: [
     { id: "talk", icon: "talk", text: "You talk to it, or just keep working" },

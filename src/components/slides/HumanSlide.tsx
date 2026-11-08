@@ -19,7 +19,7 @@ export function HumanSlide({ step }: { step: number }) {
         </p>
       </Reveal>
       <Reveal show={human} rise={40} className="absolute left-[780px] top-[250px] w-[900px]">
-        <Pip height={170} mood="smile" />
+        <Pip height={170} mood="mystery" />
         <Card className="mt-6 px-10 py-8">
           <p className="type-title text-text">{humanSlide.humanLine}</p>
         </Card>
