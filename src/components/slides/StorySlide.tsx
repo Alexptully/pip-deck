@@ -27,18 +27,21 @@ function StoryPanel({ panel, show }: { panel: Panel; show: boolean }) {
   );
 }
 
-/** Gloria's day as a storyboard, one panel per click, ending on why she needs Pip. */
+/** Gloria's day as a storyboard: an intro line, then one panel per click, ending on why she needs Pip. */
 export function StorySlide({ step }: { step: number }) {
   const panelCount = storySlide.panels.length;
   return (
     <div className="relative h-full">
       <Heading>{storySlide.heading}</Heading>
-      <div className="absolute left-0 right-0 top-[150px] grid grid-cols-5 gap-6">
+      <Reveal delay={0.2} className="absolute left-0 top-[120px]">
+        <p className="type-lead text-text-muted">{storySlide.intro}</p>
+      </Reveal>
+      <div className="absolute left-0 right-0 top-[210px] grid grid-cols-5 gap-6">
         {storySlide.panels.map((panel, index) => (
-          <StoryPanel key={panel.id} panel={panel} show={index <= step} />
+          <StoryPanel key={panel.id} panel={panel} show={index < step} />
         ))}
       </div>
-      <Reveal show={step >= panelCount} rise={30} className="absolute bottom-0 left-0 right-0">
+      <Reveal show={step > panelCount} rise={30} className="absolute bottom-0 left-0 right-0">
         <p className="type-title text-text">{storySlide.need}</p>
       </Reveal>
     </div>
