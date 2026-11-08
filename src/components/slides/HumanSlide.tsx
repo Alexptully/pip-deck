@@ -10,12 +10,15 @@ const icons: Record<string, Icon> = {
 
 /** The belief behind the deck: what people do well when they help each other. */
 export function HumanSlide({ step }: { step: number }) {
-  const shown = step >= 1;
+  const headingShown = step >= 1;
+  const shown = step >= 2;
   return (
     <div className="relative h-full">
       <Reveal className="absolute left-0 top-0">
+        <p className="type-lead max-w-[1300px] text-text-muted">{humanSlide.lead}</p>
+      </Reveal>
+      <Reveal show={headingShown} className="absolute left-0 top-[150px]">
         <h2 className="type-display text-text">{humanSlide.heading}</h2>
-        <p className="type-lead mt-8 max-w-[1300px] text-text-muted">{humanSlide.lead}</p>
       </Reveal>
       <ul className="absolute left-0 right-0 top-[560px] grid grid-cols-3 gap-14">
         {humanSlide.strengths.map((strength, index) => {
