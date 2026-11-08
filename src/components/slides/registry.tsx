@@ -18,6 +18,7 @@ import { StandardsSlide } from "./StandardsSlide";
 import { TitleSlide } from "./TitleSlide";
 import { TrustSlide } from "./TrustSlide";
 import { TrySlide } from "./TrySlide";
+import { ZoomOutSlide } from "./ZoomOutSlide";
 import { WhyNowSlide } from "./WhyNowSlide";
 
 export type SlideProps = { step: number };
@@ -34,6 +35,7 @@ export const slideComponents: Record<SlideId, ComponentType<SlideProps>> = {
   ask: AskSlide,
   try: TrySlide,
   launch: LaunchSlide,
+  zoomOut: ZoomOutSlide,
   trust: TrustSlide,
   hologram: HologramSlide,
   whyNow: WhyNowSlide,

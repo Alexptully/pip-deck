@@ -17,6 +17,7 @@ export type SlideId =
   | "ask"
   | "try"
   | "launch"
+  | "zoomOut"
   | "trust"
   | "hologram"
   | "whyNow"
@@ -223,6 +224,21 @@ export const slides: SlideMeta[] = [
       "Gloria says one word and the page goes live with a QR code she can tape to the front door.",
       "Advance. Check-ins arrive live, and the front desk gets one list grouped by visit type, with interpreter requests flagged. The check-ins shown here are demo data.",
       "If the room can reach the demo, ask everyone to scan the code and join the list now. Their check-ins show up during the pitch.",
+    ],
+  },
+  {
+    id: "zoomOut",
+    name: "Everywhere Pip works",
+    section: "Who Pip allows to build",
+    rubric: "Useful",
+    steps: 2,
+    sources: [],
+    mist: { x: 960, width: 1400, strength: 0.25 },
+    notes: [
+      "Gloria's clinic is just one stop.",
+      "[Click] Zoom out, and the same thing happens anywhere people talk about their work. A corner market hears 'You're out of conchas again?' and gets a reserve-ahead page. A school front office hears 'Did my kid get picked up?' and gets a pickup log. A youth soccer league, a food bank, a city permit office, a salon, an auto shop, a restaurant.",
+      "Every one of them has the same problem Gloria had: they know what's wrong, and they have no time to build the fix. Pip listens, asks and builds it.",
+      "These are examples of what Pip could hear and build, not places we have tested.",
     ],
   },
   {
@@ -494,6 +510,78 @@ export const askSlide = {
       ],
     },
   ] satisfies AskQuestion[],
+};
+
+export const zoomOutSlide = {
+  closeHeading: "Gloria's clinic is one stop",
+  wideHeading: "Pip works wherever people work",
+  focus: "clinic",
+  places: [
+    {
+      id: "market",
+      icon: "store",
+      name: "Corner market",
+      hears: "You're out of conchas again?",
+      builds: "A reserve-ahead page",
+    },
+    {
+      id: "school",
+      icon: "school",
+      name: "School front office",
+      hears: "Did my kid get picked up?",
+      builds: "A pickup log for parents",
+    },
+    {
+      id: "soccer",
+      icon: "soccer",
+      name: "Youth soccer league",
+      hears: "Is practice canceled?",
+      builds: "Team alerts by text",
+    },
+    {
+      id: "foodBank",
+      icon: "basket",
+      name: "Food bank",
+      hears: "Who's covering Thursday?",
+      builds: "A volunteer shift board",
+    },
+    {
+      id: "clinic",
+      icon: "clinic",
+      name: "Family clinic",
+      hears: "How much longer?",
+      builds: "A walk-in list that texts patients",
+    },
+    {
+      id: "city",
+      icon: "city",
+      name: "City permit office",
+      hears: "Where's my permit?",
+      builds: "A permit status page",
+    },
+    {
+      id: "salon",
+      icon: "salon",
+      name: "Neighborhood salon",
+      hears: "Can I get in Saturday?",
+      builds: "Booking with reminders",
+    },
+    {
+      id: "auto",
+      icon: "auto",
+      name: "Auto repair shop",
+      hears: "Is my car ready yet?",
+      builds: "A text when the car is done",
+    },
+    {
+      id: "restaurant",
+      icon: "restaurant",
+      name: "Family restaurant",
+      hears: "Is this gluten-free?",
+      builds: "An allergy-friendly menu",
+    },
+  ],
+  note: "Examples of what Pip could hear and build",
 };
 
 export const clinicPageCopy = {
