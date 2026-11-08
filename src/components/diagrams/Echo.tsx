@@ -5,7 +5,8 @@ import { useStill } from "@/components/primitives/Still";
 
 const SIZE = { width: 1100, height: 900 };
 const CENTER = { x: 560, y: 430 };
-const MAX_RADIUS = 540;
+/** Stays inside the drawing so a ring is never clipped into a straight edge. */
+const MAX_RADIUS = 420;
 const RING_COUNT = 3;
 /** Seconds for one ring to travel from the center to the edge. */
 const TRAVEL = 4.8;
@@ -65,8 +66,11 @@ function LiveEcho() {
           stroke="var(--color-accent)"
           strokeWidth={2}
           initial={{ r: 0, opacity: 0 }}
-          animate={{ r: [0, MAX_RADIUS], opacity: [0.55, 0] }}
-          transition={{ duration: TRAVEL, ease: "linear", repeat: Infinity, delay }}
+          animate={{ r: [0, MAX_RADIUS], opacity: [0, 0.45, 0.2, 0] }}
+          transition={{
+            r: { duration: TRAVEL, ease: "linear", repeat: Infinity, delay },
+            opacity: { duration: TRAVEL, times: [0, 0.12, 0.6, 0.9], ease: "easeInOut", repeat: Infinity, delay },
+          }}
         />
       ))}
       {NOTICED.map((point) => (
@@ -78,8 +82,11 @@ function LiveEcho() {
             stroke="var(--color-accent)"
             strokeWidth={1.5}
             initial={{ r: 0, opacity: 0 }}
-            animate={{ r: [0, 0, 56], opacity: [0, 0.7, 0] }}
-            transition={{ duration: RING_GAP, times: [0, 0.05, 0.6], repeat: Infinity, delay: hitDelay(point) }}
+            animate={{ r: [4, 48], opacity: [0, 0.5, 0] }}
+            transition={{
+              r: { duration: RING_GAP * 0.7, ease: "easeOut", repeat: Infinity, repeatDelay: RING_GAP * 0.3, delay: hitDelay(point) },
+              opacity: { duration: RING_GAP * 0.7, times: [0, 0.2, 1], ease: "easeInOut", repeat: Infinity, repeatDelay: RING_GAP * 0.3, delay: hitDelay(point) },
+            }}
           />
           <motion.circle
             cx={point.x}
@@ -87,8 +94,8 @@ function LiveEcho() {
             r={7}
             fill="var(--color-accent)"
             initial={{ opacity: 0.2 }}
-            animate={{ opacity: [0.2, 1, 0.2] }}
-            transition={{ duration: RING_GAP, times: [0, 0.08, 0.7], repeat: Infinity, delay: hitDelay(point) }}
+            animate={{ opacity: [0.2, 0.9, 0.2] }}
+            transition={{ duration: RING_GAP, times: [0, 0.2, 0.8], ease: "easeInOut", repeat: Infinity, delay: hitDelay(point) }}
           />
         </g>
       ))}
