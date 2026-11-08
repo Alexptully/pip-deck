@@ -103,3 +103,7 @@ Her front desk (less time on hold and callbacks), her patients (join the list fr
 ## Hardware
 
 Pip runs on a laptop and is projected onto a small fog screen at the counter, so everyone can see when it is listening.
+
+## Deck order (4-minute version)
+
+Alex: title (Pip as a question mark), the future of AI is human. Cara: Meet Gloria storyboard, the busy-people stats. Daisy: Meet Pip (the reveal), Pip picks things up like a real person. Jerry: Say it, Shape it (live), Launch it. Ame: zoom out to other workplaces, who else benefits, why now, what we learned, close. Standards and sources stay up for Q&A. The trust rules, the fog-screen hardware and the pretend-customer test live in the speaker notes and Q&A answers, not on slides.

@@ -10,16 +10,12 @@ export type SlideId =
   | "human"
   | "story"
   | "stat"
-  | "friendly"
   | "meetPip"
   | "listen"
   | "say"
   | "ask"
-  | "try"
   | "launch"
   | "zoomOut"
-  | "trust"
-  | "hologram"
   | "whyNow"
   | "learned"
   | "benefits"
@@ -54,9 +50,7 @@ export const slides: SlideMeta[] = [
     sources: ["promptBrief"],
     mist: { x: 1360, width: 640, strength: 1 },
     notes: [
-      "Hi, we're the team behind Pip. The prompt asked what comes after typing a request into an AI builder.",
-      "Our answer is a character that acts like a real person. Pip lives in a sheet of fog at the counter. You can talk with it, and like any coworker it picks up on what it overhears and brings up the things that seem useful. It is made for people who find today's AI builders intimidating.",
-      "If the fog screen is running, wave a hand through Pip now. It gets a laugh and it shows the screen is only mist.",
+      "[Alex] Hi, we're Group 7. Our prompt asked what comes after typing a request into an AI builder. Our answer is Pip. You'll meet Pip in a minute; for now it's a question mark.",
     ],
   },
   {
@@ -68,9 +62,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1500, width: 520, strength: 0.7 },
     notes: [
-      "Our starting belief: the future of AI is human.",
-      "We can already tell AI what to do. Type a command and it builds something. That works well for people who already think like engineers.",
-      "Advance. But humans connect best with humans, especially those who aren't comfortable with technology. They ask a person for help, not a text box. So the next step for AI is to feel like someone you can talk to.",
+      "[Alex] We believe the future of AI is human. Today we can tell AI what to do, and that works for people who think like engineers.",
+      "[Click] But people connect best with people, especially those who aren't comfortable with technology.",
     ],
   },
   {
@@ -82,13 +75,10 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1800, width: 200, strength: 0.4 },
     notes: [
-      "Meet Gloria. She runs a small family clinic in East Los Angeles. She knows an app could end the nonstop calls, but she has no time and no tech background to build one. Her constraints are real: no budget for a developer, patient privacy rules to follow, and her phone as her only computer. Let's walk through one day with her.",
-      "[Click] 7 a.m. The phones are ringing before the doors even open. Patients want to know if they can come in today.",
-      "[Click] 10 a.m. The waiting room is full. Every few minutes someone comes to the desk and asks, 'How much longer?'",
-      "[Click] 1 p.m. Refill requests pile up on sticky notes. A voicemail about one of them gets missed.",
-      "[Click] 6 p.m. Gloria finally sits down and tries one of those AI app builders everyone talks about. It opens to a blank box, then shows her code. She closes the tab.",
-      "[Click] 8 p.m. She's still returning calls. She thinks, there has to be an easier way.",
-      "[Click] Gloria doesn't need to learn to code. She needs help that works like a person: someone who notices what's going wrong and fixes it. That's why we built Pip.",
+      "[Cara] Meet Gloria. She runs a family clinic and wants an app to end the nonstop calls, but she has no time and no budget to build one.",
+      "[Click] 7 a.m., the phones ring before the doors open. [Click] 10, the waiting room asks how much longer. [Click] 1 p.m., refills pile up on sticky notes.",
+      "[Click] 6 p.m., she tries an AI builder. It shows her code, so she closes the tab. [Click] 8 p.m., she's still returning calls.",
+      "[Click] Gloria doesn't need to learn to code. She needs help that works like a person.",
     ],
   },
 
@@ -101,11 +91,8 @@ export const slides: SlideMeta[] = [
     sources: ["gs10ksb2026", "nhsGpTraining2022"],
     mist: { x: 1700, width: 300, strength: 0.5 },
     notes: [
-      "People like Gloria want easier ways to work. In Goldman Sachs' 2026 survey of 1,256 small business owners in its 10,000 Small Businesses program, 84% of those using AI said the main benefit was saving time and working more efficiently.",
-      "But they get stuck at the learning part. In the same survey, 73% said more training and help setting it up would help them, and only 14% said AI was fully part of their day-to-day operations.",
-      "Clinics have it worse. In NHS England's survey of 791 general-practice staff, 74% said their workload kept them from finishing training, and the next barrier was having no protected time to learn. That one is a UK survey, so we say so.",
-      "If you have real quotes from clinic staff or owners, read one here. Judges will ask how you know people want this.",
-      "Advance. So what if building an app took no learning at all, and felt like talking to a friend?",
+      "[Cara] She's not alone. In Goldman Sachs' 2026 survey, 84% of small business owners using AI want the time savings, but 73% need help getting started. In an NHS survey, 74% of clinic staff say their workload keeps them from finishing training.",
+      "[Click] So what if building an app felt like talking to a friend?",
     ],
   },
 
@@ -118,10 +105,9 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1500, width: 520, strength: 0.8 },
     notes: [
-      "Let's condense. [Pause. Pip is still a question mark.]",
-      "[Click] Say hello to Pip. [Pip's face appears.]",
-      "[Click] Pip is an AI coworker that builds the apps your workplace needs. You talk to it, or you just keep working. Pip figures out what would help. Then it builds the app, and you never see code.",
-      "It lives on a fog screen at the counter, so it feels like someone in the room. Now, here's what makes it special.",
+      "[Daisy] Let's condense.",
+      "[Click] Say hello to Pip.",
+      "[Click] Pip is an AI that builds the apps you need, just by talking with you. You talk to it like a person, it picks up on what you need, and it builds the app. It lives on a fog screen, so it feels like someone in the room.",
     ],
   },
   {
@@ -133,38 +119,9 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1840, width: 140, strength: 0.4 },
     notes: [
-      "Here is what makes Pip special. Pip isn't an app you open and close. It is more like a new coworker at the front desk.",
-      "You can talk with it any time. And like a real person, it picks things up in passing. It doesn't record everything. It pays attention to what seems interesting or useful, the way a new hire would after a week on the job.",
-      "Walk the four pins. Pip noticed that walk-ins peak from 9 to 11 and spill outside, that one person answers the phone and checks patients in at the same time, that refills live on sticky notes, and that the question asked most at the desk is 'How much longer?'",
-      "Advance. Then Pip does what a good coworker does: it brings it up. 'Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them?' Gloria never had to describe the problem. These observations are demo data for the pitch.",
-    ],
-  },
-  {
-    id: "friendly",
-    name: "Like a real person",
-    section: "What is broken about building today",
-    rubric: "Accessible to non-engineers",
-    steps: 1,
-    sources: [],
-    mist: { x: 300, width: 460, strength: 0.8 },
-    notes: [
-      "Today's AI builders feel made for engineers. You face a blank box, you're expected to write a spec, and then you get code you can't check. That is where Gloria closed the tab.",
-      "Pip is the opposite, and the table shows it row by row. It starts with a hello, talks in Gloria's words, shows what it heard instead of code and asks one question at a time.",
-      "And as you just saw, it notices things nobody told it, like a real coworker. It even has a face. People told a character more about their problem than they ever typed into a box.",
-    ],
-  },
-  {
-    id: "trust",
-    name: "Listening in the open",
-    section: "What Pip makes newly possible",
-    rubric: "Believable",
-    steps: 1,
-    sources: [],
-    mist: { x: 1800, width: 200, strength: 0.4 },
-    notes: [
-      "A coworker who notices things only works if people trust it, so we designed the rules first.",
-      "Pip glows whenever it is listening, and everyone is told before it arrives. Anyone can say 'Pip, pause.' It keeps patterns, not recordings, and nothing gets built without the owner's yes.",
-      "These are design rules for our prototype, not legal certifications. A real clinic deployment would need a privacy and HIPAA review, and we say so up front.",
+      "[Daisy] What makes Pip special is that, like a person, it picks things up. At Gloria's clinic it noticed walk-ins peak in the morning, one person juggles phones and check-ins, refills live on sticky notes, and everyone asks 'How much longer?'",
+      "[Click] Then it brings it up: 'Want me to make a list that texts people when it's their turn?' Gloria never had to describe the problem.",
+      "If asked about privacy: Pip glows when it listens, keeps patterns not recordings, anyone can say 'Pip, pause,' and nothing is built without a yes. These observations are demo data.",
     ],
   },
 
@@ -177,9 +134,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 470, width: 560, strength: 0.9 },
     notes: [
-      "Now the demo. Building with Pip takes four steps: say it, shape it, try it and launch it. First, Gloria doesn't write a prompt. She talks to Pip the way she would to a friend, and she can be messy and frustrated about it.",
-      "Advance. Pip says back what it heard in four lines: who, clinic, problem and goal. Gloria can fix any line before anything gets built.",
-      "In testing, this reflection did more for trust than any explanation we tried.",
+      "[Jerry] Here's Gloria building it. She just talks: 'Our phones never stop.'",
+      "[Click] Pip says back what it heard, so she can fix anything before it's built.",
     ],
   },
   {
@@ -191,25 +147,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 330, width: 460, strength: 0.85 },
     notes: [
-      "This slide is live. Click the answers and watch the check-in page change.",
-      "Pip asks four questions, one at a time, as plain choices with a reason attached. Gloria never has to think of a feature.",
-      "The daily limit is the best example. 'How many walk-ins can you see a day? I'll close the list before your doctors get swamped' sounds like a scheduling question, and it quietly builds capacity logic.",
-      "Every change flies from Pip's hand into the app, so nothing is hidden behind code.",
-      "Because Pip has been picking things up around the clinic, it already knows some of the answers, so it asks fewer questions and starts each one from what it noticed.",
-    ],
-  },
-  {
-    id: "try",
-    name: "Try it",
-    section: "What Pip makes easier",
-    rubric: "Original",
-    steps: 3,
-    sources: [],
-    mist: { x: 400, width: 480, strength: 0.85 },
-    notes: [
-      "Before launch, Pip tests the app for Gloria by pretending to be a patient. We call him Don Ernesto.",
-      "Advance. Ernesto finds the gap: his daughter translates for him, and there was nowhere to say so.",
-      "Advance. Gloria says to add a box for notes. Testing becomes a story she can follow instead of a QA step.",
+      "[Jerry] Then Pip asks one friendly question at a time. Click 12: 'How many walk-ins a day? I'll close the list before your doctors get swamped.' That's a scheduling answer, and it just built capacity logic. Click back to 30.",
     ],
   },
   {
@@ -221,9 +159,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 300, width: 380, strength: 0.6 },
     notes: [
-      "Gloria says one word and the page goes live with a QR code she can tape to the front door.",
-      "Advance. Check-ins arrive live, and the front desk gets one list grouped by visit type, with interpreter requests flagged. The check-ins shown here are demo data.",
-      "If the room can reach the demo, ask everyone to scan the code and join the list now. Their check-ins show up during the pitch.",
+      "[Jerry] Then she says one word: 'Launch it.'",
+      "[Click] It's live, with a QR code, and check-ins arrive with interpreter requests flagged. Scan it if the demo is up.",
     ],
   },
   {
@@ -235,52 +172,8 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 1400, strength: 0.25 },
     notes: [
-      "Gloria's clinic is just one stop.",
-      "[Click] Zoom out, and the same thing happens anywhere people talk about their work. A corner market hears 'You're out of conchas again?' and gets a reserve-ahead page. A school front office hears 'Did my kid get picked up?' and gets a pickup log. A youth soccer league, a food bank, a city permit office, a salon, an auto shop, a restaurant.",
-      "Every one of them has the same problem Gloria had: they know what's wrong, and they have no time to build the fix. Pip listens, asks and builds it.",
-      "These are examples of what Pip could hear and build, not places we have tested.",
-    ],
-  },
-  {
-    id: "hologram",
-    name: "The fog screen",
-    section: "What Pip makes newly possible",
-    rubric: "Original",
-    steps: 1,
-    sources: ["fogscreenContent", "ucsbFogscreen", "fogscreenLaminar"],
-    mist: { x: 820, width: 150, strength: 1 },
-    notes: [
-      "Pip lives on a small fog screen. A generator above makes mist so fine it feels dry, and fans on both sides hold it in a flat sheet.",
-      "A projector draws Pip on the mist, and a laptop runs Pip and listens through its microphone.",
-      "The fog screen is part of the friendliness. A character in the room feels like someone to talk to, not software to operate.",
-      "People who build fog displays report that line drawings read better on fog than photos, so we drew Pip in lines of light.",
-    ],
-  },
-  {
-    id: "whyNow",
-    name: "Why now",
-    section: "Why this could only exist now",
-    rubric: "Believable",
-    steps: 1,
-    sources: ["mdnSpeechSynthesis", "mdnSpeechRecognition"],
-    mist: { x: 1840, width: 140, strength: 0.4 },
-    notes: [
-      "Pip needs four things to work. The browser has to hear Gloria and talk back, a model has to turn a messy description like 'our phones never stop' into structure, and the model has to make small, reliable changes in real time.",
-      "Browser speech is free and instant. MDN lists speech synthesis as working across major browsers since September 2018. Speech recognition is still limited to some browsers, so our demo laptop runs Chrome.",
-      "A few years ago each of these pieces needed its own team. We prototyped all of them as a student team.",
-    ],
-  },
-  {
-    id: "learned",
-    name: "What we learned",
-    section: "What we learned building it",
-    rubric: "Believable",
-    steps: 1,
-    sources: [],
-    mist: { x: 1720, width: 300, strength: 0.5 },
-    notes: [
-      "These are our starting points. Replace or sharpen them with what actually surprised your team.",
-      "The biggest lesson: people opened up to a character in a way they never did with a text box. Friendliness is a feature, not decoration.",
+      "[Ame] Gloria's clinic is one example.",
+      "[Click] Zoom out, and Pip works anywhere people need help: a market, a school, a food bank, a permit office, a salon. These are examples, not places we've tested.",
     ],
   },
   {
@@ -292,9 +185,31 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 460, width: 700, strength: 0.35 },
     notes: [
-      "Gloria's front desk spends less time on hold-and-callback. Her patients, including older patients who prefer Spanish and bigger text, can check in from home.",
-      "The neighborhood gets a clinic that is easier to reach, without the clinic paying a developer.",
-      "And Pip lets anyone build who could never learn to code: if you can describe your problem to a friend, you can build with Pip. A corner store, a salon, a food-bank coordinator. Offer to let a judge tell Pip about one.",
+      "[Ame] When anyone can build, everyone benefits: their team, the people they serve and the community. If you can describe a problem to a friend, you can build with Pip.",
+    ],
+  },
+  {
+    id: "whyNow",
+    name: "Why now",
+    section: "Why this could only exist now",
+    rubric: "Believable",
+    steps: 1,
+    sources: ["mdnSpeechSynthesis", "mdnSpeechRecognition"],
+    mist: { x: 1840, width: 140, strength: 0.4 },
+    notes: [
+      "[Ame] This only works now: browsers can listen and speak, and models can turn messy talk into a working app in real time.",
+    ],
+  },
+  {
+    id: "learned",
+    name: "What we learned",
+    section: "What we learned building it",
+    rubric: "Believable",
+    steps: 1,
+    sources: [],
+    mist: { x: 1720, width: 300, strength: 0.5 },
+    notes: [
+      "[Ame] Our biggest lesson: people tell a character far more than they ever type into a box. Replace with your team's own surprise.",
     ],
   },
   {
@@ -306,8 +221,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 720, strength: 1 },
     notes: [
-      "Pip lets anyone who can describe a problem build the software for it, by talking to someone friendly instead of a machine.",
-      "Invite the judges to walk up and tell Pip what's been hard this week. Thank you.",
+      "[Ame] The future of vibe coding isn't a better text box. It's someone you can talk to. Come tell Pip what's been hard this week. Thank you.",
     ],
   },
   {
@@ -335,7 +249,7 @@ export const slides: SlideMeta[] = [
 
 export const titleSlide = {
   name: "Pip",
-  line: "Pip acts like a real person. You can talk with it, and it picks up on what your workplace needs the way a coworker would.",
+  line: "Pip is an AI you talk to like a person. It listens, picks up on what you need and builds it for you.",
 };
 
 export const humanSlide = {
@@ -369,13 +283,13 @@ export const meetPipSlide = {
   heading: "Meet Pip",
   condense: "Let's condense.",
   hello: "Say hello to Pip.",
-  definition: "Pip is an AI coworker that builds the apps your workplace needs.",
+  definition: "Pip is an AI that builds the apps you need, just by talking with you.",
   flow: [
-    { id: "talk", icon: "talk", text: "You talk to it, or just keep working" },
-    { id: "figure", icon: "idea", text: "Pip figures out what would help" },
-    { id: "build", icon: "app", text: "Pip builds the app, and you never see code" },
+    { id: "talk", icon: "talk", text: "You talk to it like a person" },
+    { id: "figure", icon: "idea", text: "It listens and picks up on what you need" },
+    { id: "build", icon: "app", text: "It builds the app, and you never see code" },
   ],
-  body: "It lives on a fog screen at the counter, so it feels like someone in the room.",
+  body: "Pip lives on a fog screen, so it feels like someone in the room with you.",
 };
 
 export const statSlide = {
@@ -413,25 +327,6 @@ export const statSlide = {
     },
   ],
   pivot: "What if building an app felt like talking to a friend?",
-};
-
-export const friendlySlide = {
-  heading: "Pip acts like a real person",
-  todayLabel: "An AI builder today",
-  pipLabel: "Pip",
-  rows: [
-    { id: "start", aspect: "Starts with", today: "A blank box", pip: "“Hi! What's been hard this week?”" },
-    {
-      id: "words",
-      aspect: "Talks in",
-      today: "Fields, components and deploys",
-      pip: "Your words, in English or Spanish",
-    },
-    { id: "shows", aspect: "Shows you", today: "Code you can't check", pip: "What it heard, so you can fix it" },
-    { id: "asks", aspect: "Asks", today: "For everything at once", pip: "One question at a time" },
-    { id: "notices", aspect: "Notices", today: "Only what you type", pip: "What it overhears, like a coworker would" },
-    { id: "face", aspect: "Looks like", today: "A text field", pip: "A face and a voice you can wave a hand through" },
-  ],
 };
 
 export const saySlide = {
@@ -513,8 +408,8 @@ export const askSlide = {
 };
 
 export const zoomOutSlide = {
-  closeHeading: "Gloria's clinic is one stop",
-  wideHeading: "Pip works wherever people work",
+  closeHeading: "Gloria's clinic is one example",
+  wideHeading: "Pip works wherever people need help",
   focus: "clinic",
   places: [
     {
@@ -616,18 +511,6 @@ export const clinicPageCopy = {
 /** Patients already on today's list in the demo, so the counter has something to count down from. */
 export const demoCheckedInToday = 18;
 
-export const trySlide = {
-  heading: "Pip tests the app by playing a patient",
-  persona: "Pip, playing Don Ernesto",
-  lines: [
-    { who: "patient", text: "I'd like to come in this afternoon. My cough won't go away." },
-    { who: "patient", text: "My daughter translates for me, and there was nowhere to say so." },
-    { who: "owner", text: "Add a box for notes." },
-  ],
-  fixed: "Every check-in now has a notes box, and interpreter requests show on the front desk list.",
-  gapLabel: "Missing: a place for notes",
-};
-
 export type DemoCheckIn = { name: string; visit: string; time: string; note?: string };
 
 export const launchSlide = {
@@ -657,7 +540,7 @@ export const mapSlide = {
     { id: "exam1", label: "Exam room 1", x: 640, y: 0, w: 260, h: 300 },
     { id: "exam2", label: "Exam room 2", x: 640, y: 300, w: 260, h: 300 },
   ],
-  layersTitle: "What Pip noticed in its first week at Gloria's clinic, without being asked",
+  layersTitle: "For example, at Gloria's clinic Pip noticed, without being asked",
   layers: [
     {
       id: "patients",
@@ -715,61 +598,12 @@ export const mapSlide = {
   demoLabel: "Observations are demo data",
 };
 
-export const trustSlide = {
-  heading: "Pip pays attention in the open",
-  rules: [
-    {
-      id: "visible",
-      rule: "You can see it listening",
-      detail: "Pip glows on the fog screen whenever its microphone is on.",
-    },
-    {
-      id: "consent",
-      rule: "Everyone is told first",
-      detail: "Signs go up at the door, staff agree before the visit, and anyone can say “Pip, pause.”",
-    },
-    {
-      id: "patterns",
-      rule: "It remembers what's useful, not every word",
-      detail: "Like a person, Pip remembers that patients asked about the wait 30 times, not who asked.",
-    },
-    {
-      id: "owner",
-      rule: "The owner decides",
-      detail: "Nothing gets built without a yes, and every tool can be switched off.",
-    },
-    { id: "health", rule: "Health details stay out", detail: "In clinics, Pip ignores health information by default." },
-    {
-      id: "leaves",
-      rule: "The listening leaves with Pip",
-      detail: "When the visit ends, the microphone goes too. Only the tools stay.",
-    },
-  ],
-  caveat: "These are design rules for our prototype. A real clinic deployment would need a privacy and HIPAA review.",
-};
-
-export const hologramSlide = {
-  heading: "Pip lives in a sheet of fog",
-  parts: [
-    { id: "generator", text: "A fog generator makes mist so fine it feels dry.", source: "fogscreenContent" },
-    { id: "curtains", text: "Fans on both sides sandwich the mist so it falls flat.", source: "ucsbFogscreen" },
-    { id: "projector", text: "A projector behind the sheet draws Pip on the mist.", source: undefined },
-    {
-      id: "hand",
-      text: "A hand passes right through, because the screen is only air and water.",
-      source: "fogscreenLaminar",
-    },
-    { id: "laptop", text: "A laptop runs Pip and listens through its microphone.", source: undefined },
-  ],
-  lineNote: "Line drawings read better on fog than photos, so Pip is drawn in lines of light.",
-};
-
 export const whyNowSlide = {
   heading: "Why Pip could only exist now",
   pipeline: [
-    { id: "talk", name: "Gloria talks", detail: '"Our phones never stop"' },
-    { id: "hear", name: "The browser hears her", detail: "Speech recognition and speech synthesis" },
-    { id: "structure", name: "A model finds the structure", detail: "Who, clinic, problem, goal" },
+    { id: "talk", name: "You talk", detail: '"Our phones never stop"' },
+    { id: "hear", name: "The browser hears you", detail: "Speech recognition and speech synthesis" },
+    { id: "structure", name: "A model finds the structure", detail: "Who, where, problem, goal" },
     { id: "edit", name: "Small edits land live", detail: "One reliable change per answer" },
   ],
   facts: [
@@ -792,20 +626,20 @@ export const learnedSlide = {
     { icon: "character", text: "People describe their problem in more detail to a character than to a text box." },
     { icon: "calm", text: 'Free-form "build anything" overwhelmed even us. One question at a time felt calm.' },
     { icon: "mirror", text: "Showing what Pip heard before building did more for trust than any explanation." },
-    { icon: "customer", text: "The pretend patient catching a missing notes box was our most useful AI moment." },
+    { icon: "customer", text: "People relaxed once they could see when Pip was listening." },
   ],
 };
 
 export const benefitsSlide = {
   heading: "Who else benefits",
-  center: ownerName,
+  center: "One builder",
   rings: [
-    { id: "helpers", who: "Her front desk", text: "spends less time on hold and callbacks." },
-    { id: "customers", who: "Her patients", text: "join the list from home, in Spanish or English." },
-    { id: "neighbors", who: "The neighborhood", text: "gets a clinic that is easier to reach." },
+    { id: "helpers", who: "Their team", text: "stops answering the same questions all day." },
+    { id: "customers", who: "The people they serve", text: "get answers faster, in their own language." },
+    { id: "neighbors", who: "The community", text: "gets local places with tools only chains used to have." },
   ],
-  othersTitle: "Anyone who can describe a problem",
-  others: ["A corner store", "A neighborhood salon", "A food-bank shift coordinator"],
+  othersTitle: "Who gets to build",
+  others: ["Small business owners", "Teachers and coaches", "Nonprofit and city staff"],
 };
 
 export const standardsSlide = {
