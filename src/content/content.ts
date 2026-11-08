@@ -107,7 +107,7 @@ export const slides: SlideMeta[] = [
     mist: { x: 1500, width: 520, strength: 0.8 },
     notes: [
       "[Daisy] Let's condense. [Beat.]",
-      "[Click] Say hello to Pip. [Gesture to the fog screen.]",
+      "[Click] Say hello to Pip. [Gesture to the fog screen.] The fog screen has been dark until now: light gathers, and Pip appears and says hi.",
       "[Click] Pip lives in a sheet of fog, and it's made to feel like a person, not a program. You talk. It listens. It builds.",
     ],
   },
@@ -676,4 +676,100 @@ export const closeSlide = {
 export const sourcesSlide = {
   heading: "Sources",
   note: "Ratios marked as team calculations divide two published figures. Gloria is a persona based on our interviews. Check-ins on the demo slides are demo data.",
+};
+
+/**
+ * What Pip does on the fog screen at each slide and build step. The fog screen stays fully
+ * dark, with no mist and no light, until "Say hello to Pip". Then light gathers and Pip
+ * appears in the fog for the first time.
+ */
+export type PipCue = {
+  show: boolean;
+  mood: "smile" | "talk" | "listen" | "think";
+  reach?: "none" | "left" | "right";
+  /** Light gathers into the spot where Pip appears. Used on Pip's first appearance. */
+  forming?: boolean;
+  line?: string;
+  /** Speak the line out loud from the hologram window. */
+  speak?: boolean;
+};
+
+const dark: PipCue = { show: false, mood: "smile" };
+
+export const pipCues: Partial<Record<SlideId, PipCue[]>> = {
+  meetPip: [
+    dark,
+    { show: true, mood: "talk", forming: true, line: "Hi, I'm Pip.", speak: true },
+    { show: true, mood: "smile" },
+  ],
+  listen: [
+    { show: true, mood: "listen" },
+    { show: true, mood: "talk", line: mapSlide.pipSays, speak: true },
+  ],
+  say: [
+    { show: true, mood: "listen" },
+    { show: true, mood: "talk", line: saySlide.confirm, speak: true },
+  ],
+  ask: [{ show: true, mood: "talk", reach: "right", line: askSlide.questions[0].ask }],
+  launch: [
+    { show: true, mood: "listen" },
+    { show: true, mood: "smile", line: "Your page is live.", speak: true },
+  ],
+  zoomOut: [{ show: true, mood: "smile" }],
+  whyNow: [{ show: true, mood: "listen" }],
+  learned: [{ show: true, mood: "listen" }],
+  benefits: [{ show: true, mood: "smile" }],
+  close: [{ show: true, mood: "talk", line: "What's been hard this week?", speak: true }],
+  standards: [{ show: true, mood: "listen" }],
+  sources: [{ show: true, mood: "smile" }],
+};
+
+/** The cue for a slide and step. Slides before Meet Pip have no cue and keep the fog screen dark. */
+export function pipCueFor(slideId: SlideId, step: number): PipCue {
+  const cues = pipCues[slideId];
+  if (!cues) return dark;
+  return cues[Math.min(step, cues.length - 1)];
+}
+
+/** Before the deck connects, the fog screen shows nothing at all. */
+export const pipCueBeforeDeck: PipCue = dark;
+
+export const hologramCopy = {
+  title: "Pip on the fog screen",
+  help: "Start it to go full screen on the fog projector and let Pip speak. The screen then stays black until Pip appears in the deck. Press N in the deck to check that this screen is connected. In Chrome, allow window management when asked and it picks the extended display itself; otherwise drag this window onto the projector first.",
+  start: "Start the hologram",
+  keys: [
+    { keys: "F", does: "Full screen" },
+    { keys: "M", does: "Mirror the image, if the projector isn't in rear-projection mode" },
+    { keys: "C", does: "Show or hide Pip's lines as captions" },
+    { keys: "Left, Right", does: "Move the deck from this window" },
+  ],
+};
+
+export const hologramSetup = {
+  heading: "Pip's hologram screen",
+  intro:
+    "Pip can follow the deck on a second computer that feeds the fog projector, the same way the Fold with Nara kiosk followed its deck. Start the deck on this laptop with npm run present, then open the hologram page on the second computer. Both need the same Wi-Fi.",
+  secondComputer: {
+    name: "Second computer",
+    line: "Scan the code or type the address on the computer plugged into the fog projector, then click Start the hologram.",
+  },
+  thisLaptop: {
+    name: "This laptop",
+    line: "If the fog projector is a second screen on this laptop, press H in the deck instead and drag the window onto it.",
+  },
+  statusTitle: "Connected now",
+  deckLabel: "Deck is on",
+  hologramsLabel: "Hologram screens",
+  relayOff:
+    "The hologram link isn't running. Start the deck with npm run present (or npm run dev to rehearse), then reload this page.",
+  noNetwork: "This laptop isn't on a Wi-Fi network yet. Join the same network as the second computer, then reload.",
+  notStarted: "Not started yet",
+  openHere: "Open the hologram on this computer",
+  tips: [
+    "Event Wi-Fi often stops devices from seeing each other. If the second computer can't connect, turn on a phone hotspot and join it with both computers.",
+    "Pip speaks from the computer running the hologram, so plug the speaker into that one.",
+    "If the Wi-Fi drops, the hologram keeps its last pose and catches up as soon as it reconnects.",
+    "The hosted copy on GitHub Pages can only reach a hologram window in the same browser, so present from npm run present when Pip runs on a second computer.",
+  ],
 };

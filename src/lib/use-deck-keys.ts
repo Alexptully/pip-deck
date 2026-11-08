@@ -10,6 +10,7 @@ export type DeckActions = {
   toggleNotes: () => void;
   toggleFullscreen: () => void;
   openPrint: () => void;
+  openHologram: () => void;
 };
 
 const keyToAction: Record<string, keyof DeckActions> = {
@@ -30,6 +31,8 @@ const keyToAction: Record<string, keyof DeckActions> = {
   F: "toggleFullscreen",
   p: "openPrint",
   P: "openPrint",
+  h: "openHologram",
+  H: "openHologram",
 };
 
 const INTERACTIVE_TAGS = new Set(["BUTTON", "INPUT", "TEXTAREA", "SELECT", "A"]);
