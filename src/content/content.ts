@@ -153,7 +153,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 330, width: 460, strength: 0.85 },
     notes: [
-      "[Jerry] Now watch the phone. Pip asks one thing at a time. [Click 12.] She says twelve walk-ins a day, and the list is already full. She just made an engineering decision without knowing it. [Click back to 30.]",
+      "[Jerry] Now watch the phone. Pip isn't doing chores for Gloria here. Every answer becomes a new feature in her app. [Click 12.] She says twelve walk-ins a day, and Pip adds a daily cap that closes the list. She just designed a feature without knowing it. [Click back to 30.]",
     ],
   },
   {
@@ -357,54 +357,54 @@ export type AskQuestion = {
 };
 
 export const askSlide = {
-  heading: "One friendly question at a time",
+  heading: "Every answer adds a feature",
   answerLabel: `${ownerName} answers`,
-  buildsLabel: "Pip builds",
+  buildsLabel: "New feature",
   questions: [
     {
       id: "limit",
       topic: "Walk-ins a day",
       ask: "How many walk-ins can your doctors see in a day?",
-      reason: "I'll close the list before your doctors get swamped.",
+      reason: "I'll add a daily cap so your doctors don't get swamped.",
       defaultChoice: "30",
       choices: [
-        { id: "12", label: "12", builds: "The walk-in list closes after 12 patients a day." },
-        { id: "30", label: "30", builds: "The walk-in list closes after 30 patients a day." },
-        { id: "45", label: "45", builds: "The walk-in list closes after 45 patients a day." },
+        { id: "12", label: "12", builds: "A daily cap that closes the walk-in list after 12 patients." },
+        { id: "30", label: "30", builds: "A daily cap that closes the walk-in list after 30 patients." },
+        { id: "45", label: "45", builds: "A daily cap that closes the walk-in list after 45 patients." },
       ],
     },
     {
       id: "checkIn",
       topic: "Waiting",
       ask: "Where should patients wait?",
-      reason: "Waiting at home means a calmer lobby. Waiting at the clinic keeps it simple.",
+      reason: "I can add text alerts so patients wait at home, or a check-in screen for the front desk.",
       defaultChoice: "home",
       choices: [
-        { id: "home", label: "At home", builds: "Patients get a text when it's almost their turn." },
-        { id: "desk", label: "At the clinic", builds: "Patients check in at the front desk when they arrive." },
+        { id: "home", label: "At home", builds: "Text alerts that tell patients when it's almost their turn." },
+        { id: "desk", label: "At the clinic", builds: "A check-in screen at the front desk for patients who wait at the clinic." },
       ],
     },
     {
       id: "language",
       topic: "Language",
       ask: "What do your patients read?",
-      reason: "I'll write every button in the language they use at your front desk.",
+      reason: "I'll add every screen in the language your patients use at the front desk.",
       defaultChoice: "both",
       choices: [
-        { id: "en", label: "English", builds: "The page is written in English." },
-        { id: "es", label: "Español", builds: "The page is written in Spanish." },
-        { id: "both", label: "Both", builds: "The page opens in Spanish with a switch to English." },
+        { id: "en", label: "English", builds: "English on every screen." },
+        { id: "es", label: "Español", builds: "Spanish on every screen." },
+        { id: "both", label: "Both", builds: "A language switch that opens in Spanish and flips to English." },
       ],
     },
     {
       id: "size",
       topic: "Text size",
       ask: "Do some patients need bigger text?",
-      reason: "Bigger text and buttons help anyone reading without glasses.",
+      reason: "I can add a large-text mode for anyone reading without glasses.",
       defaultChoice: "large",
       choices: [
-        { id: "regular", label: "Regular", builds: "Text uses the regular size." },
-        { id: "large", label: "Bigger", builds: "Text and buttons are a size larger." },
+        { id: "regular", label: "Regular", builds: "Regular-size text and buttons." },
+        { id: "large", label: "Bigger", builds: "A large-text mode with bigger buttons." },
       ],
     },
   ] satisfies AskQuestion[],
