@@ -107,7 +107,7 @@ export const slides: SlideMeta[] = [
     mist: { x: 1500, width: 520, strength: 0.8 },
     notes: [
       "[Daisy] Let's condense. [Beat.]",
-      "[Click] Say hello to Pip. [Gesture to the fog screen.] On the hologram screen, Pip gathers out of the mist and says hi.",
+      "[Click] Say hello to Pip. [Gesture to the fog screen.] The fog screen has been dark until now: light gathers, and Pip appears and says hi.",
       "[Click] Pip lives in a sheet of fog, and it's made to feel like a person, not a program. You talk. It listens. It builds.",
     ],
   },
@@ -679,31 +679,27 @@ export const sourcesSlide = {
 };
 
 /**
- * What Pip does on the fog screen at each slide and build step. Until the Meet Pip slide, the
- * fog shows Pip out of focus with a question mark for a face, the same as the slides. Pip
- * condenses on "Let's condense" and comes into focus on "Say hello to Pip".
+ * What Pip does on the fog screen at each slide and build step. The fog screen stays fully
+ * dark, with no mist and no light, until "Say hello to Pip". Then light gathers and Pip
+ * appears in the fog for the first time.
  */
 export type PipCue = {
   show: boolean;
-  mood: "smile" | "talk" | "listen" | "think" | "mystery";
+  mood: "smile" | "talk" | "listen" | "think";
   reach?: "none" | "left" | "right";
-  /** Light gathering in the mist just before Pip comes into focus. */
+  /** Light gathers into the spot where Pip appears. Used on Pip's first appearance. */
   forming?: boolean;
   line?: string;
   /** Speak the line out loud from the hologram window. */
   speak?: boolean;
 };
 
-const mystery: PipCue = { show: true, mood: "mystery" };
+const dark: PipCue = { show: false, mood: "smile" };
 
 export const pipCues: Partial<Record<SlideId, PipCue[]>> = {
-  title: [mystery],
-  human: [mystery],
-  story: [mystery],
-  stat: [mystery],
   meetPip: [
-    { ...mystery, forming: true },
-    { show: true, mood: "talk", line: "Hi, I'm Pip.", speak: true },
+    dark,
+    { show: true, mood: "talk", forming: true, line: "Hi, I'm Pip.", speak: true },
     { show: true, mood: "smile" },
   ],
   listen: [
@@ -728,22 +724,20 @@ export const pipCues: Partial<Record<SlideId, PipCue[]>> = {
   sources: [{ show: true, mood: "smile" }],
 };
 
-/** The cue for a slide and step. A slide with no cue shows a calm Pip. */
+/** The cue for a slide and step. Slides before Meet Pip have no cue and keep the fog screen dark. */
 export function pipCueFor(slideId: SlideId, step: number): PipCue {
   const cues = pipCues[slideId];
-  if (!cues) return { show: true, mood: "smile" };
+  if (!cues) return dark;
   return cues[Math.min(step, cues.length - 1)];
 }
 
-/** Before the deck connects, the fog shows Pip out of focus, the way the title slide does. */
-export const pipCueBeforeDeck: PipCue = mystery;
+/** Before the deck connects, the fog screen shows nothing at all. */
+export const pipCueBeforeDeck: PipCue = dark;
 
 export const hologramCopy = {
   title: "Pip on the fog screen",
-  help: "Start it to go full screen on the fog projector and let Pip speak. In Chrome, allow window management when asked and it picks the extended display itself; otherwise drag this window onto the projector first.",
+  help: "Start it to go full screen on the fog projector and let Pip speak. The screen then stays black until Pip appears in the deck. Press N in the deck to check that this screen is connected. In Chrome, allow window management when asked and it picks the extended display itself; otherwise drag this window onto the projector first.",
   start: "Start the hologram",
-  waiting:
-    "Waiting for the deck. Open the deck in another window of this browser, or start it with npm run present on the presenting laptop.",
   keys: [
     { keys: "F", does: "Full screen" },
     { keys: "M", does: "Mirror the image, if the projector isn't in rear-projection mode" },

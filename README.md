@@ -12,7 +12,7 @@ Open http://localhost:3000/ to present. Keys: arrows to move, N for speaker note
 
 ## Pip on the fog screen
 
-Pip follows the deck on the fog screen. Until the Meet Pip slide it hangs in the mist out of focus with a question mark for a face. On "Let's condense" light gathers around it, and on "Say hello to Pip" it comes into focus and says hi. After that it listens, talks and says its lines out loud on the slides where Pip speaks.
+Pip follows the deck on the fog screen. Until "Say hello to Pip" on the Meet Pip slide, the fog screen is fully black: no mist, no light and no text. On that click, light gathers in the fog, Pip appears and says hi. After that it listens, talks and says its lines out loud on the slides where Pip speaks.
 
 **Fog projector plugged into the presenting laptop:** press H in the deck. In Chrome, allow window management when asked and the window moves to the extended display; otherwise drag it there. Click **Start the hologram**.
 

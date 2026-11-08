@@ -11,7 +11,7 @@ import { toggleFullscreen } from "@/lib/use-deck-keys";
 import { Mist } from "@/components/mist/Mist";
 import { Stage } from "@/components/deck/Stage";
 import { Pip } from "@/components/pip/Pip";
-import { Gathering } from "./Gathering";
+import { GATHER_SECONDS, Gathering } from "./Gathering";
 import { useHologramKeys } from "./use-hologram-keys";
 
 const FOG_MIST = { x: 960, width: 520, strength: 0.3 };
@@ -51,12 +51,34 @@ function useCueVoice(cue: PipCue, key: string, started: boolean) {
   useEffect(() => {
     if (!started || !cue.speak || !cue.line) return;
     const line = cue.line;
-    const timer = window.setTimeout(() => speakAsPip(line), 1100);
+    const wait = 1100 + (cue.forming ? GATHER_SECONDS * 1000 : 0);
+    const timer = window.setTimeout(() => speakAsPip(line), wait);
     return () => window.clearTimeout(timer);
   }, [cue, key, started]);
 }
 
+/** The mist only fades in once Pip is on screen, so the fog projector shows nothing before that. */
+function FogMist({ show }: { show: boolean }) {
+  return (
+    <AnimatePresence>
+      {show ? (
+        <motion.div
+          key="mist"
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 2.4, ease: "easeOut" }}
+        >
+          <Mist setting={FOG_MIST} />
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}
+
 function PipOnFog({ cue }: { cue: PipCue }) {
+  const entranceDelay = cue.forming ? GATHER_SECONDS : 0;
   return (
     <AnimatePresence>
       {cue.show ? (
@@ -66,7 +88,7 @@ function PipOnFog({ cue }: { cue: PipCue }) {
           initial={{ opacity: 0, scale: 0.85, filter: "blur(18px)" }}
           animate={{ opacity: [0, 0.7, 0.3, 1], scale: 1, filter: "blur(0px)" }}
           exit={{ opacity: 0, scale: 0.9, filter: "blur(18px)" }}
-          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.4, delay: entranceDelay, ease: [0.22, 1, 0.36, 1] }}
         >
           <Pip height={680} mood={cue.mood} reach={cue.reach ?? "none"} />
         </motion.div>
@@ -94,12 +116,9 @@ function Caption({ line }: { line?: string }) {
   );
 }
 
-/** A quiet note while nothing is following yet, and a small grey dot while a dropped Wi-Fi link reconnects. */
-function LinkStatus({ following, relayLinked }: { following: boolean; relayLinked: boolean }) {
-  if (!following) {
-    return <p className="fixed inset-x-0 bottom-6 text-center text-base text-text-faint">{hologramCopy.waiting}</p>;
-  }
-  if (relayBase() && !relayLinked) {
+/** A small grey dot while a dropped Wi-Fi link reconnects. It only shows once Pip is on screen. */
+function LinkStatus({ pipShowing, relayLinked }: { pipShowing: boolean; relayLinked: boolean }) {
+  if (pipShowing && relayBase() && !relayLinked) {
     return (
       <span
         className="fixed bottom-4 right-4 size-3 rounded-control bg-text-faint"
@@ -142,13 +161,13 @@ export function HologramView() {
     <>
       <div className="fixed inset-0" style={{ transform: mirrored ? "scaleX(-1)" : undefined }}>
         <Stage tone="void">
-          <Mist setting={FOG_MIST} />
-          {cue.forming ? <Gathering /> : null}
+          <FogMist show={cue.show} />
+          {cue.forming ? <Gathering key={key} /> : null}
           <PipOnFog cue={cue} />
           {captions ? <Caption line={cue.line} /> : null}
         </Stage>
       </div>
-      {started ? <LinkStatus following={position !== null} relayLinked={relayLinked} /> : null}
+      {started ? <LinkStatus pipShowing={cue.show} relayLinked={relayLinked} /> : null}
       {started ? null : <StartScreen onStart={start} />}
     </>
   );
