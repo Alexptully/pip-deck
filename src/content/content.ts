@@ -51,10 +51,10 @@ export const slides: SlideMeta[] = [
     sources: ["promptBrief"],
     mist: { x: 1650, width: 380, strength: 0.5 },
     notes: [
-      "[Alex] Hi, we're Group 7. Quick show of hands: who here has asked an AI for help and gotten exactly what you typed, but not what you meant? As far as we know, we're the only creatures who pull meaning out of everything around us.",
-      "[Click] We trust a person across the table far more than a box on a screen.",
-      "[Click] And when everything feels urgent, we know which thing to handle first.",
-      "[Click] Most software can't do any of that, and that's hard on people who don't think in code. Cara?",
+      "[Alex] As far as we know, humans are the only creatures that decode context from everything around them.",
+      "[Click] Humans connect with other humans.",
+      "[Click] Humans know what matters most.",
+      "[Click] That's what makes this situation so difficult. Cara?",
     ],
   },
   {
