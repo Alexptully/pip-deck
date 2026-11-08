@@ -24,6 +24,7 @@ Keep the slides clean: no progress bar, dots or slide numbers. Each slide's foot
 - `npm run build` writes the static export to `out/`. `npm run build:single` also folds it into one self-contained file, `dist/pip-deck.html`, for hosts that take a single page (there, P opens the print view at `#print`).
 - `npm run check` runs the type checker, the linter with its complexity limit, and the em dash scan. Run it before saying a task is done.
 - Work on a branch and open a pull request. Never push straight to `main`.
+- Every push to `main` publishes the single-file deck to GitHub Pages (`.github/workflows/pages.yml`). In the repo, set Settings, Pages, Source to "GitHub Actions" once.
 
 ## General
 
