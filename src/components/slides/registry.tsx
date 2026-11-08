@@ -9,10 +9,12 @@ import { HologramSlide } from "./HologramSlide";
 import { LaunchSlide } from "./LaunchSlide";
 import { LearnedSlide } from "./LearnedSlide";
 import { MapSlide } from "./MapSlide";
+import { MeetPipSlide } from "./MeetPipSlide";
 import { PersonaSlide } from "./PersonaSlide";
 import { SaySlide } from "./SaySlide";
 import { SourcesSlide } from "./SourcesSlide";
 import { StatSlide } from "./StatSlide";
+import { StorySlide } from "./StorySlide";
 import { StandardsSlide } from "./StandardsSlide";
 import { TitleSlide } from "./TitleSlide";
 import { TrustSlide } from "./TrustSlide";
@@ -24,9 +26,11 @@ export type SlideProps = { step: number };
 export const slideComponents: Record<SlideId, ComponentType<SlideProps>> = {
   title: TitleSlide,
   human: HumanSlide,
+  story: StorySlide,
   persona: PersonaSlide,
   stat: StatSlide,
   friendly: FriendlySlide,
+  meetPip: MeetPipSlide,
   listen: MapSlide,
   say: SaySlide,
   ask: AskSlide,

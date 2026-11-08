@@ -8,9 +8,11 @@ import type { SourceId } from "./sources";
 export type SlideId =
   | "title"
   | "human"
+  | "story"
   | "persona"
   | "stat"
   | "friendly"
+  | "meetPip"
   | "listen"
   | "say"
   | "ask"
@@ -72,6 +74,24 @@ export const slides: SlideMeta[] = [
     ],
   },
   {
+    id: "story",
+    name: "Meet Gloria",
+    section: "Who it's for",
+    rubric: "Built for a specific person",
+    steps: 6,
+    sources: [],
+    mist: { x: 1800, width: 200, strength: 0.4 },
+    notes: [
+      "Meet Gloria. Let's walk through one day at her clinic.",
+      "7 a.m. The phones are ringing before the doors even open. Patients want to know if they can come in today.",
+      "[Click] 10 a.m. The waiting room is full. Every few minutes someone comes to the desk and asks, 'How much longer?'",
+      "[Click] 1 p.m. Refill requests pile up on sticky notes. A voicemail about one of them gets missed.",
+      "[Click] 6 p.m. Gloria finally sits down and tries one of those AI app builders everyone talks about. It opens to a blank box, then shows her code. She closes the tab.",
+      "[Click] 8 p.m. She's still returning calls. She thinks, there has to be an easier way.",
+      "[Click] Gloria doesn't need to learn to code. She needs help that works like a person: someone who notices what's going wrong and fixes it. That's why we built Pip.",
+    ],
+  },
+  {
     id: "persona",
     name: "Who it's for",
     section: "Who it's for",
@@ -80,7 +100,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1760, width: 240, strength: 0.45 },
     notes: [
-      "Meet Gloria. She runs a two-doctor family clinic in East Los Angeles. She is not a doctor and not technical. She keeps the clinic running.",
+      "Here are the facts. Gloria runs a two-doctor family clinic in East Los Angeles. She is not a doctor and not technical. She keeps the clinic running.",
       "Point at the timeline. The phones start before the doors open. Every dot is a patient calling to ask how long the wait is or whether a refill went through. The hollow dot is the voicemail that got missed.",
       "Her constraints are real: no budget for a developer, patient privacy rules to follow, a scheduling system she didn't choose, and a phone as her main computer.",
       "Gloria tried an AI app builder once. It opened to a blank box, then showed her code. She closed the tab and never went back.",
@@ -106,6 +126,20 @@ export const slides: SlideMeta[] = [
   },
 
   {
+    id: "meetPip",
+    name: "Meet Pip",
+    section: "What Pip makes easier",
+    rubric: "Understandable through the product itself",
+    steps: 1,
+    sources: [],
+    mist: { x: 1500, width: 520, strength: 0.8 },
+    notes: [
+      "So what is Pip? Pip is an AI coworker that builds the apps your workplace needs.",
+      "It works in three moves. You talk to it like a person, or you just keep working. Pip figures out what would help. Then it builds the app, and you never see code.",
+      "Pip lives on a fog screen at the counter, so it feels like someone in the room, not software on a screen. Now let's look at what makes it special.",
+    ],
+  },
+  {
     id: "listen",
     name: "Pip picks things up",
     section: "What Pip makes newly possible",
@@ -114,7 +148,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1840, width: 140, strength: 0.4 },
     notes: [
-      "Meet Pip. This is what makes it special. Pip isn't an app you open and close. It is more like a new coworker at the front desk.",
+      "Here is what makes Pip special. Pip isn't an app you open and close. It is more like a new coworker at the front desk.",
       "You can talk with it any time. And like a real person, it picks things up in passing. It doesn't record everything. It pays attention to what seems interesting or useful, the way a new hire would after a week on the job.",
       "Walk the four pins. Pip noticed that walk-ins peak from 9 to 11 and spill outside, that one person answers the phone and checks patients in at the same time, that refills live on sticky notes, and that the question asked most at the desk is 'How much longer?'",
       "Advance. Then Pip does what a good coworker does: it brings it up. 'Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them?' Gloria never had to describe the problem. These observations are demo data for the pitch.",
@@ -310,6 +344,34 @@ export const humanSlide = {
   command: "build me a patient check-in app",
   humanLabel: "But people connect best with people, especially people who aren't comfortable with technology",
   humanLine: "Hi! What's been hardest this week?",
+};
+
+export const storySlide = {
+  heading: "Meet Gloria",
+  panels: [
+    { id: "phones", time: "7 a.m.", icon: "phone", text: "The phones ring before the doors open." },
+    { id: "waiting", time: "10 a.m.", icon: "waiting", text: "The waiting room is full. “How much longer?”" },
+    { id: "refills", time: "1 p.m.", icon: "notes", text: "Refills pile up on sticky notes. A voicemail gets missed." },
+    {
+      id: "builder",
+      time: "6 p.m.",
+      icon: "code",
+      text: "She tries an AI app builder. It shows her code. She closes the tab.",
+    },
+    { id: "night", time: "8 p.m.", icon: "night", text: "Still returning calls. “There has to be an easier way.”" },
+  ],
+  need: "Gloria doesn't need to learn to code. She needs help that works like a person.",
+};
+
+export const meetPipSlide = {
+  heading: "Meet Pip",
+  definition: "Pip is an AI coworker that builds the apps your workplace needs.",
+  flow: [
+    { id: "talk", icon: "talk", text: "You talk to it, or just keep working" },
+    { id: "figure", icon: "idea", text: "Pip figures out what would help" },
+    { id: "build", icon: "app", text: "Pip builds the app, and you never see code" },
+  ],
+  body: "It lives on a fog screen at the counter, so it feels like someone in the room.",
 };
 
 export const personaSlide = {
