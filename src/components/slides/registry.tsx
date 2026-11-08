@@ -3,6 +3,7 @@ import type { SlideId } from "@/content/content";
 import { AskSlide } from "./AskSlide";
 import { BenefitsSlide } from "./BenefitsSlide";
 import { CloseSlide } from "./CloseSlide";
+import { FutureSlide } from "./FutureSlide";
 import { HumanSlide } from "./HumanSlide";
 import { LaunchSlide } from "./LaunchSlide";
 import { LearnedSlide } from "./LearnedSlide";
@@ -22,6 +23,7 @@ export type SlideProps = { step: number };
 export const slideComponents: Record<SlideId, ComponentType<SlideProps>> = {
   title: TitleSlide,
   human: HumanSlide,
+  future: FutureSlide,
   story: StorySlide,
   stat: StatSlide,
   meetPip: MeetPipSlide,

@@ -8,6 +8,7 @@ import type { SourceId } from "./sources";
 export type SlideId =
   | "title"
   | "human"
+  | "future"
   | "story"
   | "stat"
   | "meetPip"
@@ -43,16 +44,17 @@ export const ownerName = "Gloria";
 export const slides: SlideMeta[] = [
   {
     id: "human",
-    name: "The future of AI is human",
+    name: "As far as we know",
     section: "The idea",
     rubric: "Original",
-    steps: 3,
+    steps: 4,
     sources: ["promptBrief"],
-    mist: { x: 1500, width: 520, strength: 0.7 },
+    mist: { x: 1650, width: 380, strength: 0.5 },
     notes: [
       "[Alex] Hi, we're Group 7. Quick show of hands: who here has asked an AI for help and gotten exactly what you typed, but not what you meant? As far as we know, we're the only creatures who pull meaning out of everything around us.",
-      "[Click] AI doesn't do that yet, so we believe the future of AI is human.",
-      "[Click] Think about the best help you've ever gotten. That person read the room and knew what mattered first. You also told them more, because someone real was listening. Researchers call these pragmatics, triage and shared intentionality, and we wanted AI that could do all of them. Cara?",
+      "[Click] We trust a person across the table far more than a box on a screen.",
+      "[Click] And when everything feels urgent, we know which thing to handle first.",
+      "[Click] Most software can't do any of that, and that's hard on people who don't think in code. Cara?",
     ],
   },
   {
@@ -71,6 +73,18 @@ export const slides: SlideMeta[] = [
     ],
   },
 
+  {
+    id: "future",
+    name: "The future of AI is human",
+    section: "The idea",
+    rubric: "Original",
+    steps: 1,
+    sources: [],
+    mist: { x: 1500, width: 520, strength: 0.7 },
+    notes: [
+      "[Cara] That's why we believe the future of AI is human. Gloria doesn't need a smarter command line. She needs something that works with her the way a good coworker does.",
+    ],
+  },
   {
     id: "stat",
     name: "The opening",
@@ -242,28 +256,16 @@ export const titleSlide = {
 };
 
 export const humanSlide = {
-  heading: "The future of AI is human",
-  lead: "As far as we know, humans are the only creatures who read meaning from everything around them.",
-  strengths: [
-    {
-      id: "context",
-      icon: "context",
-      name: "We read the room",
-      text: "We hear what someone means, not just what they say, and adjust to what's going on around us.",
-    },
-    {
-      id: "priority",
-      icon: "priority",
-      name: "We sort what matters",
-      text: "We spot what's urgent and handle it first, while tuning out the noise.",
-    },
-    {
-      id: "listen",
-      icon: "listen",
-      name: "We open up to a listener",
-      text: "We share more when we know a real person is on the other side.",
-    },
+  truths: [
+    { id: "context", text: "As far as we know, humans are the only creatures that decode context from everything around them." },
+    { id: "connect", text: "Humans connect with other humans." },
+    { id: "priority", text: "Humans know what matters most." },
   ],
+  turn: "That's what makes this situation so difficult:",
+};
+
+export const futureSlide = {
+  heading: "The future of AI is human",
 };
 
 export const storySlide = {

@@ -15,7 +15,7 @@ The visual reference is the Standard Physics deck: one full-bleed stage, huge di
 
 Every slide is drawn on a fixed 1920 by 1080 stage that scales to fit the window, so sizes in code are real pixels at 1080p.
 
-Keep the slides clean: no progress bar, dots or slide numbers. Each slide's footer carries only its sources and, if the assignment has a rubric, its rubric tag.
+Keep the slides clean: no progress bar, dots or slide numbers. Each slide's footer carries only its sources. Rubric coverage shows on the standards slide, not in footers.
 
 ## Commands
 
@@ -121,7 +121,7 @@ If your Claude Code setup has the `better-*` skills (`better-ui`, `better-typogr
 
 ## Before you finish, verify
 
-1. Every required section from the brief is clearly visible, and each slide's footer tag says which one it covers.
+1. Every required section from the brief is clearly visible, and the standards slide says which slide covers it.
 2. There are no em dashes anywhere in the project.
 3. Every stat has a source in its slide's footer and an entry on the sources page.
 4. Keyboard navigation, speaker notes (N), full screen (F) and print-to-PDF (P) all work.
