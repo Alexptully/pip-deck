@@ -1,44 +1,45 @@
 "use client";
 
-import { useEffect } from "react";
 import { config } from "@/content/config";
+import { pipVoiceClips } from "@/content/pip-voice-clips";
 
-function pickVoice(): SpeechSynthesisVoice | undefined {
-  const voices = window.speechSynthesis.getVoices();
-  return (
-    voices.find((voice) => voice.lang.startsWith("en") && /female|samantha|google us/i.test(voice.name)) ?? voices[0]
-  );
+/** A moment of silence, played on the start click so the browser lets Pip talk later. */
+const SILENCE = "data:audio/wav;base64,UklGRtYBAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgATElTVBoAAABJTkZPSVNGVA4AAABMYXZmNjAuMTYuMTAwAGRhdGGQAQAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==";
+
+let player: HTMLAudioElement | null = null;
+
+function voicePlayer(): HTMLAudioElement | null {
+  if (!config.pipSpeaks || typeof window === "undefined") return null;
+  player ??= new Audio();
+  return player;
 }
 
-function canSpeak(): boolean {
-  return config.pipSpeaks && typeof window !== "undefined" && "speechSynthesis" in window;
-}
-
-/** Says one line in Pip's voice. Browsers that block audio stay quiet; the line is still on screen. */
+/**
+ * Plays Pip's recording of a line (made by scripts/make-pip-voice.py). A line with no
+ * recording stays silent, and npm run check fails until the recording is made.
+ */
 export function speakAsPip(line: string): void {
-  if (!canSpeak()) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(line);
-  utterance.voice = pickVoice() ?? null;
-  utterance.pitch = 1.25;
-  utterance.rate = 1.02;
-  window.speechSynthesis.speak(utterance);
+  const audio = voicePlayer();
+  const clip = pipVoiceClips[line];
+  if (!audio || !clip) return;
+  audio.pause();
+  audio.src = clip;
+  audio.currentTime = 0;
+  void audio.play().catch(() => undefined);
 }
 
-/** Browsers only allow speech after a click, so the hologram's start button calls this once. */
+/** Stops Pip mid-line, for when the deck moves on. */
+export function stopPip(): void {
+  player?.pause();
+}
+
+/**
+ * Browsers only play sound after a click, and Safari only on an element that played during
+ * one, so the hologram's start button plays silence on the same element Pip talks through.
+ */
 export function unlockPipVoice(): void {
-  if (!canSpeak()) return;
-  window.speechSynthesis.speak(new SpeechSynthesisUtterance(""));
-}
-
-/** Speaks a line shortly after `active` turns true, and stops it if the slide moves on. */
-export function usePipVoice(line: string, active: boolean) {
-  useEffect(() => {
-    if (!active || !canSpeak()) return;
-    const timer = window.setTimeout(() => speakAsPip(line), 900);
-    return () => {
-      window.clearTimeout(timer);
-      window.speechSynthesis.cancel();
-    };
-  }, [line, active]);
+  const audio = voicePlayer();
+  if (!audio) return;
+  audio.src = SILENCE;
+  void audio.play().catch(() => undefined);
 }
