@@ -257,9 +257,9 @@ export const titleSlide = {
 
 export const humanSlide = {
   truths: [
-    { id: "context", text: "As far as we know, humans are the only creatures that decode context from everything around them." },
-    { id: "connect", text: "Humans connect with other humans." },
-    { id: "priority", text: "Humans know what matters most." },
+    { id: "context", icon: "mind", text: "As far as we know, humans are the only creatures that decode context from everything around them." },
+    { id: "connect", icon: "bond", text: "Humans connect with other humans." },
+    { id: "priority", icon: "heart", text: "Humans know what matters most." },
   ],
   turn: "That's what makes this situation so difficult:",
 };
