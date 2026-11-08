@@ -9,7 +9,6 @@ export type SlideId =
   | "title"
   | "human"
   | "story"
-  | "persona"
   | "stat"
   | "friendly"
   | "meetPip"
@@ -82,7 +81,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1800, width: 200, strength: 0.4 },
     notes: [
-      "Meet Gloria. She runs a small family clinic in East Los Angeles. She knows an app could end the nonstop calls, but she has no time and no tech background to build one. Let's walk through one day with her.",
+      "Meet Gloria. She runs a small family clinic in East Los Angeles. She knows an app could end the nonstop calls, but she has no time and no tech background to build one. Her constraints are real: no budget for a developer, patient privacy rules to follow, and her phone as her only computer. Let's walk through one day with her.",
       "[Click] 7 a.m. The phones are ringing before the doors even open. Patients want to know if they can come in today.",
       "[Click] 10 a.m. The waiting room is full. Every few minutes someone comes to the desk and asks, 'How much longer?'",
       "[Click] 1 p.m. Refill requests pile up on sticky notes. A voicemail about one of them gets missed.",
@@ -91,23 +90,7 @@ export const slides: SlideMeta[] = [
       "[Click] Gloria doesn't need to learn to code. She needs help that works like a person: someone who notices what's going wrong and fixes it. That's why we built Pip.",
     ],
   },
-  {
-    id: "persona",
-    name: "Who it's for",
-    section: "Who it's for",
-    rubric: "Built for a specific person",
-    steps: 1,
-    sources: [],
-    mist: { x: 1760, width: 240, strength: 0.45 },
-    notes: [
-      "Here are the facts. Gloria runs a two-doctor family clinic in East Los Angeles. She is not a doctor and not technical. She keeps the clinic running.",
-      "Point at the timeline. The phones start before the doors open. Every dot is a patient calling to ask how long the wait is or whether a refill went through. The hollow dot is the voicemail that got missed.",
-      "Her constraints are real: no budget for a developer, patient privacy rules to follow, a scheduling system she didn't choose, and a phone as her main computer.",
-      "Gloria tried an AI app builder once. It opened to a blank box, then showed her code. She closed the tab and never went back.",
-      "Why she needs something better: without it, the phones stay the system. Patients wait on hold, voicemails get missed, and she keeps returning calls after closing.",
-      "Gloria is a persona built from our interviews. Swap in the real details you heard before the pitch.",
-    ],
-  },
+
   {
     id: "stat",
     name: "The opening",
@@ -349,6 +332,7 @@ export const humanSlide = {
 export const storySlide = {
   heading: "Meet Gloria",
   intro: "Gloria runs a family clinic and wants an app to end the nonstop calls, but she has no time to build one.",
+  constraints: "No budget for a developer, patient privacy rules to follow, and her phone as her only computer.",
   panels: [
     { id: "phones", time: "7 a.m.", icon: "phone", text: "The phones ring before the doors open." },
     { id: "waiting", time: "10 a.m.", icon: "waiting", text: "The waiting room is full. “How much longer?”" },
@@ -373,33 +357,6 @@ export const meetPipSlide = {
     { id: "build", icon: "app", text: "Pip builds the app, and you never see code" },
   ],
   body: "It lives on a fog screen at the counter, so it feels like someone in the room.",
-};
-
-export const personaSlide = {
-  heading: "Gloria runs a family clinic",
-  facts: [
-    { key: "Who", value: "Gloria, 56, clinic director" },
-    { key: "Clinic", value: "East Los Angeles, two doctors and a front desk of two" },
-    { key: "Patients", value: "Mostly walk-ins, many more at home in Spanish" },
-    { key: "Constraints", value: "No budget for a developer, patient privacy rules, and her phone" },
-    { key: "AI builders", value: "Tried one once and closed it when it showed her code" },
-    { key: "Without help", value: "The phones stay the system, and patients wait on hold" },
-  ],
-  dayStartHour: 7,
-  dayEndHour: 20,
-  ticks: [7, 10, 13, 16, 20],
-  blocks: [
-    { label: "Opening", from: 7, to: 8 },
-    { label: "Patients", from: 8, to: 18 },
-  ],
-  requestHours: [7.3, 7.8, 8.5, 9.1, 9.7, 10.4, 11.2, 12.1, 13.3, 14.2, 15.0, 16.1, 17.2, 18.4, 19.3],
-  lostRequestHour: 14.2,
-  moments: [
-    { hour: 7, text: "The phones start before the doors open." },
-    { hour: 14.2, text: "A voicemail about a refill gets missed." },
-    { hour: 20, text: "She is still returning calls after closing." },
-  ],
-  requestsLabel: "Calls about wait times and refills",
 };
 
 export const statSlide = {
