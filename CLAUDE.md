@@ -19,7 +19,9 @@ Keep the slides clean: no progress bar, dots or slide numbers. Each slide's foot
 
 ## Commands
 
-- `npm run dev` starts the deck at http://localhost:3000
+- `npm run dev` starts the deck at http://localhost:3000 with the hologram relay, for rehearsing.
+- `npm run present` builds the deck and serves it on port 3000 to this laptop and the Wi-Fi, with the hologram relay on port 3002 (`scripts/pip-relay.mjs`), so Pip's hologram screen on a second computer follows the deck. `/pip/setup/` shows the address and QR code for that computer and how many hologram screens are connected. This is the same pattern as the Fold with Nara kiosk.
+- `/pip` (or the H key) opens Pip's hologram screen for the fog projector: Pip alone on black, following the deck through a BroadcastChannel in the same browser. In the single-file build it lives at `#pip`. Cues per slide and build step live in `pipCues` in `src/content/content.ts`.
 - `/print` (or the P key) is the print version, one landscape page per slide or build step, for PDF export
 - `npm run build` writes the static export to `out/`. `npm run build:single` also folds it into one self-contained file, `dist/pip-deck.html`, for hosts that take a single page (there, P opens the print view at `#print`).
 - `npm run check` runs the type checker, the linter with its complexity limit, and the em dash scan. Run it before saying a task is done.

@@ -1,19 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { HologramView } from "@/components/hologram/HologramView";
 import { Deck } from "./Deck";
 import { PrintDeck } from "./PrintDeck";
 
-/** Shows the print version when the address ends in #print (used by the single-file build). */
+type View = "deck" | "print" | "pip";
+
+const views: Record<string, View> = { "#print": "print", "#pip": "pip" };
+
+/**
+ * Picks the view from the address: #print and #pip are used by the single-file build.
+ * Nothing renders until the address is read, so the deck never rewrites #pip before it is seen.
+ */
 export function DeckApp() {
-  const [printing, setPrinting] = useState(false);
+  const [view, setView] = useState<View | null>(null);
 
   useEffect(() => {
-    const sync = () => setPrinting(window.location.hash === "#print");
+    const sync = () => setView(views[window.location.hash] ?? "deck");
     sync();
     window.addEventListener("hashchange", sync);
     return () => window.removeEventListener("hashchange", sync);
   }, []);
 
-  return printing ? <PrintDeck /> : <Deck />;
+  if (view === null) return null;
+  if (view === "print") return <PrintDeck />;
+  if (view === "pip") return <HologramView />;
+  return <Deck />;
 }
