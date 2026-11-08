@@ -106,6 +106,21 @@ export const slides: SlideMeta[] = [
   },
 
   {
+    id: "listen",
+    name: "Pip picks things up",
+    section: "What Pip makes newly possible",
+    rubric: "Original",
+    steps: 2,
+    sources: [],
+    mist: { x: 1840, width: 140, strength: 0.4 },
+    notes: [
+      "Meet Pip. This is what makes it special. Pip isn't an app you open and close. It is more like a new coworker at the front desk.",
+      "You can talk with it any time. And like a real person, it picks things up in passing. It doesn't record everything. It pays attention to what seems interesting or useful, the way a new hire would after a week on the job.",
+      "Walk the four pins. Pip noticed that walk-ins peak from 9 to 11 and spill outside, that one person answers the phone and checks patients in at the same time, that refills live on sticky notes, and that the question asked most at the desk is 'How much longer?'",
+      "Advance. Then Pip does what a good coworker does: it brings it up. 'Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them?' Gloria never had to describe the problem. These observations are demo data for the pitch.",
+    ],
+  },
+  {
     id: "friendly",
     name: "Like a real person",
     section: "What is broken about building today",
@@ -116,22 +131,7 @@ export const slides: SlideMeta[] = [
     notes: [
       "Today's AI builders feel made for engineers. You face a blank box, you're expected to write a spec, and then you get code you can't check. That is where Gloria closed the tab.",
       "Pip is the opposite, and the table shows it row by row. It starts with a hello, talks in Gloria's words, shows what it heard instead of code and asks one question at a time.",
-      "And like a real coworker, it notices things nobody told it, and it has a face. People told a character more about their problem than they ever typed into a box.",
-    ],
-  },
-  {
-    id: "listen",
-    name: "Pip picks things up",
-    section: "What Pip makes newly possible",
-    rubric: "Original",
-    steps: 2,
-    sources: [],
-    mist: { x: 1840, width: 140, strength: 0.4 },
-    notes: [
-      "This is what makes Pip special. Pip isn't an app you open and close. It is more like a new coworker at the front desk.",
-      "You can talk with it any time. And like a real person, it picks things up in passing. It doesn't record everything. It pays attention to what seems interesting or useful, the way a new hire would after a week on the job.",
-      "Walk the four pins. Pip noticed that walk-ins peak from 9 to 11 and spill outside, that one person answers the phone and checks patients in at the same time, that refills live on sticky notes, and that the question asked most at the desk is 'How much longer?'",
-      "Advance. Then Pip does what a good coworker does: it brings it up. 'Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them?' Gloria never had to describe the problem. These observations are demo data for the pitch.",
+      "And as you just saw, it notices things nobody told it, like a real coworker. It even has a face. People told a character more about their problem than they ever typed into a box.",
     ],
   },
   {
