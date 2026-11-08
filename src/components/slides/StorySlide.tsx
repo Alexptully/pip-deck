@@ -17,7 +17,7 @@ type Panel = (typeof storySlide.panels)[number];
 function StoryPanel({ panel, show }: { panel: Panel; show: boolean }) {
   const PanelIcon = icons[panel.icon];
   return (
-    <Reveal show={show} rise={30} className="flex h-[420px] flex-col bg-surface-raised px-8 py-8">
+    <Reveal show={show} rise={30} className="flex h-[400px] flex-col bg-surface-raised px-8 py-8">
       <p className="type-caption text-accent">{panel.time}</p>
       <div className="flex flex-1 items-center justify-center">
         <PanelIcon size={110} weight="light" className="text-text" aria-hidden />
@@ -36,7 +36,7 @@ export function StorySlide({ step }: { step: number }) {
       <Reveal delay={0.2} className="absolute left-0 top-[120px]">
         <p className="type-lead text-text-muted">{storySlide.intro}</p>
       </Reveal>
-      <div className="absolute left-0 right-0 top-[210px] grid grid-cols-5 gap-6">
+      <div className="absolute left-0 right-0 top-[250px] grid grid-cols-5 gap-6">
         {storySlide.panels.map((panel, index) => (
           <StoryPanel key={panel.id} panel={panel} show={index < step} />
         ))}

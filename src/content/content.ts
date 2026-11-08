@@ -82,7 +82,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1800, width: 200, strength: 0.4 },
     notes: [
-      "Meet Gloria. She runs a small family clinic in East Los Angeles, and her day never slows down. Let's walk through one day with her.",
+      "Meet Gloria. She runs a small family clinic in East Los Angeles. She knows an app could end the nonstop calls, but she has no time and no tech background to build one. Let's walk through one day with her.",
       "[Click] 7 a.m. The phones are ringing before the doors even open. Patients want to know if they can come in today.",
       "[Click] 10 a.m. The waiting room is full. Every few minutes someone comes to the desk and asks, 'How much longer?'",
       "[Click] 1 p.m. Refill requests pile up on sticky notes. A voicemail about one of them gets missed.",
@@ -348,7 +348,7 @@ export const humanSlide = {
 
 export const storySlide = {
   heading: "Meet Gloria",
-  intro: "Gloria runs a small family clinic in East Los Angeles, and her day never slows down.",
+  intro: "Gloria runs a family clinic and wants an app to end the nonstop calls, but she has no time to build one.",
   panels: [
     { id: "phones", time: "7 a.m.", icon: "phone", text: "The phones ring before the doors open." },
     { id: "waiting", time: "10 a.m.", icon: "waiting", text: "The waiting room is full. “How much longer?”" },
