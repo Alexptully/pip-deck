@@ -62,14 +62,31 @@ export const slides: SlideMeta[] = [
     name: "Meet Gloria",
     section: "Who it's for",
     rubric: "Built for a specific person",
-    steps: 7,
+    steps: 8,
     sources: [],
     mist: { x: 1800, width: 200, strength: 0.4 },
     notes: [
       "[Cara] This is Gloria. Picture her clinic on a Tuesday.",
       "[Click] It's 7 a.m. and the phone is already ringing. [Click] By 10, every chair is taken, and someone's asking how much longer for the third time. [Click] At lunch, she's writing refill requests on sticky notes.",
       "[Click] That evening, she finally tries one of those AI app builders. It asks her to describe her app, then shows her code. Tab closed. [Click] At 8, she's still calling people back.",
-      "[Click] Gloria isn't missing an idea. She's missing a partner.",
+      "[Click] Gloria doesn't need another tool. She needs a human.",
+      "[Click] A person would get what her Tuesdays feel like without being told. They'd ask her a few questions, watch how the front desk runs, and fill in the rest.",
+    ],
+  },
+
+  {
+    id: "stat",
+    name: "This isn't just Gloria's situation",
+    section: "Who it's for",
+    rubric: "Believable",
+    steps: 4,
+    sources: ["sbaNation2025", "gs10ksb2026"],
+    mist: { x: 1700, width: 300, strength: 0.5 },
+    notes: [
+      "[Cara] And Gloria isn't alone. There are about 36 million small businesses in the U.S.",
+      "[Click] Their owners can already see what AI could do for them. Nearly three in four of the ones using it say they'd get further with help getting set up. They just don't know where to start.",
+      "[Click] What they want from it is time back. That's the main payoff for 84 percent of them.",
+      "[Click] They want something that makes the work run smoother without a manual.",
     ],
   },
 
@@ -82,23 +99,9 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 1500, width: 520, strength: 0.7 },
     notes: [
-      "[Cara] That's why we believe the future of AI is human. Gloria doesn't need a smarter command line. She needs something that works with her the way a good coworker does.",
+      "[Cara] That's why we believe the future of AI is human. Gloria and millions like her don't need a smarter command line. They need something that works with them the way a good coworker does. Daisy?",
     ],
   },
-  {
-    id: "stat",
-    name: "The opening",
-    section: "Who it's for",
-    rubric: "Believable",
-    steps: 2,
-    sources: ["gs10ksb2026", "nhsGpTraining2022"],
-    mist: { x: 1700, width: 300, strength: 0.5 },
-    notes: [
-      "[Cara] And she's everywhere. Most small business owners using AI want it to save time, yet nearly three in four say they need help just getting started. In the UK, three in four clinic staff say they're too swamped to finish training. The appetite is there. The on-ramp isn't.",
-      "[Click] So we asked: what if building an app felt like talking to a friend? Daisy?",
-    ],
-  },
-
   {
     id: "meetPip",
     name: "Meet Pip",
@@ -270,7 +273,7 @@ export const futureSlide = {
 
 export const storySlide = {
   heading: "Meet Gloria",
-  intro: "Gloria runs a family clinic and wants an app to end the nonstop calls, but she has no time to build one.",
+  intro: "Gloria runs a family clinic. She wants an app to end the nonstop calls, and she has no one to help her build it.",
   constraints: "No budget for a developer, patient privacy rules to follow, and her phone as her only computer.",
   panels: [
     { id: "phones", time: "7 a.m.", icon: "phone", text: "The phones ring before the doors open." },
@@ -282,9 +285,13 @@ export const storySlide = {
       icon: "code",
       text: "She tries an AI app builder. It shows her code. She closes the tab.",
     },
-    { id: "night", time: "8 p.m.", icon: "night", text: "Still returning calls. “There has to be an easier way.”" },
+    { id: "night", time: "8 p.m.", icon: "night", text: "Still returning calls. “I wish someone here could just help.”" },
   ],
-  need: "Gloria doesn't need to learn to code. She needs help that works like a person.",
+  need: "Gloria needs a human, not a tool.",
+  humanCan: [
+    { id: "empathize", icon: "heart", text: "A human empathizes. They know what her clinic is like day to day." },
+    { id: "reach", icon: "chat", text: "A human reaches out and asks questions until they understand." },
+  ],
 };
 
 export const meetPipSlide = {
@@ -301,40 +308,28 @@ export const meetPipSlide = {
 };
 
 export const statSlide = {
-  heading: "Busy people want easier tools but can't stop to learn them",
-  groups: [
+  heading: "This isn't just Gloria's situation",
+  figures: [
     {
-      id: "want",
-      label: "They want easier ways to work",
-      figures: [
-        {
-          id: "efficiency",
-          figure: "84%",
-          text: "of small business owners using AI say saving time and working more efficiently is the main benefit",
-          detail: "Goldman Sachs 10,000 Small Businesses survey of 1,256 owners, 2026",
-        },
-      ],
+      id: "businesses",
+      figure: "36.2M",
+      text: "small businesses in the U.S.",
+      detail: "SBA Office of Advocacy, 2025",
     },
     {
-      id: "stuck",
-      label: "But learning new tools takes time they don't have",
-      figures: [
-        {
-          id: "training",
-          figure: "73%",
-          text: "say more training and help setting it up would help them",
-          detail: "Same Goldman Sachs survey, 2026",
-        },
-        {
-          id: "workload",
-          figure: "74%",
-          text: "of clinic staff say their workload keeps them from finishing training",
-          detail: "NHS England survey of 791 general-practice staff, 2022 (UK)",
-        },
-      ],
+      id: "start",
+      figure: "73%",
+      text: "of owners using AI say more help setting it up would help them",
+      detail: "Goldman Sachs 10,000 Small Businesses survey of 1,256 owners, 2026",
+    },
+    {
+      id: "efficiency",
+      figure: "84%",
+      text: "say saving time and working more efficiently is the main benefit",
+      detail: "Same Goldman Sachs survey, 2026",
     },
   ],
-  pivot: "What if building an app felt like talking to a friend?",
+  want: "They want something that makes the work run smoother.",
 };
 
 export const saySlide = {

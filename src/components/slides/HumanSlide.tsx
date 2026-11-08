@@ -1,5 +1,6 @@
 import { Brain, Handshake, Heart, type Icon } from "@phosphor-icons/react";
 import { humanSlide } from "@/content/content";
+import { HumanWords } from "@/components/primitives/HumanWords";
 import { Reveal } from "@/components/primitives/Reveal";
 
 const icons: Record<string, Icon> = {
@@ -27,7 +28,7 @@ export function HumanSlide({ step }: { step: number }) {
                   className={`mt-1 shrink-0 transition-opacity duration-500 text-accent ${current ? "opacity-100" : "opacity-50"}`}
                 />
                 <p className={`type-title flex-1 transition-colors duration-500 ${current ? "text-text" : "text-text-muted"}`}>
-                  {truth.text}
+                  <HumanWords text={truth.text} />
                 </p>
               </Reveal>
             </li>
