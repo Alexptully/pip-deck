@@ -50,8 +50,8 @@ export const slides: SlideMeta[] = [
     sources: ["promptBrief"],
     mist: { x: 1500, width: 520, strength: 0.7 },
     notes: [
-      "[Alex] Hi, we're Group 7. As far as we know, we're the only creatures who pull meaning out of everything around us. That's why we believe the future of AI is human.",
-      "[Click] Three things make people good at helping each other. Researchers call the first one pragmatics: we read the room and hear what someone means, not just the words. The second is triage: we sort what's urgent from what can wait without being told. The third is shared intentionality: we open up because we know someone real is listening. Today's AI only gets the words you type. Cara?",
+      "[Alex] Hi, we're Group 7. Quick show of hands: who here has asked an AI for help and gotten exactly what you typed, but not what you meant? As far as we know, we're the only creatures who pull meaning out of everything around us. AI doesn't do that yet.",
+      "[Click] Think about the best help you've ever gotten. That person read the room and knew what mattered first. You also told them more, because someone real was listening. Researchers call these pragmatics, triage and shared intentionality, and we wanted AI that could do all of them. Cara?",
     ],
   },
   {
