@@ -42,29 +42,16 @@ export const ownerName = "Gloria";
 
 export const slides: SlideMeta[] = [
   {
-    id: "title",
-    name: "Pip",
-    section: "The idea",
-    rubric: "Original",
-    steps: 1,
-    sources: ["promptBrief"],
-    mist: { x: 1360, width: 640, strength: 1 },
-    notes: [
-      "[Alex] Quick show of hands: who here has tried an AI app builder, stared at the empty box, and closed the tab? Hold on to that feeling.",
-      "We're Group 7, and this is Pip. Well, almost Pip. It's still figuring out its face.",
-    ],
-  },
-  {
     id: "human",
     name: "The future of AI is human",
     section: "The idea",
     rubric: "Original",
     steps: 2,
-    sources: [],
+    sources: ["promptBrief"],
     mist: { x: 1500, width: 520, strength: 0.7 },
     notes: [
-      "[Alex] Right now, AI speaks command. You type, it obeys. That's great if you already think in specs.",
-      "[Click] But when most people get stuck, they don't open a terminal. They turn to the person next to them and ask for help. That's the AI we wanted to build. Cara?",
+      "[Alex] Hi, we're Group 7. As far as we know, we're the only creatures who pull meaning out of everything around us. That's why we believe the future of AI is human.",
+      "[Click] Three things make people good at helping each other. Researchers call the first one pragmatics: we read the room and hear what someone means, not just the words. The second is triage: we sort what's urgent from what can wait without being told. The third is shared intentionality: we open up because we know someone real is listening. Today's AI only gets the words you type. Cara?",
     ],
   },
   {
@@ -250,15 +237,32 @@ export const slides: SlideMeta[] = [
 
 export const titleSlide = {
   name: "Pip",
-  line: "Pip is an AI you talk to like a person. It listens, picks up on what you need and builds it for you.",
+  line: "What if building software felt like working with someone who already understands you?",
 };
 
 export const humanSlide = {
   heading: "The future of AI is human",
-  commandLabel: "We can already tell AI what to do",
-  command: "build me a patient check-in app",
-  humanLabel: "But people connect best with people, especially those who aren't comfortable with technology",
-  humanLine: "Hi! What's been hardest this week?",
+  lead: "As far as we know, humans are the only creatures who read meaning from everything around them.",
+  strengths: [
+    {
+      id: "context",
+      icon: "context",
+      name: "We read the room",
+      text: "We hear what someone means, not just what they say, and adjust to what's going on around us.",
+    },
+    {
+      id: "priority",
+      icon: "priority",
+      name: "We sort what matters",
+      text: "We spot what's urgent and handle it first, while tuning out the noise.",
+    },
+    {
+      id: "listen",
+      icon: "listen",
+      name: "We open up to a listener",
+      text: "We share more when we know a real person is on the other side.",
+    },
+  ],
 };
 
 export const storySlide = {
