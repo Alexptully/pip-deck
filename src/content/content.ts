@@ -43,6 +43,18 @@ export const ownerName = "Gloria";
 
 export const slides: SlideMeta[] = [
   {
+    id: "title",
+    name: "Pip",
+    section: "The idea",
+    rubric: "Original",
+    steps: 1,
+    sources: ["promptBrief"],
+    mist: { x: 1300, width: 640, strength: 1 },
+    notes: [
+      "[Alex] Hi, we're Group 7: Alex, Cara, Daisy, Jerry and Ame. Let's start with something only people can do.",
+    ],
+  },
+  {
     id: "human",
     name: "As far as we know",
     section: "The idea",

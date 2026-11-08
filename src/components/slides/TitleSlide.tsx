@@ -2,11 +2,14 @@ import { config } from "@/content/config";
 import { titleSlide } from "@/content/content";
 import { Fill } from "@/components/primitives/Placeholder";
 import { Reveal } from "@/components/primitives/Reveal";
-import { Pip } from "@/components/pip/Pip";
+import { Echo } from "@/components/diagrams/Echo";
 
 export function TitleSlide() {
   return (
     <div className="relative h-full">
+      <Reveal delay={0.8} rise={0} pace="slow" className="pointer-events-none absolute left-[640px] top-[-60px]">
+        <Echo />
+      </Reveal>
       <Reveal className="absolute left-0 top-[40px]">
         <h1 className="type-mega text-text">{titleSlide.name}</h1>
       </Reveal>
@@ -18,15 +21,13 @@ export function TitleSlide() {
           <dt className="text-text-faint">Team</dt>
           <dd className="text-text">
             <Fill value={config.teamName} />
+            <span className="text-text-muted">{`: ${config.teamMembers.join(", ")}`}</span>
           </dd>
           <dt className="text-text-faint">Event</dt>
           <dd className="text-text-muted">{config.event}</dd>
           <dt className="text-text-faint">Prompt</dt>
           <dd className="text-text-muted">{config.prompt}</dd>
         </dl>
-      </Reveal>
-      <Reveal delay={1.2} rise={90} pace="slow" className="absolute left-[1000px] top-[170px]">
-        <Pip height={560} mood="mystery" />
       </Reveal>
     </div>
   );

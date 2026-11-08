@@ -5,7 +5,7 @@
 export const config = {
   productName: "Pip",
   teamName: "Group 7",
-  teamMembers: ["Alex Tully", "Daisy Wang", "Ame Wang", "Jerry Wu", "Cara Austring"],
+  teamMembers: ["Alex Tully", "Cara Austring", "Daisy Wang", "Jerry Wu", "Ame Wang"],
   event: "Innovator's Forum, Fall 2026",
   prompt: "Prompt 3a: What does the future of vibe coding look like?",
   demoUrl: "[DEMO URL]",
