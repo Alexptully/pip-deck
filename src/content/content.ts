@@ -95,11 +95,12 @@ export const slides: SlideMeta[] = [
     name: "The future of AI is human",
     section: "The idea",
     rubric: "Original",
-    steps: 1,
+    steps: 2,
     sources: [],
     mist: { x: 1500, width: 520, strength: 0.7 },
     notes: [
-      "[Cara] That's why we believe the future of AI is human. Gloria and millions like her don't need a smarter command line. They need something that works with them the way a good coworker does. Daisy?",
+      "[Cara] As ridiculous as it sounds, we believe the future of AI is human.",
+      "[Click] We know that sounds backwards. People built AI to get away from human flaws, because we're slow and we make mistakes. But Gloria doesn't need a faster command line. She needs something that reads the room and asks good questions before it builds, the way a good coworker does. Daisy?",
     ],
   },
   {
@@ -268,7 +269,11 @@ export const humanSlide = {
 };
 
 export const futureSlide = {
-  heading: "The future of AI is human",
+  lead: "As ridiculous as it sounds,",
+  heading: "the future of AI is human",
+  backwards: "People built AI to get away from human flaws.",
+  because:
+    "But the human parts AI left out, like reading the room and asking good questions, are what people like Gloria need.",
 };
 
 export const storySlide = {
