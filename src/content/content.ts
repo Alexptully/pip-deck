@@ -240,7 +240,7 @@ export const slides: SlideMeta[] = [
     sources: [],
     mist: { x: 960, width: 720, strength: 1 },
     notes: [
-      "[Ame] So, that empty box you closed? Pip's answer is to never hand you one. Come say hi, and tell it what's been hard this week. Thank you.",
+      "[Ame] Pip never hands you an empty box. It asks questions and builds right alongside you. So come try the demo and tell Pip what you want to build next. Thank you.",
     ],
   },
   {
@@ -688,7 +688,7 @@ export const standardsSlide = {
 };
 
 export const closeSlide = {
-  heading: "Tell Pip what's been hard",
+  heading: "What will you build next?",
   scanText: "Try the demo",
 };
 
@@ -738,7 +738,7 @@ export const pipCues: Partial<Record<SlideId, PipCue[]>> = {
   whyNow: [{ show: true, mood: "listen" }],
   learned: [{ show: true, mood: "listen" }],
   benefits: [{ show: true, mood: "smile" }],
-  close: [{ show: true, mood: "talk", line: "What's been hard this week?", speak: true }],
+  close: [{ show: true, mood: "talk", line: "So, what do you want to build next?", speak: true }],
   standards: [{ show: true, mood: "listen" }],
   sources: [{ show: true, mood: "smile" }],
 };
