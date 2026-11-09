@@ -10,7 +10,7 @@ export const config = {
   prompt: "Prompt 3a: What does the future of vibe coding look like?",
   demoUrl: "[DEMO URL]",
   demoUrlLabel: "[DEMO URL]",
-  /** Pip speaks its lines out loud from the hologram screen. */
+  /** Pip plays its recorded lines out loud from the hologram screen. */
   pipSpeaks: true,
   motif: "A sheet of falling mist, the same fog screen Pip lives in, drifts across every slide.",
   ownerQuotes: [

@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { hologramCopy, pipCueBeforeDeck, pipCueFor, type PipCue } from "@/content/content";
 import { relayBase } from "@/lib/pip-link";
 import { useHologramSync, type DeckPosition } from "@/lib/pip-sync";
-import { speakAsPip, unlockPipVoice } from "@/lib/use-pip-voice";
+import { speakAsPip, stopPip, unlockPipVoice } from "@/lib/use-pip-voice";
 import { fullscreenOnExtendedScreen } from "@/lib/screens";
 import { toggleFullscreen } from "@/lib/use-deck-keys";
 import { Mist } from "@/components/mist/Mist";
@@ -46,14 +46,17 @@ function cueKey(position: DeckPosition | null): string {
   return position ? `${position.slideId}-${position.step}` : "none";
 }
 
-/** Speaks a cue's line once each time the deck lands on that slide and step. */
+/** Plays a cue's line once each time the deck lands on that slide and step, and stops it when the deck moves on. */
 function useCueVoice(cue: PipCue, key: string, started: boolean) {
   useEffect(() => {
     if (!started || !cue.speak || !cue.line) return;
     const line = cue.line;
     const wait = 1100 + (cue.forming ? GATHER_SECONDS * 1000 : 0);
     const timer = window.setTimeout(() => speakAsPip(line), wait);
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      stopPip();
+    };
   }, [cue, key, started]);
 }
 
