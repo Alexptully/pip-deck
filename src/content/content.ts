@@ -704,8 +704,13 @@ export const sourcesSlide = {
  */
 export type PipCue = {
   show: boolean;
-  mood: "smile" | "talk" | "listen" | "think";
-  reach?: "none" | "left" | "right";
+  /** Pip's face when it isn't talking. While a line plays, the mouth follows the voice. */
+  mood: "smile" | "listen" | "think" | "happy" | "curious" | "excited";
+  reach?: "none" | "left" | "right" | "wave";
+  /** A body movement: a hop, a slow nod while listening, or leaning in toward the room. */
+  gesture?: "bounce" | "nod" | "lean";
+  /** Eyes drift around the room, as if Pip is taking things in. */
+  glance?: boolean;
   /** Light gathers into the spot where Pip appears. Used on Pip's first appearance. */
   forming?: boolean;
   line?: string;
@@ -718,27 +723,39 @@ const dark: PipCue = { show: false, mood: "smile" };
 export const pipCues: Partial<Record<SlideId, PipCue[]>> = {
   meetPip: [
     dark,
-    { show: true, mood: "talk", forming: true, line: "Hi, I'm Pip.", speak: true },
-    { show: true, mood: "smile" },
+    { show: true, mood: "happy", reach: "wave", forming: true, line: "Hi, I'm Pip.", speak: true },
+    { show: true, mood: "smile", gesture: "lean" },
   ],
   listen: [
-    { show: true, mood: "listen" },
-    { show: true, mood: "talk", line: mapSlide.pipSays, speak: true },
+    { show: true, mood: "curious", glance: true },
+    { show: true, mood: "smile", gesture: "lean", line: mapSlide.pipSays, speak: true },
   ],
   say: [
-    { show: true, mood: "listen" },
-    { show: true, mood: "talk", line: saySlide.confirm, speak: true },
+    { show: true, mood: "listen", gesture: "nod" },
+    { show: true, mood: "curious", line: saySlide.confirm, speak: true },
   ],
-  ask: [{ show: true, mood: "talk", reach: "right", line: askSlide.questions[0].ask }],
+  ask: [{ show: true, mood: "think", reach: "right", glance: true, line: askSlide.questions[0].ask }],
   launch: [
-    { show: true, mood: "listen" },
-    { show: true, mood: "smile", line: "Your page is live.", speak: true },
+    { show: true, mood: "listen", gesture: "nod" },
+    { show: true, mood: "excited", gesture: "bounce", line: "Your page is live.", speak: true },
   ],
-  zoomOut: [{ show: true, mood: "smile" }],
-  whyNow: [{ show: true, mood: "listen" }],
-  learned: [{ show: true, mood: "listen" }],
-  benefits: [{ show: true, mood: "smile" }],
-  close: [{ show: true, mood: "talk", line: "So, what's been on your mind? Let's build something for it.", speak: true }],
+  zoomOut: [
+    { show: true, mood: "curious", glance: true },
+    { show: true, mood: "happy" },
+  ],
+  whyNow: [{ show: true, mood: "smile" }],
+  learned: [{ show: true, mood: "happy", gesture: "lean" }],
+  benefits: [{ show: true, mood: "happy" }],
+  close: [
+    {
+      show: true,
+      mood: "happy",
+      reach: "wave",
+      gesture: "lean",
+      line: "So, what's been on your mind? Let's build something for it.",
+      speak: true,
+    },
+  ],
   standards: [{ show: true, mood: "listen" }],
   sources: [{ show: true, mood: "smile" }],
 };
