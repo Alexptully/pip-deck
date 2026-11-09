@@ -10,7 +10,7 @@ export function CloseSlide() {
   return (
     <div className="relative flex h-full flex-col items-center">
       <Reveal rise={60}>
-        <Pip height={300} mood="smile" />
+        <Pip height={300} mood="happy" />
       </Reveal>
       <Reveal delay={0.3} className="mt-8 max-w-[1500px] text-center">
         <h2 className="type-display text-text">{closeSlide.heading}</h2>

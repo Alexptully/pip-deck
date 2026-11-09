@@ -16,7 +16,7 @@ export function LearnedSlide() {
   return (
     <div className="relative h-full">
       <Reveal delay={0.9} rise={40} pace="slow" className="absolute right-[-40px] top-[170px]">
-        <Pip height={420} mood="smile" />
+        <Pip height={420} mood="happy" />
       </Reveal>
       <div className="max-w-[1160px]">
         <Heading>{learnedSlide.heading}</Heading>

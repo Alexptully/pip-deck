@@ -1,11 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, type TargetAndTransition } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { hologramCopy, pipCueBeforeDeck, pipCueFor, type PipCue } from "@/content/content";
 import { relayBase } from "@/lib/pip-link";
 import { useHologramSync, type DeckPosition } from "@/lib/pip-sync";
-import { speakAsPip, stopPip, unlockPipVoice } from "@/lib/use-pip-voice";
+import { pipVoiceLevel, speakAsPip, stopPip, unlockPipVoice, usePipSpeaking } from "@/lib/use-pip-voice";
 import { fullscreenOnExtendedScreen } from "@/lib/screens";
 import { toggleFullscreen } from "@/lib/use-deck-keys";
 import { Mist } from "@/components/mist/Mist";
@@ -93,10 +93,46 @@ function PipOnFog({ cue }: { cue: PipCue }) {
           exit={{ opacity: 0, scale: 0.9, filter: "blur(18px)" }}
           transition={{ duration: 1.4, delay: entranceDelay, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Pip height={680} mood={cue.mood} reach={cue.reach ?? "none"} />
+          <GestureBody cue={cue} />
         </motion.div>
       ) : null}
     </AnimatePresence>
+  );
+}
+
+type Gesture = NonNullable<PipCue["gesture"]> | "still";
+
+/** How Pip's whole body moves for each gesture. A hop plays once; a nod repeats while Pip listens. */
+const gestures: Record<Gesture, TargetAndTransition> = {
+  still: { y: 0, scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  bounce: {
+    y: [0, -90, 0, -36, 0],
+    scaleY: [1, 1.06, 0.9, 1.03, 1],
+    transition: { duration: 1.3, delay: 0.9, ease: "easeOut" },
+  },
+  nod: { y: [0, 16, 0, 16, 0], transition: { duration: 1.4, repeat: Infinity, repeatDelay: 2.2, ease: "easeInOut" } },
+  lean: { y: 24, scale: 1.07, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } },
+};
+
+/** Pip tilts its head while it's curious and talks with its whole body, not just its mouth. */
+function GestureBody({ cue }: { cue: PipCue }) {
+  const talking = usePipSpeaking();
+  const tilt = cue.mood === "curious" ? 9 : 0;
+  return (
+    <motion.div
+      initial={false}
+      animate={{ ...gestures[cue.gesture ?? "still"], rotate: tilt }}
+      style={{ originY: 0.85 }}
+    >
+      <Pip
+        height={680}
+        mood={cue.mood}
+        reach={cue.reach ?? "none"}
+        glance={cue.glance}
+        talking={talking}
+        voiceLevel={pipVoiceLevel}
+      />
+    </motion.div>
   );
 }
 

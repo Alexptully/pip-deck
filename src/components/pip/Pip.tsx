@@ -1,17 +1,23 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useTransform, type MotionValue } from "motion/react";
 import { useId } from "react";
 import { useStill } from "@/components/primitives/Still";
 
-export type PipMood = "smile" | "talk" | "listen" | "think" | "mystery";
+export type PipMood = "smile" | "talk" | "listen" | "think" | "happy" | "curious" | "excited" | "mystery";
 type FaceMood = Exclude<PipMood, "mystery">;
-export type PipReach = "none" | "left" | "right";
+export type PipReach = "none" | "left" | "right" | "wave";
 
 type PipProps = {
   height: number;
   mood?: PipMood;
   reach?: PipReach;
+  /** Moves the mouth with Pip's voice. Pass the live loudness (0 to 1) while a line plays. */
+  voiceLevel?: MotionValue<number>;
+  /** Eyes drift from side to side, as if Pip is taking in the room. */
+  glance?: boolean;
+  /** Talking moves only the mouth, so Pip keeps its expression while it speaks. */
+  talking?: boolean;
   className?: string;
 };
 
@@ -24,34 +30,103 @@ const handPositions: Record<PipReach, { left: [number, number]; right: [number, 
   none: { left: [22, 238], right: [218, 238] },
   left: { left: [-26, 176], right: [218, 238] },
   right: { left: [22, 238], right: [266, 176] },
+  wave: { left: [22, 238], right: [258, 140] },
 };
 
-function Mouth({ mood, still }: { mood: FaceMood; still: boolean }) {
-  if (mood === "talk") {
-    return (
-      <motion.ellipse
-        cx={120}
-        cy={210}
-        rx={12}
-        initial={false}
-        animate={still ? { ry: 8 } : { ry: [4, 10, 5, 9, 4] }}
-        transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
-        className="fill-accent/30 stroke-accent"
-        strokeWidth={4}
-      />
-    );
+const mouthPaths: Record<Exclude<FaceMood, "talk">, { d: string; filled: boolean }> = {
+  smile: { d: "M98 204 Q120 226 142 204", filled: false },
+  listen: { d: "M112 210 Q120 216 128 210", filled: false },
+  think: { d: "M104 212 L136 208", filled: false },
+  happy: { d: "M94 202 Q120 236 146 202 Z", filled: true },
+  curious: { d: "M114 210 A 6 6 0 1 0 126 210 A 6 6 0 1 0 114 210 Z", filled: true },
+  excited: { d: "M92 200 Q120 244 148 200 Z", filled: true },
+};
+
+/** While Pip talks, the mouth opens with the loudness of the recording. */
+function TalkingMouth({ voiceLevel, still }: { voiceLevel?: MotionValue<number>; still: boolean }) {
+  const ry = useTransform(() => 3 + (voiceLevel?.get() ?? 0) * 11);
+  if (voiceLevel && !still) {
+    return <motion.ellipse cx={120} cy={210} rx={12} ry={ry} className="fill-accent/30 stroke-accent" strokeWidth={4} />;
   }
-  const paths: Record<Exclude<FaceMood, "talk">, string> = {
-    smile: "M98 204 Q120 226 142 204",
-    listen: "M112 210 Q120 216 128 210",
-    think: "M104 212 L136 208",
-  };
-  return <path d={paths[mood]} className="stroke-accent" strokeWidth={5} strokeLinecap="round" fill="none" />;
+  return (
+    <motion.ellipse
+      cx={120}
+      cy={210}
+      rx={12}
+      initial={false}
+      animate={still ? { ry: 8 } : { ry: [4, 10, 5, 9, 4] }}
+      transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+      className="fill-accent/30 stroke-accent"
+      strokeWidth={4}
+    />
+  );
 }
 
-function Eyes({ mood, still }: { mood: FaceMood; still: boolean }) {
-  const lookX = mood === "think" ? 8 : 0;
-  const lookY = mood === "listen" ? -6 : 0;
+function Mouth({ mood, still, voiceLevel }: { mood: FaceMood; still: boolean; voiceLevel?: MotionValue<number> }) {
+  if (mood === "talk") return <TalkingMouth voiceLevel={voiceLevel} still={still} />;
+  const mouth = mouthPaths[mood];
+  return (
+    <path
+      d={mouth.d}
+      className={mouth.filled ? "fill-accent/30 stroke-accent" : "stroke-accent"}
+      strokeWidth={5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill={mouth.filled ? undefined : "none"}
+    />
+  );
+}
+
+/** Where the eyes look, and how big they are, for each mood. */
+const eyeShapes: Record<FaceMood, { x: number; y: number; height: number; tallRight?: boolean }> = {
+  smile: { x: 0, y: 0, height: 30 },
+  talk: { x: 0, y: 0, height: 30 },
+  listen: { x: 0, y: -6, height: 30 },
+  think: { x: 8, y: -4, height: 26 },
+  happy: { x: 0, y: 0, height: 30 },
+  curious: { x: 4, y: -4, height: 30, tallRight: true },
+  excited: { x: 0, y: -4, height: 38 },
+};
+
+/** Happy eyes squeeze shut into little arches. */
+function HappyEyes() {
+  return (
+    <g className="stroke-accent" strokeWidth={6} strokeLinecap="round" fill="none">
+      <path d="M82 172 Q92 152 102 172" />
+      <path d="M138 172 Q148 152 158 172" />
+    </g>
+  );
+}
+
+function OpenEyes({ mood, still, glance }: { mood: FaceMood; still: boolean; glance: boolean }) {
+  const eye = eyeShapes[mood];
+  const top = 167 + eye.y - eye.height / 2;
+  const rightHeight = eye.tallRight ? eye.height + 10 : eye.height;
+  return (
+    <motion.g
+      initial={false}
+      animate={glance && !still ? { x: [0, -10, -10, 10, 10, 0] } : { x: 0 }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <motion.rect
+        initial={false}
+        animate={{ x: 84 + eye.x, y: top, height: eye.height }}
+        width={16}
+        rx={8}
+        className="fill-accent"
+      />
+      <motion.rect
+        initial={false}
+        animate={{ x: 140 + eye.x, y: top - (rightHeight - eye.height) / 2, height: rightHeight }}
+        width={16}
+        rx={8}
+        className="fill-accent"
+      />
+    </motion.g>
+  );
+}
+
+function Eyes({ mood, still, glance = false }: { mood: FaceMood; still: boolean; glance?: boolean }) {
   return (
     <motion.g
       initial={false}
@@ -59,8 +134,7 @@ function Eyes({ mood, still }: { mood: FaceMood; still: boolean }) {
       transition={{ duration: 4.2, repeat: Infinity, times: [0, 0.9, 0.93, 0.96, 1] }}
       style={{ originX: "120px", originY: "168px" }}
     >
-      <rect x={84 + lookX} y={152 + lookY} width={16} height={30} rx={8} className="fill-accent" />
-      <rect x={140 + lookX} y={152 + lookY} width={16} height={30} rx={8} className="fill-accent" />
+      {mood === "happy" ? <HappyEyes /> : <OpenEyes mood={mood} still={still} glance={glance} />}
     </motion.g>
   );
 }
@@ -83,7 +157,15 @@ function MysteryFace({ still }: { still: boolean }) {
 }
 
 /** The face swaps with a short fade, so the reveal reads as Pip coming into focus. */
-function Face({ mood, still }: { mood: PipMood; still: boolean }) {
+type FaceProps = {
+  mood: PipMood;
+  still: boolean;
+  voiceLevel?: MotionValue<number>;
+  glance?: boolean;
+  talking?: boolean;
+};
+
+function Face({ mood, still, voiceLevel, glance, talking }: FaceProps) {
   const mystery = mood === "mystery";
   return (
     <AnimatePresence mode="wait" initial={false}>
@@ -98,8 +180,8 @@ function Face({ mood, still }: { mood: PipMood; still: boolean }) {
           <MysteryFace still={still} />
         ) : (
           <>
-            <Eyes mood={mood} still={still} />
-            <Mouth mood={mood} still={still} />
+            <Eyes mood={mood} still={still} glance={glance} />
+            <Mouth mood={talking ? "talk" : mood} still={still} voiceLevel={voiceLevel} />
           </>
         )}
       </motion.g>
@@ -107,15 +189,27 @@ function Face({ mood, still }: { mood: PipMood; still: boolean }) {
   );
 }
 
-function Hand({ at, still, phase }: { at: [number, number]; still: boolean; phase: number }) {
+type HandProps = { at: [number, number]; still: boolean; phase: number; waving?: boolean };
+
+function handMotion({ at, still, waving }: HandProps) {
+  if (still) return { cx: at[0], cy: at[1] };
+  if (waving) return { cx: [at[0] - 20, at[0] + 20, at[0] - 20], cy: [at[1], at[1] - 10, at[1]] };
+  return { cx: at[0], cy: [at[1], at[1] - 8, at[1]] };
+}
+
+/** A waving hand swings side to side; a resting one bobs gently. */
+function Hand(props: HandProps) {
+  const { phase, waving } = props;
   return (
     <motion.circle
       r={15}
       initial={false}
-      animate={still ? { cx: at[0], cy: at[1] } : { cx: at[0], cy: [at[1], at[1] - 8, at[1]] }}
+      animate={handMotion(props)}
       transition={{
-        cx: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-        cy: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: phase },
+        cx: waving ? { duration: 0.5, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+        cy: waving
+          ? { duration: 0.5, repeat: Infinity, ease: "easeInOut" }
+          : { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: phase },
       }}
       className="fill-accent/15 stroke-accent"
       strokeWidth={4}
@@ -124,7 +218,8 @@ function Hand({ at, still, phase }: { at: [number, number]; still: boolean; phas
 }
 
 /** Pip, drawn in lines of light because line drawings read best on a fog screen. */
-export function Pip({ height, mood = "smile", reach = "none", className = "" }: PipProps) {
+export function Pip(props: PipProps) {
+  const { height, mood = "smile", reach = "none", voiceLevel, glance, talking, className = "" } = props;
   const still = useStill();
   const id = useId().replace(/:/g, "");
   const hands = handPositions[reach];
@@ -172,9 +267,9 @@ export function Pip({ height, mood = "smile", reach = "none", className = "" }: 
           strokeLinecap="round"
           fill="none"
         />
-        <Face mood={mood} still={still} />
+        <Face mood={mood} still={still} voiceLevel={voiceLevel} glance={glance} talking={talking} />
         <Hand at={hands.left} still={still} phase={0} />
-        <Hand at={hands.right} still={still} phase={0.8} />
+        <Hand at={hands.right} still={still} phase={0.8} waving={reach === "wave"} />
       </g>
     </motion.svg>
   );
