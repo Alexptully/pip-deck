@@ -8,8 +8,8 @@ export const config = {
   teamMembers: ["Alex Tully", "Cara Austring", "Daisy Wang", "Jerry Wu", "Ame Wang"],
   event: "Innovator's Forum, Fall 2026",
   prompt: "Prompt 3a: What does the future of vibe coding look like?",
-  demoUrl: "[DEMO URL]",
-  demoUrlLabel: "[DEMO URL]",
+  demoUrl: "https://gloriasclinicbypip.replit.app/",
+  demoUrlLabel: "gloriasclinicbypip.replit.app",
   /** Pip speaks its lines out loud from the hologram screen. */
   pipSpeaks: true,
   motif: "A sheet of falling mist, the same fog screen Pip lives in, drifts across every slide.",
