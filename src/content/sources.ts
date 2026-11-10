@@ -10,7 +10,8 @@ export type Source = {
 
 export type SourceId =
   | "sbaNation2025"
-  | "sbaMetroWest2025"
+  | "gs10ksb2026"
+  | "nhsGpTraining2022"
   | "blsOoh"
   | "mdnSpeechSynthesis"
   | "mdnSpeechRecognition"
@@ -28,16 +29,6 @@ export const sources: Record<SourceId, Source> = {
     date: "June 30, 2025",
     url: "https://advocacy.sba.gov/2025/06/30/2025-small-business-profiles-for-the-states-territories-and-nation",
     usedFor: "36.2 million U.S. small businesses (firms with fewer than 500 employees).",
-  },
-  sbaMetroWest2025: {
-    id: "sbaMetroWest2025",
-    short: "SBA Office of Advocacy, 2025 metro profile for Los Angeles",
-    publisher: "U.S. Small Business Administration, Office of Advocacy",
-    title: "2025 Small Business Profiles for Major Metropolitan Areas: West",
-    date: "October 2025",
-    url: "https://advocacy.sba.gov/wp-content/uploads/2025/10/West_2025_FINAL.pdf",
-    usedFor:
-      "1.8 million small businesses in the LA metro; 453,201 Hispanic-owned businesses, 91.4% with no employees.",
   },
   blsOoh: {
     id: "blsOoh",
@@ -95,6 +86,24 @@ export const sources: Record<SourceId, Source> = {
     usedFor:
       "Wire diagrams look better on fog than photos or full-frame video; the fog is dry because the particles are so small.",
   },
+  gs10ksb2026: {
+    id: "gs10ksb2026",
+    short: "Goldman Sachs 10,000 Small Businesses Voices survey, 2026",
+    publisher: "Goldman Sachs 10,000 Small Businesses Voices (Business Wire)",
+    title: "Survey: Small Businesses Embrace AI But Need Training and Support to Fully Harness It",
+    date: "March 17, 2026 (1,256 owners, surveyed early 2026)",
+    url: "https://www.businesswire.com/news/home/20260317141697/en/Survey-Small-Businesses-Embrace-AI-But-Need-Training-and-Support-to-Fully-Harness-It",
+    usedFor: "84% of AI users name efficiency as the main benefit; 73% say more training and setup help would help.",
+  },
+  nhsGpTraining2022: {
+    id: "nhsGpTraining2022",
+    short: "NHS England, staff training in general practice, 2022 survey",
+    publisher: "NHS England, Workforce, Training and Education (Digital Transformation)",
+    title: "Research to inform staff training for digital delivery in general practice",
+    date: "June 2023 (791 staff, surveyed early 2022)",
+    url: "https://digital-transformation.hee.nhs.uk/publications/research-to-inform-staff-training-for-digital-delivery-in-general-practice/discussion",
+    usedFor: "74% named high workload as a barrier to completing training.",
+  },
   promptBrief: {
     id: "promptBrief",
     short: "Innovator's Forum, Fall 2026 Prompt 3a",
@@ -108,9 +117,8 @@ export const sources: Record<SourceId, Source> = {
 
 export const sourceOrder: SourceId[] = [
   "promptBrief",
-  "sbaNation2025",
-  "blsOoh",
-  "sbaMetroWest2025",
+  "gs10ksb2026",
+  "nhsGpTraining2022",
   "mdnSpeechSynthesis",
   "mdnSpeechRecognition",
   "fogscreenLaminar",

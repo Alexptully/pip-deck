@@ -36,48 +36,74 @@ Every one of these must be visible in the deck, and each slide's footer names th
 
 Original, Useful, Believable, Accessible to non-engineers, Understandable through the product itself, Built for a specific person in a specific context.
 
+## The point of Pip
+
+**The future of AI is human.** Pip acts like a real person: you can talk with it, and it picks things up like a coworker would. We can already tell AI what to do, but people connect best with people, especially those who aren't comfortable with technology. This is the deck's opening idea, right after the title.
+
+Pip is a friendly, human-facing way to build software. Today's AI builders feel made for engineers: a blank box, technical words and code you can't check. Non-technical people find them intimidating and give up. Pip is a character on a fog screen that says hello, talks in your words, says back what it heard, asks one question at a time and never shows code. The friendliness is the product: it makes people feel open to building.
+
 ## Who it's for
 
-**Rosa, 52. Owner and baker, a two-oven panadería in Boyle Heights, Los Angeles.** (Sector: small business.)
+**Gloria, 56. Clinic director of a two-doctor family clinic in East Los Angeles.** (Sector: community healthcare.) She is not a doctor and not technical.
 
-- **Her day:** at the ovens by 4 a.m. Counter from 7. Between batches she answers Instagram DMs and texts from customers trying to reserve conchas, a rosca, a birthday tres leches. Orders live in a paper notebook by the register. Her nephew helps on weekends.
-- **What she can't do today:** build anything. She has no budget for a developer, no time to learn a site builder, and every AI app builder she's seen opens to a blank text box and a wall of code she can't check.
-- **Sector constraints:** thin margins, no IT person, a phone that is her whole computer, a bilingual (often older) customer base, and food that can't be un-baked. Overselling means working until midnight; underselling means waste.
-- **Why she wants it:** customers order in two taps; she stops answering DMs at midnight.
-- **Why she needs it:** without it, the notebook stays the system. Orders get lost in DMs, she guesses how much to bake every morning, and she turns away anyone who can't reach her before closing.
+- **Her day:** the phones start before the doors open. Patients call all day to ask how long the wait is and whether a refill went through. A voicemail gets missed. She is still returning calls after closing.
+- **What she can't do today:** build anything. She tried an AI app builder once, and closed it when it showed her code. There is no budget for a developer.
+- **Sector constraints:** no budget for a developer, patient privacy rules (HIPAA), no IT person, a scheduling system she didn't choose and a phone as her main computer. Mostly walk-in patients, many older and more at home in Spanish.
+- **Why she wants it:** patients join the walk-in list from their phones and hear back when it's their turn, so they stop waiting on hold.
+- **Why she needs it:** without it, the phones stay the system, and the software she has was designed for someone else.
 
-Before pitching, swap in quotes from two or three real bakery or small-shop owners (`src/content/config.ts`).
+**Opening stat (people want easier tools but can't stop to learn them):** in Goldman Sachs' 2026 survey of 1,256 small business owners in its 10,000 Small Businesses program, 84% of those using AI said the main benefit was saving time and working more efficiently, yet 73% said more training and help setting it up would help them, and only 14% said AI was fully part of daily operations. In NHS England's 2022 survey of 791 general-practice staff (UK), 74% said high workload kept them from finishing training, with lack of protected time second. The pivot: what if building an app felt like talking to a friend?
+
+Gloria is a persona. Before pitching, swap in quotes from two or three real clinic staff or owners (`src/content/config.ts`).
 
 ## What is broken about building software today
 
-Today's AI builders still assume you think like an engineer: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to Rosa (how people pay, how many she can bake, whether her customers read Spanish) are buried under technical ones, or never asked.
+Today's AI builders feel made for engineers: a blank prompt box, then a wall of code or a generated screen you can't reason about. The decisions that matter to Gloria (how many walk-ins her doctors can see, where patients wait, whether patients read Spanish) are buried under technical ones. People like her close the tab.
 
 ## Who Pip allows to build
 
-People who have never built anything and never will learn to: shop owners, coaches, pantry volunteers, teachers. If you can describe your problem to a friend, you can build with Pip.
+People who have never built anything and never will learn to: clinic directors, shop owners, salon owners, food-bank coordinators. If you can describe your problem to a friend, you can build with Pip.
 
 ## What Pip makes easier
 
-- **Say it:** Rosa talks; Pip reflects back what it heard (Who, Business, Problem, Goal).
-- **Shape it:** four questions, one at a time, as big choices with a reason. "How many can you bake a day? I'll close orders before you get swamped" is a business decision that quietly creates inventory logic. Every change flies from Pip's hand into the app.
-- **Try it:** Pip pretends to be a customer and finds the gap ("I'm allergic to nuts and there was nowhere to tell you").
-- **Launch it:** one word gives a working page and a QR code. Orders arrive live and the team gets a bake list.
+- **Feels like a person:** Pip starts with "Hi! What's been hard this week?", speaks English or Spanish, shows what it heard instead of code, asks one question at a time and says "Let me try that another way" instead of an error.
+- **Say it:** Gloria talks; Pip reflects back what it heard (Who, Clinic, Problem, Goal).
+- **Shape it:** four friendly questions, one at a time. "How many walk-ins can your doctors see in a day? I'll close the list before they get swamped" quietly builds capacity logic. Every change flies from Pip's hand into the app.
+- **Try it:** Pip plays a patient and finds the gap ("My daughter translates for me, and there was nowhere to say so").
+- **Launch it:** one word gives a working walk-in page and a QR code. Check-ins arrive live and the front desk gets one list by visit type, with interpreter requests flagged.
+
+## Pip acts like a real person: what makes it special
+
+Pip isn't an app you open and close. It is more like a new coworker. You can talk with it any time, and like a real person it picks things up in passing. It doesn't record everything; it pays attention to what seems interesting or useful, the way a new hire would after a week on the job. In its first week at Gloria's clinic, without being asked, it noticed:
+
+1. **How patients move:** walk-ins peak from 9 to 11 a.m. and the waiting room spills outside.
+2. **How staff work:** one person answers the phone and checks patients in at the same time.
+3. **How operations run:** refill requests go on sticky notes and get called back after closing.
+4. **What patients complain about:** "How much longer?" is the question asked most at the desk.
+
+Then it brings it up, like a coworker would: "Hey Gloria, I keep hearing people ask how much longer. Want me to make a list that texts them when it's their turn?" It offers to build a walk-in list that texts patients, one front desk list and a refill board. The slide shows the clinic as a floor plan with the four findings pinned where they happen; the findings are demo data.
+
+Visible rules: Pip glows when listening, everyone is told first and anyone can say "Pip, pause", it keeps patterns not recordings, nothing is built without a yes, health details stay out in clinics, and the listening leaves with Pip. These are prototype design rules, not legal certifications; a real clinic deployment would need a privacy and HIPAA review.
 
 ## Why now
 
-Models can hold a conversation, turn a messy description into structure and make small reliable changes in real time. Browser speech makes voice free and instant.
+Models can hold a conversation, turn a messy description into structure and make small reliable changes in real time. Browser speech makes voice free and instant. Fog screens give a character a body in the room.
 
 ## What we learned (starting points, replace with the team's own)
 
+- People describe their problem in more detail to a character than to a text box.
 - Free-form "build anything" overwhelmed even us. One question at a time felt calm.
 - Showing what Pip heard before building did more for trust than any explanation.
-- The pretend customer catching a missing notes box was the most useful AI moment.
-- People are more specific with a character than with a text box.
+- The pretend patient catching a missing notes box was the most useful AI moment.
 
-## Who benefits beyond Rosa
+## Who benefits beyond Gloria
 
-Her helpers (a shared bake list), her customers (bilingual, bigger text), the neighborhood (local shops compete without paying for software), and other builders such as a youth soccer coach, a tutor or a food-bank shift coordinator.
+Her front desk (less time on hold and callbacks), her patients (join the list from home, in Spanish or English, with bigger text), the neighborhood (a clinic that is easier to reach), and anyone else who can describe a problem: a corner store, a salon, a food-bank shift coordinator.
 
 ## Hardware
 
-Pip runs on a laptop and is projected onto a small fog screen.
+Pip runs on a laptop and is projected onto a small fog screen at the counter, so everyone can see when it is listening.
+
+## Deck order (4-minute version)
+
+Alex: title (Pip as a question mark), the future of AI is human. Cara: Meet Gloria storyboard, the busy-people stats. Daisy: Meet Pip (the reveal), Pip picks things up like a real person. Jerry: Say it, Shape it (live), Launch it. Ame: zoom out to other workplaces, who else benefits, why now, what we learned, close. Standards and sources stay up for Q&A. The trust rules, the fog-screen hardware and the pretend-customer test live in the speaker notes and Q&A answers, not on slides.

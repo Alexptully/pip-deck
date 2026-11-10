@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { slides } from "@/content/content";
 import { duration, ease } from "@/lib/motion";
+import { HologramConnectedProvider, useDeckSync } from "@/lib/pip-sync";
+import { findExtendedScreen, placeOnScreen } from "@/lib/screens";
 import { toggleFullscreen, useDeckKeys } from "@/lib/use-deck-keys";
 import { useDeckNavigation } from "@/lib/use-deck-navigation";
 import { Mist } from "@/components/mist/Mist";
@@ -14,6 +16,20 @@ import { SlideFrame } from "./SlideFrame";
 import { Stage } from "./Stage";
 
 export const printHref = process.env.NEXT_PUBLIC_SINGLE_FILE ? "#print" : "/print/";
+
+export const hologramHref = process.env.NEXT_PUBLIC_SINGLE_FILE ? "#pip" : "/pip/";
+
+/**
+ * Opens Pip's hologram screen in its own window and, where the browser allows it, moves that
+ * window onto the extended display. The window opens first so the click still counts as the
+ * presenter's own, then it moves once the screens are known.
+ */
+function openHologramWindow() {
+  const href = hologramHref.startsWith("#") ? `${window.location.pathname}${hologramHref}` : hologramHref;
+  const hologram = window.open(href, "pip-hologram", "popup,width=960,height=540");
+  if (!hologram) return;
+  void findExtendedScreen().then((screen) => (screen ? placeOnScreen(hologram, screen) : undefined));
+}
 
 export function Deck() {
   const { position, next, previous, first, last } = useDeckNavigation(slides);
@@ -30,13 +46,19 @@ export function Deck() {
       toggleNotes: () => setNotesOpen((open) => !open),
       toggleFullscreen,
       openPrint: () => window.location.assign(printHref),
+      openHologram: openHologramWindow,
     }),
     [next, previous, first, last],
   );
   useDeckKeys(actions);
+  const deckPosition = useMemo(() => ({ slideId: meta.id, step: position.step }), [meta.id, position.step]);
+  const hologramConnected = useDeckSync({
+    position: deckPosition,
+    onNavigate: (direction) => (direction === "next" ? next() : previous()),
+  });
 
   return (
-    <>
+    <HologramConnectedProvider value={hologramConnected}>
       <Stage>
         <Mist setting={meta.mist} />
         <AnimatePresence mode="wait">
@@ -62,8 +84,9 @@ export function Deck() {
           index={position.index}
           total={slides.length}
           step={position.step}
+          hologramConnected={hologramConnected}
         />
       ) : null}
-    </>
+    </HologramConnectedProvider>
   );
 }

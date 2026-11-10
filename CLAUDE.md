@@ -1,6 +1,6 @@
 # Pip: the pitch deck
 
-A web slide deck for the Innovator's Forum, Fall 2026, Prompt 3a ("What does the future of vibe coding look like?"). The deck pitches Pip, a holographic character on a fog screen that lets a non-engineer like Rosa, a Boyle Heights baker, build a working ordering app by talking it through.
+A web slide deck for the Innovator's Forum, Fall 2026, Prompt 3a ("What does the future of vibe coding look like?"). The deck pitches Pip, a friendly holographic character on a fog screen that makes building software feel like talking to a person. It follows Gloria, a non-technical clinic director in East Los Angeles, as she builds a walk-in check-in app by talking it through. Pip acts like a real person: you can talk with it, and like a coworker it picks up on what it overhears (how patients move, how staff work, how operations run, what people complain about) and brings up what would help.
 
 `BRIEF.md` is the master brief. It sets the slide content, the required sections, the statistics and their sources, and the placeholders. When the brief and this file disagree on design or tooling, this file wins. When they disagree on content or required coverage, the brief wins.
 
@@ -15,15 +15,18 @@ The visual reference is the Standard Physics deck: one full-bleed stage, huge di
 
 Every slide is drawn on a fixed 1920 by 1080 stage that scales to fit the window, so sizes in code are real pixels at 1080p.
 
-Keep the slides clean: no progress bar, dots or slide numbers. Each slide's footer carries only its sources and, if the assignment has a rubric, its rubric tag.
+Keep the slides clean: no progress bar, dots or slide numbers. Each slide's footer carries only its sources. Rubric coverage shows on the standards slide, not in footers.
 
 ## Commands
 
-- `npm run dev` starts the deck at http://localhost:3000
+- `npm run dev` starts the deck at http://localhost:3000 with the hologram relay, for rehearsing.
+- `npm run present` builds the deck and serves it on port 3000 to this laptop and the Wi-Fi, with the hologram relay on port 3002 (`scripts/pip-relay.mjs`), so Pip's hologram screen on a second computer follows the deck. `/pip/setup/` shows the address and QR code for that computer and how many hologram screens are connected. This is the same pattern as the Fold with Nara kiosk.
+- `/pip` (or the H key) opens Pip's hologram screen for the fog projector: Pip alone on black, following the deck through a BroadcastChannel in the same browser. In the single-file build it lives at `#pip`. Cues per slide and build step live in `pipCues` in `src/content/content.ts`.
 - `/print` (or the P key) is the print version, one landscape page per slide or build step, for PDF export
 - `npm run build` writes the static export to `out/`. `npm run build:single` also folds it into one self-contained file, `dist/pip-deck.html`, for hosts that take a single page (there, P opens the print view at `#print`).
 - `npm run check` runs the type checker, the linter with its complexity limit, and the em dash scan. Run it before saying a task is done.
 - Work on a branch and open a pull request. Never push straight to `main`.
+- Every push to `main` publishes the single-file deck to GitHub Pages (`.github/workflows/pages.yml`). In the repo, set Settings, Pages, Source to "GitHub Actions" once.
 
 ## General
 
@@ -118,7 +121,7 @@ If your Claude Code setup has the `better-*` skills (`better-ui`, `better-typogr
 
 ## Before you finish, verify
 
-1. Every required section from the brief is clearly visible, and each slide's footer tag says which one it covers.
+1. Every required section from the brief is clearly visible, and the standards slide says which slide covers it.
 2. There are no em dashes anywhere in the project.
 3. Every stat has a source in its slide's footer and an entry on the sources page.
 4. Keyboard navigation, speaker notes (N), full screen (F) and print-to-PDF (P) all work.

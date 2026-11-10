@@ -1,37 +1,37 @@
 import type { ComponentType } from "react";
 import type { SlideId } from "@/content/content";
+import { AskSlide } from "./AskSlide";
 import { BenefitsSlide } from "./BenefitsSlide";
-import { BrokenSlide } from "./BrokenSlide";
-import { BuildersSlide } from "./BuildersSlide";
 import { CloseSlide } from "./CloseSlide";
-import { HologramSlide } from "./HologramSlide";
-import { JourneySlide } from "./JourneySlide";
+import { FutureSlide } from "./FutureSlide";
+import { HumanSlide } from "./HumanSlide";
 import { LaunchSlide } from "./LaunchSlide";
 import { LearnedSlide } from "./LearnedSlide";
-import { OwnersSlide } from "./OwnersSlide";
-import { RosaSlide } from "./RosaSlide";
+import { MapSlide } from "./MapSlide";
+import { MeetPipSlide } from "./MeetPipSlide";
 import { SaySlide } from "./SaySlide";
-import { ShapeSlide } from "./ShapeSlide";
 import { SourcesSlide } from "./SourcesSlide";
+import { StatSlide } from "./StatSlide";
+import { StorySlide } from "./StorySlide";
 import { StandardsSlide } from "./StandardsSlide";
 import { TitleSlide } from "./TitleSlide";
-import { TrySlide } from "./TrySlide";
+import { ZoomOutSlide } from "./ZoomOutSlide";
 import { WhyNowSlide } from "./WhyNowSlide";
 
 export type SlideProps = { step: number };
 
 export const slideComponents: Record<SlideId, ComponentType<SlideProps>> = {
   title: TitleSlide,
-  rosa: RosaSlide,
-  owners: OwnersSlide,
-  builders: BuildersSlide,
-  broken: BrokenSlide,
-  journey: JourneySlide,
+  human: HumanSlide,
+  future: FutureSlide,
+  story: StorySlide,
+  stat: StatSlide,
+  meetPip: MeetPipSlide,
+  listen: MapSlide,
   say: SaySlide,
-  shape: ShapeSlide,
-  try: TrySlide,
+  ask: AskSlide,
   launch: LaunchSlide,
-  hologram: HologramSlide,
+  zoomOut: ZoomOutSlide,
   whyNow: WhyNowSlide,
   learned: LearnedSlide,
   benefits: BenefitsSlide,

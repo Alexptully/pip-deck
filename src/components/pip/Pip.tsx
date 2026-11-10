@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useId } from "react";
 import { useStill } from "@/components/primitives/Still";
 
-export type PipMood = "smile" | "talk" | "listen" | "think";
+export type PipMood = "smile" | "talk" | "listen" | "think" | "mystery";
+type FaceMood = Exclude<PipMood, "mystery">;
 export type PipReach = "none" | "left" | "right";
 
 type PipProps = {
@@ -14,6 +15,9 @@ type PipProps = {
   className?: string;
 };
 
+/** Pip is out of focus until it is introduced, then condenses into a sharp drawing. */
+const MYSTERY_BLUR = 5;
+
 const BODY = "M120 36 C 140 72, 200 112, 200 176 A 80 80 0 0 1 40 176 C 40 112, 100 72, 120 36 Z";
 
 const handPositions: Record<PipReach, { left: [number, number]; right: [number, number] }> = {
@@ -22,7 +26,7 @@ const handPositions: Record<PipReach, { left: [number, number]; right: [number, 
   right: { left: [22, 238], right: [266, 176] },
 };
 
-function Mouth({ mood, still }: { mood: PipMood; still: boolean }) {
+function Mouth({ mood, still }: { mood: FaceMood; still: boolean }) {
   if (mood === "talk") {
     return (
       <motion.ellipse
@@ -37,7 +41,7 @@ function Mouth({ mood, still }: { mood: PipMood; still: boolean }) {
       />
     );
   }
-  const paths: Record<Exclude<PipMood, "talk">, string> = {
+  const paths: Record<Exclude<FaceMood, "talk">, string> = {
     smile: "M98 204 Q120 226 142 204",
     listen: "M112 210 Q120 216 128 210",
     think: "M104 212 L136 208",
@@ -45,7 +49,7 @@ function Mouth({ mood, still }: { mood: PipMood; still: boolean }) {
   return <path d={paths[mood]} className="stroke-accent" strokeWidth={5} strokeLinecap="round" fill="none" />;
 }
 
-function Eyes({ mood, still }: { mood: PipMood; still: boolean }) {
+function Eyes({ mood, still }: { mood: FaceMood; still: boolean }) {
   const lookX = mood === "think" ? 8 : 0;
   const lookY = mood === "listen" ? -6 : 0;
   return (
@@ -58,6 +62,48 @@ function Eyes({ mood, still }: { mood: PipMood; still: boolean }) {
       <rect x={84 + lookX} y={152 + lookY} width={16} height={30} rx={8} className="fill-accent" />
       <rect x={140 + lookX} y={152 + lookY} width={16} height={30} rx={8} className="fill-accent" />
     </motion.g>
+  );
+}
+
+/** Before the audience meets Pip, its face is a question mark. */
+function MysteryFace({ still }: { still: boolean }) {
+  return (
+    <motion.text
+      x={120}
+      y={222}
+      textAnchor="middle"
+      className="fill-accent font-display text-[104px] font-bold"
+      initial={false}
+      animate={still ? { opacity: 1 } : { opacity: [0.65, 1, 0.65] }}
+      transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+    >
+      ?
+    </motion.text>
+  );
+}
+
+/** The face swaps with a short fade, so the reveal reads as Pip coming into focus. */
+function Face({ mood, still }: { mood: PipMood; still: boolean }) {
+  const mystery = mood === "mystery";
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.g
+        key={mystery ? "mystery" : "face"}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: still ? 0 : 0.5 }}
+      >
+        {mystery ? (
+          <MysteryFace still={still} />
+        ) : (
+          <>
+            <Eyes mood={mood} still={still} />
+            <Mouth mood={mood} still={still} />
+          </>
+        )}
+      </motion.g>
+    </AnimatePresence>
   );
 }
 
@@ -91,8 +137,14 @@ export function Pip({ height, mood = "smile", reach = "none", className = "" }: 
       role="img"
       aria-label="Pip, a droplet-shaped holographic character"
       initial={false}
-      animate={still ? { y: 0 } : { y: [0, -10, 0] }}
-      transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+      animate={{
+        y: still ? 0 : [0, -10, 0],
+        filter: mood === "mystery" ? `blur(${MYSTERY_BLUR}px)` : "blur(0px)",
+      }}
+      transition={{
+        y: { duration: 3.4, repeat: Infinity, ease: "easeInOut" },
+        filter: { duration: still ? 0 : 1.2, ease: "easeOut" },
+      }}
     >
       <defs>
         <filter id={`glow-${id}`} x="-50%" y="-50%" width="200%" height="200%">
@@ -120,8 +172,7 @@ export function Pip({ height, mood = "smile", reach = "none", className = "" }: 
           strokeLinecap="round"
           fill="none"
         />
-        <Eyes mood={mood} still={still} />
-        <Mouth mood={mood} still={still} />
+        <Face mood={mood} still={still} />
         <Hand at={hands.left} still={still} phase={0} />
         <Hand at={hands.right} still={still} phase={0.8} />
       </g>
